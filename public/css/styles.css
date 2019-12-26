@@ -1,0 +1,144 @@
+body {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+html, body {
+    height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+span {
+    font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑,
+        STHeiti, MingLiu, "宋体", Arial, Helvetica, sans-serif;
+    color: #333;
+}
+
+a:hover {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* navbar */
+.navbar-brand span {
+    font-size: 3rem;
+    font-family: "Zhi Mang Xing", cursive;
+    letter-spacing: -0.2rem;
+}
+
+.navbar-brand:hover {
+    font-weight: normal;
+}
+
+@media screen and (max-width: 767.98px) {
+    .navbar-brand span {
+        font-size: 2rem;
+        letter-spacing: -0.4rem;
+    }
+}
+
+/* content */
+.content {
+    flex: auto;
+}
+
+/* carousel */
+.carousel-item {
+    height: 40vw;
+    background: #bc1e58;
+}
+
+.carousel-item .carousel-words-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 3%;
+}
+
+.carousel-item .carousel-words-box .carousel-words {
+    display: block;
+}
+
+.carousel-item .carousel-words-box .carousel-words h3 {
+    margin-top: 4%;
+    font-size: 4vw;
+    color: #fdfefd;
+    font-weight: bold;
+}
+
+.carousel-item .carousel-words-box .carousel-words p {
+    font-size: 1.4vw;
+    margin: 0.6vw 0;
+    color: #fdfefd;
+}
+
+.blockquote-footer {
+    font-size: 1.3vw;
+    color: #fdfefd;
+}
+
+@media screen and (max-width: 767.98px) {
+    .carousel-item {
+        height: auto;
+    }
+
+    .carousel-item .carousel-words-box {
+        min-height: 40vw;
+        text-align: center;
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+    }
+}
+
+/* features */
+#features p {
+    text-align: center;
+    letter-spacing: 2vw;
+    padding-left: 2vw;
+    margin-top: 1vw;
+}
+
+#features i {
+    color: #bc1e58;
+}
+
+#features i:hover {
+    color: #e4122e;
+}
+
+/* footer */
+.footer {
+    background-color: #acacac;
+    /* background-color: #e8ecef; */
+    padding: 1vw 0;
+    flex-shrink: 0;
+}
+
+#footer .social-media i {
+    margin: 1vw 0;
+    font-size: 1.6vw;
+}
+
+#footer .copyright span {
+    font-size: 1vw;
+    color: #505050;
+}
+
+#donateModal .modal-body .donate-me {
+    border-left: #e2e3e5 1px solid;
+}
+
+@media screen and (max-width: 767.98px) {
+    #donateModal .modal-body .donate-me {
+        border: none;
+    }
+}

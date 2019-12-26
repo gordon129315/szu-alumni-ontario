@@ -1,0 +1,21 @@
+{
+  "name": "szu-alumni-ontario",
+  "version": "1.0.0",
+  "description": "Shenzhen University Alumni Association of Ontario",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.0.4",
+    "markdown": "^0.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
