@@ -17,12 +17,12 @@
         <span class="text-danger">*请有意向在这发广告的校友，将相关信息发至我邮箱 gordonyuzr@gmail.com ，如公司名字，业务介绍，联系方式，公司网站（如有）。还有，请注明您的姓名或微信名，以便我确认您的确是校友会成员。我会尽快更新到网页上。</span>
     </div>
 
-
+    {{!-- 分类 --}}
     <h2 class="text-center mb-3 mt-5" style="color: #bc1e58"><b>企业分类</b></h2>
     <div id="category" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 w-75 mx-auto my-3">
         <div class="col mb-4">
             <div class="card h-100">
-                <div class="w-100 h-100 text-center card-body"><i class="fas fa-home"></i></div>
+                <div class="w-100 card-body"><i class="fas fa-home"></i></div>
                 <div class="card-footer text-center">
                     <a href="#real-estate" class="stretched-link">
                         <h5 class="card-title mb-0">房产买卖</h5>
@@ -32,7 +32,7 @@
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <div class="w-100 h-100 text-center card-body"><i class="fas fa-balance-scale"></i></div>
+                <div class="w-100 card-body"><i class="fas fa-balance-scale"></i></div>
                 <div class="card-footer text-center">
                     <a href="#law-consult" class="stretched-link">
                         <h5 class="card-title mb-0">法律咨询</h5>
@@ -42,7 +42,7 @@
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <div class="w-100 h-100 text-center card-body"><i class="fas fa-hand-holding-usd"></i></div>
+                <div class="w-100 card-body"><i class="fas fa-hand-holding-usd"></i></div>
                 <div class="card-footer text-center">
                     <a href="#wealth-management" class="stretched-link">
                         <h5 class="card-title mb-0">保险理财</h5>
@@ -52,7 +52,7 @@
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <div class="w-100 h-100 text-center card-body"><i class="fas fa-couch"></i></div>
+                <div class="w-100 card-body"><i class="fas fa-couch"></i></div>
                 <div class="card-footer text-center">
                     <a href="#life-style" class="stretched-link">
                         <h5 class="card-title mb-0">家居美容</h5>
@@ -62,7 +62,7 @@
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <div class="w-100 h-100 text-center card-body"><i class="fas fa-handshake"></i></div>
+                <div class="w-100 card-body"><i class="fas fa-handshake"></i></div>
                 <div class="card-footer text-center">
                     <a href="#community" class="stretched-link">
                         <h5 class="card-title mb-0">校友互助</h5>
@@ -72,7 +72,7 @@
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <div class="w-100 h-100 text-center card-body"><i class="fas fa-hourglass-half"></i></div>
+                <div class="w-100 card-body"><i class="fas fa-hourglass-half"></i></div>
                 <div class="card-footer text-center">
                     <a href="#other-service" class="stretched-link">
                         <h5 class="card-title mb-0">其它服务</h5>
@@ -83,88 +83,125 @@
     </div>
 
 
-
-
-
-
-
+    {{!-- 房产买卖 --}}
     <h2 id="real-estate" class="text-center mb-3 mt-5" style="color: #bc1e58"><b>房产买卖</b></h2>
-    <div class="row row-cols-1 row-cols-md-3 w-75 mx-auto my-3">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 w-75 mx-auto my-3">
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\sz-logo.png" class="card-img-top">
+                <div class="w-100">
+                    <div id="August-company" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active company-cover">
+                                <img src="https://www.upicanada.com/images/blogo.png" class="card-img-top">
+                            </div>
+                            <div class="carousel-item company-cover">
+                                <img src="img\enterprise\logo\August-Jian.jpg" class="card-img-top">
+                            </div>
+                            <div class="carousel-item company-cover">
+                                <img src="img\enterprise\qr-code\August-Jian.jpg" class="card-img-top">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#August-company" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#August-company" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">公司名字</h5>
-                    <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <h5 class="card-title">联众国际咨询有限公司</h5>
+                    <p class="card-text my-0">Office: 905.305.9099</p>
+                    <p class="card-text my-0">Email: august.jian@gmail.com</p>
+                    <p class="card-text my-0">Office: 905.305.9099</p>
+                    <p class="card-text my-0">Address: Unit 402 3100 Steeles Ave East, Markham ON Canada L3R 8T3</p>
+                    <a href="https://www.upicanada.com" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">August Jian</small>
+                    <small class="text-muted d-block">Executive VP Real Estate</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\qr-code.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="img\sz-logo.png" class="card-img-top">
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">公司名字</h5>
+                    <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
+                </div>
+                <div class="card-footer text-right">
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-4">
+            <div class="card h-100">
+                <div class="w-100 company-cover">
+                    <img src="img\qr-code.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">二维码</h5>
                     <p class="card-text">如果您是个人生意，没有公司logo，也可以放您的微信二维码</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\donate-me.png" class="card-img-top">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">打赏一下</h5>
-                    <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                <div class="w-100 company-cover">
+                    <img src="img\qr-code.png" class="card-img-top">
                 </div>
-                <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
-                </div>
-            </div>
-        </div>
-        <div class="col mb-4">
-            <div class="card h-100">
-                <img src="img\qr-code.png" class="card-img-top">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">网站制作</h5>
                     <p class="card-text">给个人工作室、中小型企业制作公司网站。价格从优。</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">余卓燃-09计算机</small>
+                    <small class="text-muted d-block">余卓燃-09计算机</small>
+                    <small class="text-muted d-block">网站工程师</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\sz-logo.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="img\sz-logo.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">公司名字</h5>
                     <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\sz-logo.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="img\sz-logo.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">公司名字</h5>
                     <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
@@ -174,423 +211,535 @@
     
 
     <h2 id="law-consult" class="text-center mb-3 mt-5" style="color: #bc1e58"><b>法律咨询</b></h2>
-    <div class="row row-cols-1 row-cols-md-3 w-75 mx-auto my-3">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 w-75 mx-auto my-3">
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\sz-logo.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="https://www.upicanada.com/images/blogo.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">公司名字</h5>
-                    <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <h5 class="card-title">联众国际咨询有限公司</h5>
+                    <p class="card-text my-0">Office: 905.305.9099</p>
+                    <p class="card-text my-0">Email: august.jian@gmail.com</p>
+                    <p class="card-text my-0">Office: 905.305.9099</p>
+                    <p class="card-text my-0">Address: Unit 402 3100 Steeles Ave East, Markham ON Canada L3R 8T3</p>
+                    <a href="https://www.upicanada.com" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">August Jian</small>
+                    <small class="text-muted d-block">Executive VP Real Estate</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\qr-code.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="img\sz-logo.png" class="card-img-top">
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">公司名字</h5>
+                    <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
+                </div>
+                <div class="card-footer text-right">
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-4">
+            <div class="card h-100">
+                <div class="w-100 company-cover">
+                    <img src="img\qr-code.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">二维码</h5>
                     <p class="card-text">如果您是个人生意，没有公司logo，也可以放您的微信二维码</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\donate-me.png" class="card-img-top">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">打赏一下</h5>
-                    <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                <div class="w-100 company-cover">
+                    <img src="img\qr-code.png" class="card-img-top">
                 </div>
-                <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
-                </div>
-            </div>
-        </div>
-        <div class="col mb-4">
-            <div class="card h-100">
-                <img src="img\qr-code.png" class="card-img-top">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">网站制作</h5>
                     <p class="card-text">给个人工作室、中小型企业制作公司网站。价格从优。</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">余卓燃-09计算机</small>
+                    <small class="text-muted d-block">余卓燃-09计算机</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\sz-logo.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="img\sz-logo.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">公司名字</h5>
                     <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\sz-logo.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="img\sz-logo.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">公司名字</h5>
                     <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
     </div>
+
+
 
 
 
     <h2 id="wealth-management" class="text-center mb-3 mt-5" style="color: #bc1e58"><b>保险理财</b></h2>
-    <div class="row row-cols-1 row-cols-md-3 w-75 mx-auto my-3">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 w-75 mx-auto my-3">
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\sz-logo.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="https://www.upicanada.com/images/blogo.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">公司名字</h5>
-                    <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <h5 class="card-title">联众国际咨询有限公司</h5>
+                    <p class="card-text my-0">Office: 905.305.9099</p>
+                    <p class="card-text my-0">Email: august.jian@gmail.com</p>
+                    <p class="card-text my-0">Office: 905.305.9099</p>
+                    <p class="card-text my-0">Address: Unit 402 3100 Steeles Ave East, Markham ON Canada L3R 8T3</p>
+                    <a href="https://www.upicanada.com" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">August Jian</small>
+                    <small class="text-muted d-block">Executive VP Real Estate</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\qr-code.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="img\sz-logo.png" class="card-img-top">
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">公司名字</h5>
+                    <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
+                </div>
+                <div class="card-footer text-right">
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-4">
+            <div class="card h-100">
+                <div class="w-100 company-cover">
+                    <img src="img\qr-code.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">二维码</h5>
                     <p class="card-text">如果您是个人生意，没有公司logo，也可以放您的微信二维码</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\donate-me.png" class="card-img-top">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">打赏一下</h5>
-                    <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                <div class="w-100 company-cover">
+                    <img src="img\qr-code.png" class="card-img-top">
                 </div>
-                <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
-                </div>
-            </div>
-        </div>
-        <div class="col mb-4">
-            <div class="card h-100">
-                <img src="img\qr-code.png" class="card-img-top">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">网站制作</h5>
                     <p class="card-text">给个人工作室、中小型企业制作公司网站。价格从优。</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">余卓燃-09计算机</small>
+                    <small class="text-muted d-block">余卓燃-09计算机</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\sz-logo.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="img\sz-logo.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">公司名字</h5>
                     <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\sz-logo.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="img\sz-logo.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">公司名字</h5>
                     <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
     </div>
+
 
 
 
     <h2 id="life-style" class="text-center mb-3 mt-5" style="color: #bc1e58"><b>家居美容</b></h2>
-    <div class="row row-cols-1 row-cols-md-3 w-75 mx-auto my-3">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 w-75 mx-auto my-3">
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\sz-logo.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="https://www.upicanada.com/images/blogo.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">公司名字</h5>
-                    <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <h5 class="card-title">联众国际咨询有限公司</h5>
+                    <p class="card-text my-0">Office: 905.305.9099</p>
+                    <p class="card-text my-0">Email: august.jian@gmail.com</p>
+                    <p class="card-text my-0">Office: 905.305.9099</p>
+                    <p class="card-text my-0">Address: Unit 402 3100 Steeles Ave East, Markham ON Canada L3R 8T3</p>
+                    <a href="https://www.upicanada.com" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">August Jian</small>
+                    <small class="text-muted d-block">Executive VP Real Estate</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\qr-code.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="img\sz-logo.png" class="card-img-top">
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">公司名字</h5>
+                    <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
+                </div>
+                <div class="card-footer text-right">
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-4">
+            <div class="card h-100">
+                <div class="w-100 company-cover">
+                    <img src="img\qr-code.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">二维码</h5>
                     <p class="card-text">如果您是个人生意，没有公司logo，也可以放您的微信二维码</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\donate-me.png" class="card-img-top">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">打赏一下</h5>
-                    <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                <div class="w-100 company-cover">
+                    <img src="img\qr-code.png" class="card-img-top">
                 </div>
-                <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
-                </div>
-            </div>
-        </div>
-        <div class="col mb-4">
-            <div class="card h-100">
-                <img src="img\qr-code.png" class="card-img-top">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">网站制作</h5>
                     <p class="card-text">给个人工作室、中小型企业制作公司网站。价格从优。</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">余卓燃-09计算机</small>
+                    <small class="text-muted d-block">余卓燃-09计算机</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\sz-logo.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="img\sz-logo.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">公司名字</h5>
                     <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\sz-logo.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="img\sz-logo.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">公司名字</h5>
                     <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
     </div>
+
 
 
 
     <h2 id="community" class="text-center mb-3 mt-5" style="color: #bc1e58"><b>校友互助</b></h2>
-    <div class="row row-cols-1 row-cols-md-3 w-75 mx-auto my-3">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 w-75 mx-auto my-3">
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\sz-logo.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="https://www.upicanada.com/images/blogo.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">公司名字</h5>
-                    <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <h5 class="card-title">联众国际咨询有限公司</h5>
+                    <p class="card-text my-0">Office: 905.305.9099</p>
+                    <p class="card-text my-0">Email: august.jian@gmail.com</p>
+                    <p class="card-text my-0">Office: 905.305.9099</p>
+                    <p class="card-text my-0">Address: Unit 402 3100 Steeles Ave East, Markham ON Canada L3R 8T3</p>
+                    <a href="https://www.upicanada.com" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">August Jian</small>
+                    <small class="text-muted d-block">Executive VP Real Estate</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\qr-code.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="img\sz-logo.png" class="card-img-top">
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">公司名字</h5>
+                    <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
+                </div>
+                <div class="card-footer text-right">
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-4">
+            <div class="card h-100">
+                <div class="w-100 company-cover">
+                    <img src="img\qr-code.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">二维码</h5>
                     <p class="card-text">如果您是个人生意，没有公司logo，也可以放您的微信二维码</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\donate-me.png" class="card-img-top">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">打赏一下</h5>
-                    <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                <div class="w-100 company-cover">
+                    <img src="img\qr-code.png" class="card-img-top">
                 </div>
-                <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
-                </div>
-            </div>
-        </div>
-        <div class="col mb-4">
-            <div class="card h-100">
-                <img src="img\qr-code.png" class="card-img-top">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">网站制作</h5>
                     <p class="card-text">给个人工作室、中小型企业制作公司网站。价格从优。</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">余卓燃-09计算机</small>
+                    <small class="text-muted d-block">余卓燃-09计算机</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\sz-logo.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="img\sz-logo.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">公司名字</h5>
                     <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\sz-logo.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="img\sz-logo.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">公司名字</h5>
                     <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
     </div>
+
 
 
 
 
     <h2 id="other-service" class="text-center mb-3 mt-5" style="color: #bc1e58"><b>其它服务</b></h2>
-    <div class="row row-cols-1 row-cols-md-3 w-75 mx-auto my-3">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 w-75 mx-auto my-3">
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\sz-logo.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="https://www.upicanada.com/images/blogo.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">公司名字</h5>
-                    <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <h5 class="card-title">联众国际咨询有限公司</h5>
+                    <p class="card-text my-0">Office: 905.305.9099</p>
+                    <p class="card-text my-0">Email: august.jian@gmail.com</p>
+                    <p class="card-text my-0">Office: 905.305.9099</p>
+                    <p class="card-text my-0">Address: Unit 402 3100 Steeles Ave East, Markham ON Canada L3R 8T3</p>
+                    <a href="https://www.upicanada.com" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">August Jian</small>
+                    <small class="text-muted d-block">Executive VP Real Estate</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\qr-code.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="img\sz-logo.png" class="card-img-top">
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">公司名字</h5>
+                    <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
+                </div>
+                <div class="card-footer text-right">
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-4">
+            <div class="card h-100">
+                <div class="w-100 company-cover">
+                    <img src="img\qr-code.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">二维码</h5>
                     <p class="card-text">如果您是个人生意，没有公司logo，也可以放您的微信二维码</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\donate-me.png" class="card-img-top">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">打赏一下</h5>
-                    <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                <div class="w-100 company-cover">
+                    <img src="img\qr-code.png" class="card-img-top">
                 </div>
-                <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
-                </div>
-            </div>
-        </div>
-        <div class="col mb-4">
-            <div class="card h-100">
-                <img src="img\qr-code.png" class="card-img-top">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">网站制作</h5>
                     <p class="card-text">给个人工作室、中小型企业制作公司网站。价格从优。</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">余卓燃-09计算机</small>
+                    <small class="text-muted d-block">余卓燃-09计算机</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\sz-logo.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="img\sz-logo.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">公司名字</h5>
                     <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="img\sz-logo.png" class="card-img-top">
+                <div class="w-100 company-cover">
+                    <img src="img\sz-logo.png" class="card-img-top">
+                </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">公司名字</h5>
                     <p class="card-text">公司logo(最好上传方形图)，这里可以填写公司简介，例如业务简介，联系方式，公司地址等等</p>
-                    <a href="JavaScript:Void(0);" class="stretched-link mt-auto"><u>公司链接 >></u></a>
+                    <a href="JavaScript:Void(0);" class="mt-auto" target="_blank"><u>公司链接 >></u></a>
                 </div>
                 <div class="card-footer text-right">
-                    <small class="text-muted">校友姓名</small>
+                    <small class="text-muted d-block">校友姓名</small>
+                    <small class="text-muted d-block">职位</small>
                 </div>
             </div>
         </div>
     </div>
+
+
 
 </div> 
 

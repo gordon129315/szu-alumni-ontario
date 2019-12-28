@@ -27,18 +27,18 @@ a:hover {
 }
 
 /* navbar */
-.navbar-brand span {
+#navbar .navbar-brand span {
     font-size: 3rem;
     font-family: "Zhi Mang Xing", cursive;
     letter-spacing: -0.1rem;
 }
 
-.navbar-brand:hover {
+#navbar .navbar-brand:hover {
     font-weight: normal;
 }
 
 @media screen and (max-width: 767.98px) {
-    .navbar-brand span {
+    #navbar .navbar-brand span {
         font-size: 2rem;
         letter-spacing: -0.3rem;
     }
@@ -50,53 +50,68 @@ a:hover {
 }
 
 /* carousel */
-.carousel-item {
+#carousel .carousel-item {
     height: 41vw;
     background: #bc1e58;
 }
 
-.carousel-item .carousel-words-box {
+#carousel .carousel-item .carousel-words-box {
     display: flex;
     align-items: center;
     justify-content: center;
     padding-left: 3%;
 }
 
-.carousel-item .carousel-words-box .carousel-words {
+#carousel .carousel-item .carousel-words-box .carousel-words {
     display: block;
+    color: #fdfefd;
 }
 
-.carousel-item .carousel-words-box .carousel-words h3 {
+#carousel .carousel-item .carousel-words-box .carousel-words h3 {
     margin-top: 4%;
     font-size: 4vw;
-    color: #fdfefd;
+    color: inherit;
     font-weight: bold;
 }
 
-.carousel-item .carousel-words-box .carousel-words p {
+#carousel .carousel-item .carousel-words-box .carousel-words p {
     font-size: 1.5vw;
     margin: 0.6vw 0;
-    color: #fdfefd;
+    color: inherit;
 }
 
-.blockquote-footer {
+#carousel .blockquote-footer {
     font-size: 1.4vw;
-    color: #fdfefd;
+    color: inherit;
 }
 
 @media screen and (max-width: 767.98px) {
-    .carousel-item {
+    #carousel .carousel-item {
         height: auto;
     }
 
-    .carousel-item .carousel-words-box {
+    #carousel .carousel-item .carousel-words-box {
         min-height: 40vw;
         text-align: center;
         width: 80%;
-        display: flex;
+        /* display: flex;
         align-items: center;
-        justify-content: center;
-        margin: auto;
+        justify-content: center; */
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    #carousel .carousel-item .carousel-words-box .carousel-words h3 {
+        margin-top: 0;
+        font-size: 4.5vw;
+    }
+
+    #carousel .carousel-item .carousel-words-box .carousel-words p {
+        font-size: 2vw;
+    }
+
+    #carousel .blockquote-footer {
+        font-size: 1.5vw;
     }
 }
 
@@ -117,7 +132,7 @@ a:hover {
 }
 
 /* footer */
-.footer {
+#footer .footer {
     background-color: #acacac;
     /* background-color: #e8ecef; */
     padding: 1vw 0;
@@ -147,7 +162,23 @@ a:hover {
 /* enterprise */
 #category .card div:nth-child(1) i {
     color: #bc1e58;
-    font-size: 5rem;
+    font-size: 6rem;
+    display: flex;
+    justify-content: center;
+}
+
+#enterprise .card .company-cover {
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+}
+
+
+#enterprise .card .company-cover img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-height: 100%;
 }
 
 /* back-to-top */
