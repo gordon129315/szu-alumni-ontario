@@ -24,7 +24,7 @@
             <div class="card h-100">
                 <div class="w-100 card-body"><i class="fas fa-home"></i></div>
                 <div class="card-footer text-center">
-                    <a href="#real-estate" class="stretched-link">
+                    <a href="#" class="stretched-link" data-target="#real-estate">
                         <h5 class="card-title mb-0">房产买卖</h5>
                     </a>
                 </div>
@@ -34,7 +34,7 @@
             <div class="card h-100">
                 <div class="w-100 card-body"><i class="fas fa-balance-scale"></i></div>
                 <div class="card-footer text-center">
-                    <a href="#law-consult" class="stretched-link">
+                    <a href="#" class="stretched-link" data-target="#law-consult">
                         <h5 class="card-title mb-0">法律咨询</h5>
                     </a>
                 </div>
@@ -44,7 +44,7 @@
             <div class="card h-100">
                 <div class="w-100 card-body"><i class="fas fa-hand-holding-usd"></i></div>
                 <div class="card-footer text-center">
-                    <a href="#wealth-management" class="stretched-link">
+                    <a href="#" class="stretched-link" data-target="#wealth-management">
                         <h5 class="card-title mb-0">保险理财</h5>
                     </a>
                 </div>
@@ -54,7 +54,7 @@
             <div class="card h-100">
                 <div class="w-100 card-body"><i class="fas fa-couch"></i></div>
                 <div class="card-footer text-center">
-                    <a href="#life-style" class="stretched-link">
+                    <a href="#" class="stretched-link" data-target="#life-style">
                         <h5 class="card-title mb-0">家居美容</h5>
                     </a>
                 </div>
@@ -64,7 +64,7 @@
             <div class="card h-100">
                 <div class="w-100 card-body"><i class="fas fa-handshake"></i></div>
                 <div class="card-footer text-center">
-                    <a href="#community" class="stretched-link">
+                    <a href="#" class="stretched-link" data-target="#community">
                         <h5 class="card-title mb-0">校友互助</h5>
                     </a>
                 </div>
@@ -74,7 +74,7 @@
             <div class="card h-100">
                 <div class="w-100 card-body"><i class="fas fa-hourglass-half"></i></div>
                 <div class="card-footer text-center">
-                    <a href="#other-service" class="stretched-link">
+                    <a href="#" class="stretched-link" data-target="#other-service">
                         <h5 class="card-title mb-0">其它服务</h5>
                     </a>
                 </div>
@@ -208,7 +208,7 @@
 
 
     
-
+    {{!-- 法律咨询 --}}
     <h2 id="law-consult" class="text-center mb-3 mt-5" style="color: #bc1e58"><b>法律咨询</b></h2>
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 w-75 mx-auto my-3">
         <div class="col mb-4">
@@ -334,7 +334,7 @@
 
 
 
-
+    {{!-- 保险理财 --}}
     <h2 id="wealth-management" class="text-center mb-3 mt-5" style="color: #bc1e58"><b>保险理财</b></h2>
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 w-75 mx-auto my-3">
         <div class="col mb-4">
@@ -437,7 +437,7 @@
 
 
 
-
+    {{!-- 家居美容 --}}
     <h2 id="life-style" class="text-center mb-3 mt-5" style="color: #bc1e58"><b>家居美容</b></h2>
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 w-75 mx-auto my-3">
         <div class="col mb-4">
@@ -541,7 +541,7 @@
 
 
 
-
+    {{!-- 校友互助 --}}
     <h2 id="community" class="text-center mb-3 mt-5" style="color: #bc1e58"><b>校友互助</b></h2>
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 w-75 mx-auto my-3">
         <div class="col mb-4">
@@ -645,7 +645,7 @@
 
 
 
-
+    {{!-- 其它服务 --}}
     <h2 id="other-service" class="text-center mb-3 mt-5" style="color: #bc1e58"><b>其它服务</b></h2>
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 w-75 mx-auto my-3">
         <div class="col mb-4">
@@ -754,7 +754,7 @@
 
 <script>
     $('#category .card').on('click', (e) => {
-        let destination = e.target.getAttribute('href');
+        let destination = e.target.getAttribute('data-target');
         $("html,body").animate({scrollTop: $(destination).offset().top}, 500);
     })
 </script>
