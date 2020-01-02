@@ -1,6 +1,7 @@
 
 {{>header}}
 
+
 {{!-- 导航栏 --}}
 <div class="container-fluid" id="breadcrumb">
     <nav aria-label="breadcrumb">
@@ -12,8 +13,81 @@
 </div>
     
 <div class="container-fluid" id="events">
-    <div class="w-75 mx-auto">
-        <h3>待开发，敬请期待...</h3>
+    <div class="w-100 mx-auto">
+        <div class="row row-cols-1 row-cols-md-2">
+            {{!-- 往期活动 --}}
+            <div class="col d-flex flex-column align-items-center px-5">
+                <h3 class="text-center my-3">往期活动</h3>
+                <div class="card w-100 mb-3 border-primary">
+                    <ul class="list-group list-group-flush events-list">
+                        {{# history_events}}
+                            <a id="{{id}}" href="#" class="list-group-item list-group-item-action px-2 border-primary list-group-item-primary font-weight-normal stretched-link">
+                                <div class="d-flex">
+                                    <span class="flex-grow-1 mr-3 text-truncate">{{title}}</span>
+                                    <span>{{event_date}}</span>
+                                </div>
+                            </a>
+                        {{/ history_events}}
+                    </ul>
+                </div>
+                {{!-- pagination --}}
+                <nav aria-label="Page navigation example mb-3">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#"><span class="text-primary font-weight-bold">1</span></a></li>
+                        {{!-- <li class="page-item"><a class="page-link" href="#"><span class="text-primary">2</span></a></li> --}}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            {{!-- 未来活动 --}}
+            <div class="col d-flex flex-column align-items-center px-5">
+                <h3 class="text-center my-3">未来活动</h3>
+                <div class="card w-100 mb-3 border-success">
+                    <ul class="list-group list-group-flush events-list">
+                        {{# future_events}}
+                        <a id="{{id}}" href="#" class="list-group-item list-group-item-action px-2 border-success list-group-item-success font-weight-normal stretched-link">
+                            <div class="d-flex">
+                                <span class="flex-grow-1 mr-3 text-truncate">{{title}}</span>
+                                <span>{{event_date}}</span>
+                            </div>
+                        </a>
+                        {{/ future_events}}
+                    </ul>
+                </div>
+                {{!-- pagination --}}
+                <nav aria-label="Page navigation example mb-3">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#"><span class="text-success font-weight-bold">1</span></a></li>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
     </div>
 </div>
-{{>footer}}  
+
+
+
+<script src="js/events.js"></script>
+
+{{>footer}} 

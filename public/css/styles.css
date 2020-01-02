@@ -1,3 +1,8 @@
+:root {
+    --main-color: #bc1e58;
+    --hover-color: #e4122e;
+}
+
 body {
     background-color: white;
     display: flex;
@@ -33,10 +38,6 @@ a:hover {
     letter-spacing: -0.1rem;
 }
 
-#navbar .navbar-brand:hover {
-    font-weight: normal;
-}
-
 @media screen and (max-width: 767.98px) {
     #navbar .navbar-brand span {
         font-size: 2rem;
@@ -52,7 +53,7 @@ a:hover {
 /* carousel */
 #carousel .carousel-item {
     height: 41vw;
-    background: #bc1e58;
+    background: var(--main-color);
 }
 
 #carousel .carousel-item .carousel-words-box {
@@ -124,11 +125,11 @@ a:hover {
 }
 
 #features i {
-    color: #bc1e58;
+    color: var(--main-color);
 }
 
 #features i:hover {
-    color: #e4122e;
+    color: var(--hover-color);
 }
 
 /* footer */
@@ -161,7 +162,7 @@ a:hover {
 
 /* enterprise */
 #category .card div:nth-child(1) i {
-    color: #bc1e58;
+    color: var(--main-color);
     font-size: 6rem;
     display: flex;
     justify-content: center;
@@ -188,10 +189,20 @@ a:hover {
     float: right;
     right: 0.5%;
     font-size: 2rem;
-    color: #bc1e58;
+    color: var(--main-color);
 }
 
 #back-to-top:hover {
-    color: #e4122e;
+    color: var(--hover-color);
     font-size: 2.1rem;
+}
+
+/* events */
+#events h3 {
+    color: var(--main-color);
+    font-weight: bold;
+}
+
+#event-page p {
+    margin: 0;
 }
