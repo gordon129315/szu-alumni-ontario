@@ -22,11 +22,11 @@ const getArticle = (file_path) => {
 
     content = content.map((line) => {
         if (line === "") {
-            return " ";
+            return "  ";
         }
         return line;
     });
-
+    
     const article = {
         id: id.replace("id:", "").trim(),
         title: title.replace("title:", "").trim(),

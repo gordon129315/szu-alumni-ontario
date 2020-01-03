@@ -21,10 +21,11 @@ hbs.registerHelper("breaklines", function(text) {
     text =
         "<p>" +
         text
-            .replace(/ /g, "&nbsp;")
+            .replace(/  /g, "&nbsp;&nbsp;&nbsp;&nbsp;")
             .replace(/(\r\n|\n|\r).*?/gm, "</p><p>") +
         "</p>";
-
+    // console.log(text);
+    
     return new hbs.SafeString(text);
 });
 
