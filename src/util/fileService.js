@@ -66,7 +66,6 @@ const walkDir = (dir, original_dir, files) => {
                       )
                   });
         });
-    return files;
 };
 
 module.exports = {
