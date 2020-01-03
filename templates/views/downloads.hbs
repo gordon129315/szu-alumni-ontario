@@ -1,0 +1,26 @@
+
+{{>header}}
+
+{{!-- 导航栏 --}}
+<div class="container-fluid" id="breadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">首页</a></li>
+            <li class="breadcrumb-item active" aria-current="page">文件下载</li>
+        </ol>
+    </nav>
+</div>
+    
+{{!-- 关于我们 --}}
+<div class="container-fluid" id="downloads">
+    
+    <div class="about-us w-75 mx-auto py-3">
+        <h3 class="mb-3" style="color:#bc1e58"><b>文件下载：</b></h3>
+        {{# files}}
+        <div class="my-3"><a href="/files{{file_path}}" target="_blank" download> 《{{file_name}}》 下载 >> </a></div>
+        {{/ files}}
+        
+    </div>
+</div>
+
+{{>footer}}  

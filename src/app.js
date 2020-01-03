@@ -25,7 +25,7 @@ hbs.registerHelper("breaklines", function(text) {
             .replace(/(\r\n|\n|\r).*?/gm, "</p><p>") +
         "</p>";
     // console.log(text);
-    
+
     return new hbs.SafeString(text);
 });
 
@@ -53,6 +53,17 @@ app.get("/enterprise", (req, res) => {
 
 app.get("/sport-teams", (req, res) => {
     res.render("sport-teams");
+});
+
+app.get("/downloads", (req, res) => {
+    let files = [];
+    const dir = path.join(__dirname, "../public/files");
+    fs.walkDir(dir, dir, files);
+    files = files
+        .filter((f) => f.file_name.endsWith(".pdf"))
+        .sort((f1, f2) => f1.create_time < f2.create_time);
+
+    res.render("downloads", { files });
 });
 
 app.get("/events", (req, res) => {
