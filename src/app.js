@@ -67,12 +67,35 @@ app.get("/downloads", (req, res) => {
 });
 
 app.get("/events", (req, res) => {
-    const history_events = fs.readFIleParse(
-        path.join(__dirname, "../data/history_events.json")
+    const events_list = fs.readFIleParse(
+        path.join(__dirname, "../data/events_list.json")
     );
-    const future_events = fs.readFIleParse(
-        path.join(__dirname, "../data/future_events.json")
-    );
+
+    const history_events = [];
+    const future_events = [];
+    const today = new Date();
+
+    events_list.forEach((event) => {
+        const event_date = new Date(event.event_date.replace("-", "/"));
+        if (event_date > today) {
+            future_events.push(event);
+        } else {
+            history_events.push(event);
+        }
+    });
+
+    const fn = (a, b) => {
+        let a_e_date = new Date(a.event_date.replace("-", "/"));
+        let b_e_date = new Date(b.event_date.replace("-", "/"));
+        return a_e_date < b_e_date;
+    };
+    history_events.sort((l1, l2) => { //降序
+        return fn(l1, l2);
+    });
+    future_events.sort((l1, l2) => {  //升序
+        return fn(l2, l1);
+    });
+
     res.render("events", { history_events, future_events });
 });
 
