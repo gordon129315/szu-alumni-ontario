@@ -17,14 +17,21 @@ app.set("view engine", "hbs");
 app.set("views", viewsPath);
 hbs.registerPartials(partialsPath);
 hbs.registerHelper("breaklines", function(text) {
-    text = hbs.Utils.escapeExpression(text);
+    // text = hbs.Utils.escapeExpression(text);
     text =
         "<p>" +
         text
             .replace(/  /g, "&nbsp;&nbsp;&nbsp;&nbsp;")
             .replace(/(\r\n|\n|\r).*?/gm, "</p><p>") +
         "</p>";
-    // console.log(text);
+
+    // 匹配 <p><img src="url"></p> 中的 "url"
+    text = text.replace(
+        /(\<p\>)(?:(?!\1).)*?\<img\ssrc\=(\".+?\")\>.*?\<\/p\>/g,
+        '<p class="text-center"><img src=$2 class="my-3 w-75"></p>'
+    );
+
+    // text.match(/(\<p\>)(?:(?!\1).)*?\<img\ssrc\=(\".+?\")\>.*?\<\/p\>/g)
 
     return new hbs.SafeString(text);
 });
@@ -84,16 +91,18 @@ app.get("/events", (req, res) => {
         }
     });
 
-    const fn = (a, b) => {
+    const compare = (a, b) => {
         let a_e_date = new Date(a.event_date.replace("-", "/"));
         let b_e_date = new Date(b.event_date.replace("-", "/"));
         return a_e_date < b_e_date;
     };
-    history_events.sort((l1, l2) => { //降序
-        return fn(l1, l2);
+
+    history_events.sort((l1, l2) => {
+        return compare(l1, l2); //降序
     });
-    future_events.sort((l1, l2) => {  //升序
-        return fn(l2, l1);
+
+    future_events.sort((l1, l2) => {
+        return compare(l2, l1); //升序
     });
 
     res.render("events", { history_events, future_events });
