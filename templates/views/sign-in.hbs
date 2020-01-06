@@ -38,7 +38,7 @@
       
     </head>
     <body class="text-center">
-      <form class="form-signin" action="/login" method="POST">
+      <form class="form-signin">
         <img class="mb-4" src="img\sz-logo-trans.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label for="inputAccount" class="sr-only">Account</label>
@@ -55,4 +55,31 @@
         <p class="mt-0 mb-3 text-muted">Designed by Zhuoran Yu</p>
     </form>
   </body>
+
+  <script>
+    $('.form-signin').on('submit', (e) => {
+      e.preventDefault();
+
+      const form_data = {
+        account: $('#inputAccount').val(),
+        password: $('#inputPassword').val()
+      }
+
+      fetch('/login', {
+        method: 'POST',
+        headers : { "Content-Type": "application/json" },
+        body: JSON.stringify(form_data)
+      }).then((res) => res.json())
+        .then((data) => {
+          if (data.err) {
+            return alert(data.err);
+          }
+          window.location.href = '/events';
+        })
+        .catch((err)=>console.log(err))
+
+    });
+
+
+  </script>
 </html>

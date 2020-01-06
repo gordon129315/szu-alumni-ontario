@@ -23,7 +23,7 @@ const getArticle = (file_path) => {
 
     content = content.map((line) => {
         if (line === "") {
-            return "  ";
+            return " ";
         }
         return line;
     });

@@ -1,8 +1,10 @@
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
-const fs = require("../src/util/fileService");
-const bcrypt = require("bcryptjs");
+const fs = require("./util/fileService");
+const us = require("./util/UserService");
+const cookieParser = require("cookie-parser");
+require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 3000; //PORT has to be in capital
@@ -21,7 +23,7 @@ hbs.registerHelper("breaklines", function(text) {
     text =
         "<p>" +
         text
-            .replace(/  /g, "&nbsp;&nbsp;&nbsp;&nbsp;")
+            .replace(/ /g, "&nbsp;&nbsp;")
             .replace(/(\r\n|\n|\r).*?/gm, "</p><p>") +
         "</p>";
 
@@ -38,6 +40,7 @@ hbs.registerHelper("breaklines", function(text) {
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath));
@@ -105,7 +108,10 @@ app.get("/events", (req, res) => {
         return compare(l2, l1); //升序
     });
 
-    res.render("events", { history_events, future_events });
+    // console.log(req.cookies["x-auth-token"]);
+    const login = req.cookies["x-auth-token"] ? true : false;
+
+    res.render("events", { login, history_events, future_events });
 });
 
 app.get("/events/:title", (req, res) => {
@@ -121,6 +127,8 @@ app.get("/events/:title", (req, res) => {
         article = fs.getEmptyArticle();
     }
 
+    article.login = req.cookies["x-auth-token"] ? true : false;
+
     res.render("event-page", article);
 });
 
@@ -130,17 +138,27 @@ app.get("/admin", (req, res) => {
 
 app.post("/login", (req, res) => {
     // console.log(req.body);
-    const password = req.body.password;
-    const hash = "$2a$08$Caxky4yejXrUup1fzJ8UceV.nTgvO47g/XahByeadzCrXV2embEOC"; // szuon2019#
-    const check = bcrypt.compareSync(password, hash);
-    // console.log(check);
 
-    res.send({ check });
+    if (req.body.account !== "szuonadmin") {
+        return res.status(401).send({ err: "Invalid Account ID!" });
+    }
+
+    const check = us.verifyPassword(req.body.password);
+    if (!check) {
+        return res.status(401).send({ err: "Invalid Password!" });
+    }
+
+    res.cookie("x-auth-token", "123456789", {
+        maxAge: 86400000,
+        httpOnly: true
+    });
+
+    res.send({});
 });
 
 // must put at last one
 app.get("*", (req, res) => {
-    res.render("404");
+    res.status(404).render("404");
 });
 
 app.listen(port, () => {
