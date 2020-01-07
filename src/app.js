@@ -4,6 +4,7 @@ const hbs = require("hbs");
 const auth = require("./middleware/auth");
 const fs = require("./util/fileService");
 const us = require("./util/UserService");
+const events = require("./router/events");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
@@ -46,6 +47,9 @@ app.use(cookieParser());
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath));
 
+// router
+app.use("/events", events);
+
 app.get("", (req, res) => {
     res.render("index");
 });
@@ -75,85 +79,6 @@ app.get("/downloads", (req, res) => {
         .sort((f1, f2) => f1.create_time < f2.create_time);
 
     res.render("downloads", { files });
-});
-
-app.get("/events", auth, (req, res) => {
-    const events_list = fs.readFIleParse(
-        path.join(__dirname, "../data/events_list.json")
-    );
-
-    const history_events = [];
-    const future_events = [];
-    const today = new Date();
-
-    events_list.forEach((event) => {
-        const event_date = new Date(event.event_date.replace("-", "/"));
-        if (event_date > today) {
-            future_events.push(event);
-        } else {
-            history_events.push(event);
-        }
-    });
-
-    const compare = (a, b) => {
-        let a_e_date = new Date(a.event_date.replace("-", "/"));
-        let b_e_date = new Date(b.event_date.replace("-", "/"));
-        return a_e_date < b_e_date;
-    };
-
-    history_events.sort((l1, l2) => {
-        return compare(l1, l2); //降序
-    });
-
-    future_events.sort((l1, l2) => {
-        return compare(l2, l1); //升序
-    });
-
-    const login = req.token ? true : false;
-
-    res.render("events", { login, history_events, future_events });
-});
-
-app.post("/events", auth, (req, res) => {
-    if (!req.token) {
-        res.status(401).redirect("/events");
-    }
-
-    const data = req.body;
-    data.id = '05';
-    const dir_path = path.join(
-        __dirname,
-        `../data/articles`
-    );
-
-    fs.createEventFile(data, dir_path);
-
-    res.send(data);
-});
-
-app.get("/events/create", auth, (req, res) => {
-    if (!req.token) {
-        res.status(401).redirect("/events");
-    }
-    res.render("create-event");
-});
-
-app.get("/events/:title", auth, (req, res) => {
-    const article_title = req.params.title.trim();
-    const file_path = path.join(
-        __dirname,
-        `../data/articles/${article_title}.txt`
-    );
-    let article;
-    if (fs.isExist(file_path)) {
-        article = fs.getArticle(file_path);
-    } else {
-        article = fs.getEmptyArticle();
-    }
-
-    article.login = req.token ? true : false;
-
-    res.render("event-page", article);
 });
 
 app.get("/admin", (req, res) => {
