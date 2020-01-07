@@ -114,6 +114,30 @@ app.get("/events", auth, (req, res) => {
     res.render("events", { login, history_events, future_events });
 });
 
+app.post("/events", auth, (req, res) => {
+    if (!req.token) {
+        res.status(401).redirect("/events");
+    }
+
+    const data = req.body;
+    data.id = '05';
+    const dir_path = path.join(
+        __dirname,
+        `../data/articles`
+    );
+
+    fs.createEventFile(data, dir_path);
+
+    res.send(data);
+});
+
+app.get("/events/create", auth, (req, res) => {
+    if (!req.token) {
+        res.status(401).redirect("/events");
+    }
+    res.render("create-event");
+});
+
 app.get("/events/:title", auth, (req, res) => {
     const article_title = req.params.title.trim();
     const file_path = path.join(

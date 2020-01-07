@@ -1,0 +1,91 @@
+
+{{>header}}
+
+{{!-- 导航栏 --}}
+<div class="container-fluid" id="breadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">首页</a></li>
+            <li class="breadcrumb-item"><a href="/events">活动动态</a></li>
+            <li class="breadcrumb-item active" aria-current="page">新建活动</li>
+        </ol>
+    </nav>
+</div>
+    
+{{!-- 新建活动 --}}
+<div class="container-fluid" id="create-event">
+    <div class="w-75 mx-auto py-3">
+        <form id="create-event-form">
+            <div class="form-group">
+                <label for="inputTitle">活动标题</label>
+                <input type="text" class="form-control" name="title" id="inputTitle" placeholder="活动标题" autocomplete="off" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="inputAuthor">作者</label>
+                    <input type="text" class="form-control" name="author" id="inputAuthor" placeholder="作者">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputCreateDate">创建时间</label>
+                    <input type="text" class="datepicker form-control" name="create_date" id="inputCreateDate" placeholder="(YYYY-MM-DD)" style="background-color: white" readonly>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="inputEventDate">活动举行时间</label>
+                    <input type="text" class="datepicker form-control" name="event_date" id="inputEventDate" placeholder="(YYYY-MM-DD)" style="background-color: white" readonly>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputEventContent">内容</label>
+                <textarea class="form-control" name="content" id="inputEventContent" rows="10" style="resize: none" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPhoto">上传图片(每张不得超过2M)</label>
+                <input type="file" name="photo" class="form-control-file" id="inputPhoto">
+            </div>
+
+            <button type="submit" class="btn btn-primary">发布活动</button>
+        </form>  
+    </div>
+</div>
+
+<script>
+
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+        todayHighlight:true,
+        todayBtn: 'linked',
+        clearBtn: true,
+        autoclose: true
+    });
+
+    $('#create-event-form').on('submit',(e)=>{
+        e.preventDefault();
+
+        //const photo = $('#inputPhoto');
+
+        const form_data = {
+            title: $('#inputTitle').val(),
+            author: $('#inputAuthor').val(),
+            create_date: $('#inputCreateDate').val(),
+            event_date: $('#inputEventDate').val(),
+            content: $('#inputEventContent').val()
+        }
+
+        fetch('/events', {
+            method: 'POST',
+            headers : { "Content-Type": "application/json" },
+            body: JSON.stringify(form_data)
+        }).then((res) => res.json())
+          .then((data) => {
+            window.location.href = `/events/${form_data.title}`;
+          })
+          .catch((err)=>console.log(err));
+
+    })
+</script>
+
+
+{{>footer}}  

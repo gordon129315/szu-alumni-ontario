@@ -65,10 +65,22 @@ const walkDir = (dir, original_dir, files) => {
     });
 };
 
+const createEventFile = (data, dir_path) => {
+    const file_path = path.join(dir_path, `${data.title}.txt`);
+
+    fs.appendFileSync(file_path, `id: ${data.id}\n`, "utf8");
+    fs.appendFileSync(file_path, `title: ${data.title}\n`, "utf8");
+    fs.appendFileSync(file_path, `author: ${data.author}\n`, "utf8");
+    fs.appendFileSync(file_path, `create_date: ${data.create_date}\n`, "utf8");
+    fs.appendFileSync(file_path, `event_date: ${data.event_date}\n`, "utf8");
+    fs.appendFileSync(file_path, `${data.content}`, "utf8");
+};
+
 module.exports = {
     readFIleParse,
     isExist,
     getEmptyArticle,
     getArticle,
-    walkDir
+    walkDir,
+    createEventFile
 };

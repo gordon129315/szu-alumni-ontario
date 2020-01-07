@@ -12,7 +12,7 @@ const auth = async (req, res, next) => {
 
         req.token = token;
     } catch (e) {
-        // console.log(e);
+        console.log(e);
     }
     next();
 };
