@@ -16,9 +16,9 @@
 <div class="container-fluid" id="event-page">
     <div class="w-75 mx-auto my-3">
         {{#if login}}
-        <div class="d-flex flex-wrap">
-            <button type="button" class="btn btn-outline-primary mx-auto my-3 d-block">编辑</button>
-            <button type="button" class="btn btn-outline-primary mx-auto my-3 d-block">删除</button>
+        <div class="d-flex flex-wrap justify-content-around">
+            <button type="button" id="edit" class="btn btn-outline-primary my-3 d-block">编辑</button>
+            <button type="button" id="delete" class="btn btn-outline-primary my-3 d-block">删除</button>
         </div>
         
         {{/if}}
@@ -31,5 +31,14 @@
     </div>
 </div>
 
+<script>
+    $('#edit').on('click', () => {
+        alert('待开发....')
+    });
+
+    $('#delete').on('click', () => {
+        alert('待开发....')
+    });
+</script>
 
 {{>footer}}  

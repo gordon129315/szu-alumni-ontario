@@ -42,8 +42,8 @@
             </div>
 
             <div class="form-group">
-                <label for="inputPhoto">上传图片(每张不得超过2M)</label>
-                <input type="file" name="photo" class="form-control-file" id="inputPhoto">
+                <label for="uploadPhoto">上传图片(每张不得超过2M) 待开发...</label>
+                <input type="file" name="photo" class="form-control-file" id="uploadPhoto" disabled>
             </div>
 
             <button type="submit" class="btn btn-primary">发布活动</button>
@@ -80,7 +80,7 @@
             body: JSON.stringify(form_data)
         }).then((res) => res.json())
           .then((data) => {
-            window.location.href = `/events/${form_data.title}`;
+            window.location.href = `/events/${data.title}`;
           })
           .catch((err)=>console.log(err));
 
