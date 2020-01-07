@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
+const auth = require("./middleware/auth");
 const fs = require("./util/fileService");
 const us = require("./util/UserService");
 const cookieParser = require("cookie-parser");
@@ -76,7 +77,7 @@ app.get("/downloads", (req, res) => {
     res.render("downloads", { files });
 });
 
-app.get("/events", (req, res) => {
+app.get("/events", auth, (req, res) => {
     const events_list = fs.readFIleParse(
         path.join(__dirname, "../data/events_list.json")
     );
@@ -108,13 +109,12 @@ app.get("/events", (req, res) => {
         return compare(l2, l1); //升序
     });
 
-    // console.log(req.cookies["x-auth-token"]);
-    const login = req.cookies["x-auth-token"] ? true : false;
+    const login = req.token ? true : false;
 
     res.render("events", { login, history_events, future_events });
 });
 
-app.get("/events/:title", (req, res) => {
+app.get("/events/:title", auth, (req, res) => {
     const article_title = req.params.title.trim();
     const file_path = path.join(
         __dirname,
@@ -127,7 +127,7 @@ app.get("/events/:title", (req, res) => {
         article = fs.getEmptyArticle();
     }
 
-    article.login = req.cookies["x-auth-token"] ? true : false;
+    article.login = req.token ? true : false;
 
     res.render("event-page", article);
 });
@@ -138,8 +138,8 @@ app.get("/admin", (req, res) => {
 
 app.post("/login", (req, res) => {
     // console.log(req.body);
-
-    if (req.body.account !== "szuonadmin") {
+    const account = "szuonadmin";
+    if (req.body.account !== account) {
         return res.status(401).send({ err: "Invalid Account ID!" });
     }
 
@@ -148,7 +148,8 @@ app.post("/login", (req, res) => {
         return res.status(401).send({ err: "Invalid Password!" });
     }
 
-    res.cookie("x-auth-token", "123456789", {
+    const token = us.generateToken(account);
+    res.cookie("x-auth-token", token, {
         maxAge: 86400000,
         httpOnly: true
     });

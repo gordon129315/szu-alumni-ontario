@@ -72,7 +72,13 @@
       }).then((res) => res.json())
         .then((data) => {
           if (data.err) {
-            return alert(data.err);
+            alert(data.err);
+            if (data.err === 'Invalid Account ID!') {
+              $('#inputAccount').focus();
+            }
+            else if (data.err === 'Invalid Password!')
+              $('#inputPassword').focus();
+            return;
           }
           window.location.href = '/events';
         })
