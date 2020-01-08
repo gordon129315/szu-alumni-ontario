@@ -58,31 +58,32 @@
 
   <script>
     $('.form-signin').on('submit', (e) => {
-      e.preventDefault();
+        e.preventDefault();
 
-      const form_data = {
-        account: $('#inputAccount').val(),
-        password: $('#inputPassword').val()
-      }
+        const form_data = {
+            account: $('#inputAccount').val(),
+            password: $('#inputPassword').val()
+        }
 
-      fetch('/login', {
-        method: 'POST',
-        headers : { "Content-Type": "application/json" },
-        body: JSON.stringify(form_data)
-      }).then((res) => res.json())
-        .then((data) => {
-          if (data.err) {
-            alert(data.err);
-            if (data.err === 'Invalid Account ID!') {
-              $('#inputAccount').focus();
-            }
-            else if (data.err === 'Invalid Password!')
-              $('#inputPassword').focus();
-            return;
-          }
-          window.location.href = '/events';
-        })
-        .catch((err)=>console.log(err));
+        fetch('/login', {
+            method: 'POST',
+            headers : { "Content-Type": "application/json" },
+            body: JSON.stringify(form_data)
+        }).then((res) => res.json())
+          .then((data) => {
+              if (data.err) {
+                  alert(data.err);
+                  if (data.err === 'Invalid Account ID!') {
+                      $('#inputAccount').focus();
+                  }
+                  else if (data.err === 'Invalid Password!') {
+                      $('#inputPassword').focus();
+                  }
+                  return;
+              }
+              window.location.href = '/events';
+          })
+          .catch((err)=>console.log(err));
 
     });
 

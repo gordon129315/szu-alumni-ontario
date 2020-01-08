@@ -6,7 +6,7 @@ const fs = require("./util/fileService");
 const us = require("./util/UserService");
 const events = require("./router/events");
 const cookieParser = require("cookie-parser");
-require("dotenv").config();
+require("./db/mongoose");
 
 const app = express();
 const port = process.env.PORT || 3000; //PORT has to be in capital
@@ -25,6 +25,7 @@ hbs.registerHelper("breaklines", function(text) {
     text =
         "<p>" +
         text
+            .replace(/^(\r\n|\n|\r)/gm, "&nbsp;\n")
             .replace(/ /g, "&nbsp;&nbsp;")
             .replace(/(\r\n|\n|\r).*?/gm, "</p><p>") +
         "</p>";

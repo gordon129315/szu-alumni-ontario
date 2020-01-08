@@ -1,48 +1,9 @@
 const fs = require("fs");
 const path = require("path");
 
-const isExist = (file_path) => {
-    return fs.existsSync(file_path);
-};
-
-const readFIleParse = (file_path) => {
-    const string_data = fs.readFileSync(file_path);
-    const obj = JSON.parse(string_data);
-    return obj;
-};
-
-const getArticle = (file_path) => {
-    let [
-        id,
-        title,
-        author,
-        create_date,
-        event_date,
-        ...content
-    ] = fs.readFileSync(file_path, "utf-8").split(/\r?\n/);
-
-    content = content.map((line) => {
-        if (line === "") {
-            return " ";
-        }
-        return line;
-    });
-
-    const article = {
-        id: id.replace("id:", "").trim(),
-        title: title.replace("title:", "").trim(),
-        author: author.replace("author:", "").trim(),
-        create_date: create_date.replace("create_date:", "").trim(),
-        event_date: event_date.replace("event_date:", "").trim(),
-        content: content.join("\r\n")
-    };
-
-    return article;
-};
-
 const getEmptyArticle = () => {
     return {
-        id: "",
+        id: "000000000000000000000000",
         title: "抱歉！此文章不存在或已被删除",
         author: "",
         create_date: "",
@@ -65,22 +26,8 @@ const walkDir = (dir, original_dir, files) => {
     });
 };
 
-const createEventFile = (data, dir_path) => {
-    const file_path = path.join(dir_path, `${data.title}.txt`);
-
-    fs.appendFileSync(file_path, `id: ${data.id}\n`, "utf8");
-    fs.appendFileSync(file_path, `title: ${data.title}\n`, "utf8");
-    fs.appendFileSync(file_path, `author: ${data.author}\n`, "utf8");
-    fs.appendFileSync(file_path, `create_date: ${data.create_date}\n`, "utf8");
-    fs.appendFileSync(file_path, `event_date: ${data.event_date}\n`, "utf8");
-    fs.appendFileSync(file_path, `${data.content}`, "utf8");
-};
 
 module.exports = {
-    readFIleParse,
-    isExist,
     getEmptyArticle,
-    getArticle,
-    walkDir,
-    createEventFile
+    walkDir
 };

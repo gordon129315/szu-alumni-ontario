@@ -1,58 +1,45 @@
 const express = require("express");
 const router = express.Router();
+const Event = require("../models/event");
 const fs = require("../util/fileService");
 const auth = require("../middleware/auth");
 const path = require("path");
 
-router.get("/", auth, (req, res) => {
-    const events_list = fs.readFIleParse(
-        path.join(__dirname, "../../data/events_list.json")
-    );
-
-    const history_events = [];
-    const future_events = [];
-    const today = new Date();
-
-    events_list.forEach((event) => {
-        const event_date = new Date(event.event_date.replace("-", "/"));
-        if (event_date > today) {
-            future_events.push(event);
-        } else {
-            history_events.push(event);
-        }
-    });
-
-    const compare = (a, b) => {
-        let a_e_date = new Date(a.event_date.replace("-", "/"));
-        let b_e_date = new Date(b.event_date.replace("-", "/"));
-        return a_e_date < b_e_date;
-    };
-
-    history_events.sort((l1, l2) => {
-        return compare(l1, l2); //降序
-    });
-
-    future_events.sort((l1, l2) => {
-        return compare(l2, l1); //升序
-    });
-
-    const login = req.token ? true : false;
-
-    res.render("events", { login, history_events, future_events });
+// 获取所有文章
+router.get("/", auth, async (req, res) => {
+    try {
+        let history_events = await Event.find({
+            event_date: { $lte: new Date() }
+        }).sort({ event_date: -1 });
+        history_events = history_events.map((event) => {
+            return event.toJSON();
+        });
+        let future_events = await Event.find({
+            event_date: { $gt: new Date() }
+        }).sort({ event_date: 1 });
+        future_events = future_events.map((event) => {
+            return event.toJSON();
+        });
+        const login = req.token ? true : false;
+        res.render("events", { login, history_events, future_events });
+    } catch (e) {
+        res.status(500).redirect("/");
+    }
 });
 
-router.post("/", auth, (req, res) => {
+// 新建活动
+router.post("/", auth, async (req, res) => {
     if (!req.token) {
         res.status(401).redirect("/events");
     }
 
-    const data = req.body;
-    data.id = "05";
-    const dir_path = path.join(__dirname, `../../data/articles`);
-
-    fs.createEventFile(data, dir_path);
-
-    res.send(data);
+    try {
+        const event = new Event(req.body);
+        await event.save();
+        res.status(201).send(event);
+    } catch (e) {
+        res.status(400).send({ err: e });
+    }
 });
 
 router.get("/create", auth, (req, res) => {
@@ -62,20 +49,19 @@ router.get("/create", auth, (req, res) => {
     res.render("create-event");
 });
 
-router.get("/:title", auth, (req, res) => {
-    const article_title = req.params.title.trim();
-    const file_path = path.join(
-        __dirname,
-        `../../data/articles/${article_title}.txt`
-    );
+// 获取某篇文章
+router.get("/:id", auth, async (req, res) => {
+    const article_id = req.params.id.trim();
     let article;
-    if (fs.isExist(file_path)) {
-        article = fs.getArticle(file_path);
-    } else {
-        article = fs.getEmptyArticle();
-    }
+    try {
+        article = await Event.findById(article_id);
+        article = article.toJSON();
 
-    article.login = req.token ? true : false;
+        article.login = req.token ? true : false;
+    } catch (e) {
+        article = fs.getEmptyArticle();
+        console.log(e);
+    }
 
     res.render("event-page", article);
 });

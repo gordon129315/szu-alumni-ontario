@@ -28,11 +28,11 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputCreateDate">创建时间</label>
-                    <input type="text" class="datepicker form-control" name="create_date" id="inputCreateDate" placeholder="(YYYY-MM-DD)" style="background-color: white" readonly>
+                    <input type="text" class="datepicker form-control" name="create_date" id="inputCreateDate" placeholder="(YYYY-MM-DD)" autocomplete="off" required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputEventDate">活动举行时间</label>
-                    <input type="text" class="datepicker form-control" name="event_date" id="inputEventDate" placeholder="(YYYY-MM-DD)" style="background-color: white" readonly>
+                    <input type="text" class="datepicker form-control" name="event_date" id="inputEventDate" placeholder="(YYYY-MM-DD)" autocomplete="off" required>
                 </div>
             </div>
 
@@ -61,18 +61,30 @@
         autoclose: true
     });
 
+    const checkDateFormat = (date) => {
+        return date.match(/^\d{4}\-\d{2}\-\d{2}$/);
+    }
+
     $('#create-event-form').on('submit',(e)=>{
         e.preventDefault();
 
         //const photo = $('#inputPhoto');
+        
+        const create_date = $('#inputCreateDate').val();
+        const event_date = $('#inputEventDate').val();
+
+        if (!checkDateFormat(create_date) || !checkDateFormat(event_date)) {
+            return alert('请修改输入的日期格式为YYYY-MM-DD');
+        }
 
         const form_data = {
             title: $('#inputTitle').val(),
             author: $('#inputAuthor').val(),
-            create_date: $('#inputCreateDate').val(),
-            event_date: $('#inputEventDate').val(),
+            create_date: new Date(create_date.replace('-','/')),
+            event_date: new Date(event_date.replace('-','/')),
             content: $('#inputEventContent').val()
         }
+
 
         fetch('/events', {
             method: 'POST',
@@ -80,11 +92,17 @@
             body: JSON.stringify(form_data)
         }).then((res) => res.json())
           .then((data) => {
-            window.location.href = `/events/${data.title}`;
+            if (data.err) {
+                return alert(data.err);
+            }
+            window.location.href = `/events/${data.id}`;
           })
           .catch((err)=>console.log(err));
 
-    })
+    });
+
+
+
 </script>
 
 
