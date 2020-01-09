@@ -73,7 +73,7 @@ app.get("/sport-teams", (req, res) => {
 
 app.get("/downloads", (req, res) => {
     let files = [];
-    const dir = path.join(__dirname, "../public/files");
+    const dir = path.join(__dirname, "../public/files/downloads");
     fs.walkDir(dir, dir, files);
     files = files
         .filter((f) => f.file_name.endsWith(".pdf"))

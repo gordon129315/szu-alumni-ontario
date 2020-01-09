@@ -1,6 +1,10 @@
 const fs = require("fs");
 const path = require("path");
 
+const isExist = (file_path) => {
+    return fs.existsSync(file_path);
+};
+
 const getEmptyEvent = () => {
     return {
         id: "000000000000000000000000",
@@ -28,6 +32,7 @@ const walkDir = (dir, original_dir, files) => {
 
 
 module.exports = {
+    isExist,
     getEmptyEvent,
     walkDir
 };
