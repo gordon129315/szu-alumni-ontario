@@ -1,9 +1,8 @@
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
-const auth = require("./middleware/auth");
 const fs = require("./util/fileService");
-const us = require("./util/UserService");
+const admin = require("./router/admin");
 const events = require("./router/events");
 const cookieParser = require("cookie-parser");
 require("./db/mongoose");
@@ -49,6 +48,7 @@ app.use(cookieParser());
 app.use(express.static(publicDirectoryPath));
 
 // router
+app.use("/admin", admin);
 app.use("/events", events);
 
 app.get("", (req, res) => {
@@ -80,31 +80,6 @@ app.get("/downloads", (req, res) => {
         .sort((f1, f2) => f1.create_time < f2.create_time);
 
     res.render("downloads", { files });
-});
-
-app.get("/admin", (req, res) => {
-    res.render("sign-in");
-});
-
-app.post("/login", (req, res) => {
-    // console.log(req.body);
-    const account = "szuonadmin";
-    if (req.body.account !== account) {
-        return res.status(401).send({ err: "Invalid Account ID!" });
-    }
-
-    const check = us.verifyPassword(req.body.password);
-    if (!check) {
-        return res.status(401).send({ err: "Invalid Password!" });
-    }
-
-    const token = us.generateToken(account);
-    res.cookie("x-auth-token", token, {
-        maxAge: 86400000,
-        httpOnly: true
-    });
-
-    res.send({});
 });
 
 // must put at last one

@@ -22,7 +22,7 @@
         </div>
         
         {{/if}}
-        <p class="sr-only">{{id}}</p>
+        <p id="event_id" class="sr-only">{{id}}</p>
         <h3 class="text-center mb-3">{{title}}</h3>
         <div class="d-flex flex-wrap my-3 justify-content-around">
             <small class="text-danger font-weight-bold">活动日期：{{event_date}}</small><small>作者：{{author}}</small><small>发表日期：{{create_date}}</small>
@@ -37,7 +37,19 @@
     });
 
     $('#delete').on('click', () => {
-        alert('待开发....')
+        const event_id = $('#event_id').html();
+
+        fetch('/events/' + event_id, {
+            method: 'DELETE',
+        }).then((res) => res.json())
+          .then((data) => {
+            if (data.err) {
+                return alert(data.err);
+            }
+            alert('删除成功');
+            window.location.href = '/events';
+          })
+          .catch((err)=>console.log(err));
     });
 </script>
 

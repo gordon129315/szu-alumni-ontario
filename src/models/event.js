@@ -23,7 +23,7 @@ const eventSchema = new mongoose.Schema(
         },
         content: {
             type: String,
-            required:true
+            required: true
         }
     },
     {
@@ -36,7 +36,9 @@ eventSchema.methods.toJSON = function() {
     const eventObject = event.toObject(); //deep copy the event to eventObject
 
     eventObject.id = eventObject._id;
-    eventObject.create_date = eventObject.create_date.toISOString().substr(0, 10);
+    eventObject.create_date = eventObject.create_date
+        .toISOString()
+        .substr(0, 10);
     eventObject.event_date = eventObject.event_date.toISOString().substr(0, 10);
     delete eventObject._id;
 

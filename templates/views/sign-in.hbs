@@ -65,20 +65,15 @@
             password: $('#inputPassword').val()
         }
 
-        fetch('/login', {
+        fetch('/admin/login', {
             method: 'POST',
             headers : { "Content-Type": "application/json" },
             body: JSON.stringify(form_data)
         }).then((res) => res.json())
           .then((data) => {
               if (data.err) {
-                  alert(data.err);
-                  if (data.err === 'Invalid Account ID!') {
-                      $('#inputAccount').focus();
-                  }
-                  else if (data.err === 'Invalid Password!') {
-                      $('#inputPassword').focus();
-                  }
+                  alert('Account or Password Invalid!');
+                  $('#inputPassword').focus();
                   return;
               }
               window.location.href = '/events';

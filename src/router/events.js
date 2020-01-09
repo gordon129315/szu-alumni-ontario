@@ -3,7 +3,6 @@ const router = express.Router();
 const Event = require("../models/event");
 const fs = require("../util/fileService");
 const auth = require("../middleware/auth");
-const path = require("path");
 
 // 获取所有文章
 router.get("/", auth, async (req, res) => {
@@ -30,7 +29,7 @@ router.get("/", auth, async (req, res) => {
 // 新建活动
 router.post("/", auth, async (req, res) => {
     if (!req.token) {
-        res.status(401).redirect("/events");
+        return res.status(401).send({ err: "请登录" });
     }
 
     try {
@@ -44,26 +43,39 @@ router.post("/", auth, async (req, res) => {
 
 router.get("/create", auth, (req, res) => {
     if (!req.token) {
-        res.status(401).redirect("/events");
+        return res.status(401).redirect("/events");
     }
     res.render("create-event");
 });
 
 // 获取某篇文章
 router.get("/:id", auth, async (req, res) => {
-    const article_id = req.params.id.trim();
-    let article;
+    const event_id = req.params.id.trim();
+    let event;
     try {
-        article = await Event.findById(article_id);
-        article = article.toJSON();
+        event = await Event.findById(event_id);
+        event = event.toJSON();
 
-        article.login = req.token ? true : false;
+        event.login = req.token ? true : false;
+        res.render("event-page", event);
     } catch (e) {
-        article = fs.getEmptyArticle();
-        console.log(e);
+        event = fs.getEmptyEvent();
+        res.status(404).render("event-page", event);
+    }
+});
+
+router.delete("/:id", auth, async (req, res) => {
+    if (!req.token) {
+        return res.status(401).send({ err: "请登录" });
     }
 
-    res.render("event-page", article);
+    try {
+        const event_id = req.params.id.trim();
+        const event = await Event.findByIdAndDelete(event_id);
+        res.send(event);
+    } catch (e) {
+        res.status(500).send({ err: e.message });
+    }
 });
 
 module.exports = router;

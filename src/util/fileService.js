@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const getEmptyArticle = () => {
+const getEmptyEvent = () => {
     return {
         id: "000000000000000000000000",
         title: "抱歉！此文章不存在或已被删除",
@@ -28,6 +28,6 @@ const walkDir = (dir, original_dir, files) => {
 
 
 module.exports = {
-    getEmptyArticle,
+    getEmptyEvent,
     walkDir
 };
