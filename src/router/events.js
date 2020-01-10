@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Event = require("../models/event");
 const fs = require("../util/fileService");
-const auth = require("../middleware/auth");
+const { auth, hasToken } = require("../middleware/auth");
 const multer = require("multer");
 const path = require("path");
 
@@ -72,21 +72,19 @@ const upload = multer({
 router.post(
     "/",
     auth,
+    hasToken,
     upload.fields([
         { name: "photo", maxCount: 20 },
         { name: "pdf", maxCount: 1 }
     ]),
     async (req, res) => {
-        if (!req.token) {
-            return res.status(401).send({ err: "请登录" });
-        }
         let event = req.body;
-        event.pdf = req.files.pdf[0].path.replace(
-            path.join(__dirname, "../../public"),
-            ""
-        );
 
         try {
+            event.pdf = req.files.pdf[0].path.replace(
+                path.join(__dirname, "../../public"),
+                ""
+            );
             event = new Event(event);
             await event.save();
             res.status(201).send(event);
@@ -119,11 +117,7 @@ router.get("/:id", auth, async (req, res) => {
     }
 });
 
-router.delete("/:id", auth, async (req, res) => {
-    if (!req.token) {
-        return res.status(401).send({ err: "请登录" });
-    }
-
+router.delete("/:id", auth, hasToken, async (req, res) => {
     try {
         const event_id = req.params.id.trim();
         const event = await Event.findByIdAndDelete(event_id);

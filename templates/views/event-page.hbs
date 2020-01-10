@@ -48,6 +48,11 @@
     });
 
     $('#delete').on('click', () => {
+
+        if (!confirm("一旦删除，文章不能恢复。\n您确定要删除？")) {
+            return;
+        }
+
         const event_id = $('#event_id').html();
 
         fetch('/events/' + event_id, {

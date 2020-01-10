@@ -25,4 +25,11 @@ const auth = async (req, res, next) => {
     next();
 };
 
-module.exports = auth;
+const hasToken = async (req, res, next) => {
+    if (!req.token) {
+        return res.status(401).send({ err: "请登录" });
+    }
+    next();
+};
+
+module.exports = { auth, hasToken };
