@@ -38,12 +38,17 @@
 
             <div class="form-group">
                 <label for="inputEventContent">内容</label>
-                <textarea class="form-control" name="content" id="inputEventContent" rows="10" style="resize: none" required></textarea>
+                <textarea class="form-control" name="content" id="inputEventContent" rows="10" style="resize: none"></textarea>
             </div>
 
             <div class="form-group">
                 <label for="uploadPhoto">上传图片(每张不得超过2M) 待开发...</label>
-                <input type="file" name="photo" class="form-control-file" id="uploadPhoto" disabled>
+                <input type="file" name="photo" class="form-control-file" id="uploadPhoto" accept=".jpg,.jpeg,.png" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="uploadPDF">上传PDF (不得超过5M)</label>
+                <input type="file" name="pdf" class="form-control-file" id="uploadPDF" accept=".pdf">
             </div>
 
             <button type="submit" class="btn btn-primary">发布活动</button>
@@ -68,8 +73,6 @@
     $('#create-event-form').on('submit',(e)=>{
         e.preventDefault();
 
-        //const photo = $('#inputPhoto');
-        
         const create_date = $('#inputCreateDate').val();
         const event_date = $('#inputEventDate').val();
 
@@ -77,27 +80,29 @@
             return alert('请修改输入的日期格式为YYYY-MM-DD');
         }
 
-        const form_data = {
-            title: $('#inputTitle').val(),
-            author: $('#inputAuthor').val(),
-            create_date: new Date(create_date.replace('-','/')),
-            event_date: new Date(event_date.replace('-','/')),
-            content: $('#inputEventContent').val()
+        const form_data = new FormData()
+        form_data.append('title', $('#inputTitle').val())
+        form_data.append('author', $('#inputAuthor').val() || '')
+        form_data.append('create_date', new Date(create_date.replace('-','/')))
+        form_data.append('event_date', new Date(event_date.replace('-','/')))
+        form_data.append('content', $('#inputEventContent').val() || '')
+        //form_data.append('pdf', $('#uploadPDF')[0].files)
+        for (const pdfFile of $('#uploadPDF')[0].files) {
+            form_data.append('pdf',pdfFile,pdfFile.name)
         }
-
 
         fetch('/events', {
             method: 'POST',
-            headers : { "Content-Type": "application/json" },
-            body: JSON.stringify(form_data)
+            body: form_data
         }).then((res) => res.json())
           .then((data) => {
             if (data.err) {
                 return alert(data.err);
             }
-            window.location.href = `/events/${data.id}`;
+            console.log(data);
+            window.location.href = `/events/${data._id}`;
           })
-          .catch((err)=>console.log(err));
+          .catch((err) => console.log(err) );
 
     });
 

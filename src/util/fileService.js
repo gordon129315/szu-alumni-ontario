@@ -7,7 +7,7 @@ const isExist = (file_path) => {
 
 const getEmptyEvent = () => {
     return {
-        id: "000000000000000000000000",
+        _id: "000000000000000000000000",
         title: "抱歉！此文章不存在或已被删除",
         author: "",
         create_date: "",
