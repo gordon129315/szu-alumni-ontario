@@ -30,9 +30,15 @@ const walkDir = (dir, original_dir, files) => {
     });
 };
 
+const deleteFile = (file_path) => {
+    if (fs.statSync(file_path).isFile()) {
+        fs.unlinkSync(file_path);
+    }
+};
 
 module.exports = {
     isExist,
     getEmptyEvent,
-    walkDir
+    walkDir,
+    deleteFile
 };

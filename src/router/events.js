@@ -81,10 +81,12 @@ router.post(
         let event = req.body;
 
         try {
-            event.pdf = req.files.pdf[0].path.replace(
-                path.join(__dirname, "../../public"),
-                ""
-            );
+            if (req.files.pdf) {
+                event.pdf = req.files.pdf[0].path.replace(
+                    path.join(__dirname, "../../public"),
+                    ""
+                );
+            }
             event = new Event(event);
             await event.save();
             res.status(201).send(event);
@@ -120,8 +122,15 @@ router.get("/:id", auth, async (req, res) => {
 router.delete("/:id", auth, hasToken, async (req, res) => {
     try {
         const event_id = req.params.id.trim();
-        const event = await Event.findByIdAndDelete(event_id);
-        res.send(event);
+        const event = await Event.findById(event_id);
+        if (event.pdf) {
+            const pdf_path = path.join(__dirname, "../../public", event.pdf);
+            if (fs.isExist(pdf_path)) {
+                fs.deleteFile(pdf_path);
+            }
+        }
+        await event.remove();
+        res.send({});
     } catch (e) {
         res.status(500).send({ err: e.message });
     }
