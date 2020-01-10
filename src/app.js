@@ -1,7 +1,8 @@
 const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
-const fs = require("./util/fileService");
+const fs = require("fs");
+const fileService = require("./util/fileService");
 const admin = require("./router/admin");
 const events = require("./router/events");
 const cookieParser = require("cookie-parser");
@@ -60,7 +61,10 @@ app.get("/about-us", (req, res) => {
 });
 
 app.get("/members", (req, res) => {
-    res.render("members");
+    const { members, update } = JSON.parse(
+        fs.readFileSync(path.join(__dirname, "../data/members.json"), "utf8")
+    );
+    res.render("members", { members, update });
 });
 
 app.get("/enterprise", (req, res) => {
@@ -74,7 +78,7 @@ app.get("/sport-teams", (req, res) => {
 app.get("/downloads", (req, res) => {
     let files = [];
     const dir = path.join(__dirname, "../public/files/downloads");
-    fs.walkDir(dir, dir, files);
+    fileService.walkDir(dir, dir, files);
     files = files
         .filter((f) => f.file_name.endsWith(".pdf"))
         .sort((f1, f2) => f1.create_time < f2.create_time);

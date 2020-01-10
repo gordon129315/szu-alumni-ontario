@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Event = require("../models/event");
-const fs = require("../util/fileService");
+const fileService = require("../util/fileService");
 const { auth, hasToken } = require("../middleware/auth");
 const multer = require("multer");
 const path = require("path");
@@ -114,7 +114,7 @@ router.get("/:id", auth, async (req, res) => {
         event.login = req.token ? true : false;
         res.render("event-page", event);
     } catch (e) {
-        event = fs.getEmptyEvent();
+        event = fileService.getEmptyEvent();
         res.status(404).render("event-page", event);
     }
 });
@@ -125,8 +125,8 @@ router.delete("/:id", auth, hasToken, async (req, res) => {
         const event = await Event.findById(event_id);
         if (event.pdf) {
             const pdf_path = path.join(__dirname, "../../public", event.pdf);
-            if (fs.isExist(pdf_path)) {
-                fs.deleteFile(pdf_path);
+            if (fileService.isExist(pdf_path)) {
+                fileService.deleteFile(pdf_path);
             }
         }
         await event.remove();

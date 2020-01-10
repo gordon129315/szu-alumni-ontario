@@ -86,7 +86,7 @@
         form_data.append('create_date', new Date(create_date.replace('-','/')))
         form_data.append('event_date', new Date(event_date.replace('-','/')))
         form_data.append('content', $('#inputEventContent').val() || '')
-        //form_data.append('pdf', $('#uploadPDF')[0].files)
+        //form_data.append('pdf', $('#uploadPDF')[0].files[0])
         for (const pdfFile of $('#uploadPDF')[0].files) {
             form_data.append('pdf',pdfFile,pdfFile.name)
         }
