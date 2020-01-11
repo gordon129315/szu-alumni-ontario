@@ -68,7 +68,10 @@ app.get("/members", (req, res) => {
 });
 
 app.get("/enterprise", (req, res) => {
-    res.render("enterprise");
+    const enterprise_list = JSON.parse(
+        fs.readFileSync(path.join(__dirname, "../data/enterprise.json"), "utf8")
+    );
+    res.render("enterprise", {enterprise_list});
 });
 
 app.get("/sport-teams", (req, res) => {

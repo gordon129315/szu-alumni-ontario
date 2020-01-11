@@ -1,0 +1,267 @@
+[
+    {
+        "category": "房产买卖",
+        "id": "real-estate",
+        "enterprise": [
+            {
+                "id": "August-Jian",
+                "enterprise-name": "联众国际咨询有限公司",
+                "logo": [
+                    {
+                        "logo-link": "https://www.upicanada.com/images/blogo.png"
+                    },
+                    {
+                        "logo-link": "/img/enterprise/logo/August-Jian/business-card.jpg"
+                    },
+                    {
+                        "logo-link": "/img/enterprise/logo/August-Jian/wechat-qrcode.jpg"
+                    }
+                ],
+                "info": [
+                    {
+                        "content": "电话: 905.305.9099"
+                    },
+                    {
+                        "content": "邮箱: august.jian@gmail.com"
+                    },
+                    {
+                        "content": "地址: Unit 402, 3100 Steeles Ave East Markham ON L3R 8T3"
+                    }
+                ],
+                "website": "https://www.upicanada.com",
+                "name": "August Jian",
+                "title": "Executive VP Real Estate"
+            },
+            {
+                "id": "template",
+                "enterprise-name": "XXXX有限公司",
+                "logo": [
+                    {
+                        "logo-link": "/img/sz-logo.png"
+                    },
+                    {
+                        "logo-link": "/img/sz-logo.png"
+                    },
+                    {
+                        "logo-link": "/img/sz-logo.png"
+                    }
+                ],
+                "info": [
+                    {
+                        "content": "电话:"
+                    },
+                    {
+                        "content": "邮箱:"
+                    },
+                    {
+                        "content": "公司简介:"
+                    }
+                ],
+                "website": "JavaScript:Void(0);",
+                "name": "校友姓名",
+                "title": "职位"
+            }
+        ]
+    },
+    {
+        "category": "法律咨询",
+        "id": "law-consult",
+        "enterprise": [
+            {
+                "id": "Lydia-Zhou",
+                "enterprise-name": "逦凯律师事务所",
+                "logo": [
+                    {
+                        "logo-link": "/img/enterprise/logo/Lydia-Zhou/logo.png"
+                    },
+                    {
+                        "logo-link": "/img/enterprise/logo/Lydia-Zhou/wechat-qrcode.jpg"
+                    }
+                ],
+                "info": [
+                    {
+                        "content": "迤逦加国，以法护航"
+                    },
+                    {
+                        "content": "立足华社，助君凯旋"
+                    },
+                    {
+                        "content": "电话：416-490-8555"
+                    },
+                    {
+                        "content": "传真：416-490-9555"
+                    },
+                    {
+                        "content": "邮箱：xunmei@lklawfirm.ca"
+                    },
+                    {
+                        "content": "地址：250 Consumers Road, Suite 909, North York, M2J 4V6"
+                    }
+                ],
+                "website": "https://www.lklawfirm.ca",
+                "name": "Lydia-Zhou",
+                "title": "律师、公证人"
+            }
+        ]
+    },
+    {
+        "category": "保险理财",
+        "id": "wealth-management",
+        "enterprise": [
+            {
+                "id": "template",
+                "enterprise-name": "XXXX有限公司",
+                "logo": [
+                    {
+                        "logo-link": "/img/sz-logo.png"
+                    },
+                    {
+                        "logo-link": "/img/sz-logo.png"
+                    },
+                    {
+                        "logo-link": "/img/sz-logo.png"
+                    }
+                ],
+                "info": [
+                    {
+                        "content": "电话:"
+                    },
+                    {
+                        "content": "邮箱:"
+                    },
+                    {
+                        "content": "公司简介:"
+                    }
+                ],
+                "website": "JavaScript:Void(0);",
+                "name": "校友姓名",
+                "title": "职位"
+            }
+        ]
+    },
+    {
+        "category": "家居美容",
+        "id": "life-style",
+        "enterprise": [
+            {
+                "id": "template",
+                "enterprise-name": "XXXX有限公司",
+                "logo": [
+                    {
+                        "logo-link": "/img/sz-logo.png"
+                    },
+                    {
+                        "logo-link": "/img/sz-logo.png"
+                    },
+                    {
+                        "logo-link": "/img/sz-logo.png"
+                    }
+                ],
+                "info": [
+                    {
+                        "content": "电话:"
+                    },
+                    {
+                        "content": "邮箱:"
+                    },
+                    {
+                        "content": "公司简介:"
+                    }
+                ],
+                "website": "JavaScript:Void(0);",
+                "name": "校友姓名",
+                "title": "职位"
+            }
+        ]
+    },
+    {
+        "category": "校友互助",
+        "id": "community",
+        "enterprise": [
+            {
+                "id": "Gordon-Yu",
+                "enterprise-name": "网页制作",
+                "logo": [
+                    {
+                        "logo-link": "/img/enterprise/logo/Gordon-Yu/wechat-qrcode.png"
+                    }
+                ],
+                "info": [
+                    {
+                        "content": "给个人工作室、中小型企业提供技术支持，制作公司网站。"
+                    },
+                    {
+                        "content": "邮箱:gordonyuzr@gmail.com"
+                    }
+                ],
+                "website": "JavaScript:Void(0);",
+                "name": "Gordon Yu",
+                "title": "网页工程师"
+            },
+            {
+                "id": "template",
+                "enterprise-name": "XXXX有限公司",
+                "logo": [
+                    {
+                        "logo-link": "/img/sz-logo.png"
+                    },
+                    {
+                        "logo-link": "/img/sz-logo.png"
+                    },
+                    {
+                        "logo-link": "/img/sz-logo.png"
+                    }
+                ],
+                "info": [
+                    {
+                        "content": "电话:"
+                    },
+                    {
+                        "content": "邮箱:"
+                    },
+                    {
+                        "content": "公司简介:"
+                    }
+                ],
+                "website": "JavaScript:Void(0);",
+                "name": "校友姓名",
+                "title": "职位"
+            }
+        ]
+    },
+    {
+        "category": "其它服务",
+        "id": "other-service",
+        "enterprise": [
+            {
+                "id": "template",
+                "enterprise-name": "XXXX有限公司",
+                "logo": [
+                    {
+                        "logo-link": "/img/sz-logo.png"
+                    },
+                    {
+                        "logo-link": "/img/sz-logo.png"
+                    },
+                    {
+                        "logo-link": "/img/sz-logo.png"
+                    }
+                ],
+                "info": [
+                    {
+                        "content": "电话:"
+                    },
+                    {
+                        "content": "邮箱:"
+                    },
+                    {
+                        "content": "公司简介:"
+                    }
+                ],
+                "website": "JavaScript:Void(0);",
+                "name": "校友姓名",
+                "title": "职位"
+            }
+        ]
+    }
+]
