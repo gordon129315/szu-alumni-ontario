@@ -59,7 +59,7 @@ app.get("", (req, res) => {
             "utf8"
         )
     );
-    res.render("index", {headline_news});
+    res.render("index", { headline_news });
 });
 
 app.get("/about-us", (req, res) => {
@@ -81,7 +81,13 @@ app.get("/enterprise", (req, res) => {
 });
 
 app.get("/sport-teams", (req, res) => {
-    res.render("sport-teams");
+    const sport_teams = JSON.parse(
+        fs.readFileSync(
+            path.join(__dirname, "../data/sport-teams.json"),
+            "utf8"
+        )
+    );
+    res.render("sport-teams", { sport_teams });
 });
 
 app.get("/downloads", (req, res) => {

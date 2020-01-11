@@ -1,0 +1,58 @@
+[
+    {
+        "tagId": "Badminton",
+        "name": "羽毛球俱乐部",
+        "image": "/img/teams/badminton-team.png",
+        "leader": "August Jian",
+        "members": "名字、名字、名字、名字、名字"
+    },
+    {
+        "tagId": "TableTennis",
+        "name": "乒乓球俱乐部",
+        "image": "/img/teams/table-tennis-team.jpg",
+        "leader": "Grace Z",
+        "members": "名字、名字、名字、名字、名字"
+    },
+    {
+        "tagId": "Hiking",
+        "name": "远足登山俱乐部",
+        "image": "/img/sz-logo.png",
+        "leader": "Jeffrey Ji",
+        "members": "名字、名字、名字、名字、名字"
+    },
+    {
+        "tagId": "Volley",
+        "name": "排球俱乐部",
+        "image": "/img/sz-logo.png",
+        "leader": "",
+        "members": "名字、名字、名字、名字、名字"
+    },
+    {
+        "tagId": "Dance",
+        "name": "舞蹈俱乐部",
+        "image": "/img/sz-logo.png",
+        "leader": "",
+        "members": "名字、名字、名字、名字、名字"
+    },
+    {
+        "tagId": "Tennis",
+        "name": "网球俱乐部",
+        "image": "/img/sz-logo.png",
+        "leader": "",
+        "members": "名字、名字、名字、名字、名字"
+    },
+    {
+        "tagId": "Drag",
+        "name": "拔河俱乐部",
+        "image": "/img/sz-logo.png",
+        "leader": "苏涛",
+        "members": "名字、名字、名字、名字、名字"
+    },
+    {
+        "tagId": "Golf",
+        "name": "高尔夫俱乐部",
+        "image": "/img/sz-logo.png",
+        "leader": "",
+        "members": "名字、名字、名字、名字、名字"
+    }
+]
