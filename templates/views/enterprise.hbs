@@ -20,67 +20,18 @@
     {{!-- 分类 --}}
     <h2 class="text-center mb-3 mt-5" style="color: #bc1e58"><b>企业分类</b></h2>
     <div id="category" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 w-75 mx-auto my-3">
+        {{# enterprise_list}}
         <div class="col mb-4">
             <div class="card h-100">
-                <div class="w-100 card-body"><i class="fas fa-home"></i></div>
+                <div class="w-100 card-body"><i class="{{icon}}"></i></div>
                 <div class="card-footer text-center">
-                    {{!-- <a href="#" class="stretched-link" data-target="#real-estate"> --}}
-                    <a href="#" class="stretched-link" data-target="#{{enterprise_list.0.id}}">
-                        <h5 class="card-title mb-0">房产买卖</h5>
+                    <a href="#" class="stretched-link" data-target="#{{id}}">
+                        <h5 class="card-title mb-0">{{category}}</h5>
                     </a>
                 </div>
             </div>
         </div>
-        <div class="col mb-4">
-            <div class="card h-100">
-                <div class="w-100 card-body"><i class="fas fa-balance-scale"></i></div>
-                <div class="card-footer text-center">
-                    <a href="#" class="stretched-link" data-target="#{{enterprise_list.1.id}}">
-                        <h5 class="card-title mb-0">法律咨询</h5>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col mb-4">
-            <div class="card h-100">
-                <div class="w-100 card-body"><i class="fas fa-hand-holding-usd"></i></div>
-                <div class="card-footer text-center">
-                    <a href="#" class="stretched-link" data-target="#{{enterprise_list.2.id}}">
-                        <h5 class="card-title mb-0">保险理财</h5>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col mb-4">
-            <div class="card h-100">
-                <div class="w-100 card-body"><i class="fas fa-couch"></i></div>
-                <div class="card-footer text-center">
-                    <a href="#" class="stretched-link" data-target="#{{enterprise_list.3.id}}">
-                        <h5 class="card-title mb-0">家居美容</h5>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col mb-4">
-            <div class="card h-100">
-                <div class="w-100 card-body"><i class="fas fa-handshake"></i></div>
-                <div class="card-footer text-center">
-                    <a href="#" class="stretched-link" data-target="#{{enterprise_list.4.id}}">
-                        <h5 class="card-title mb-0">校友互助</h5>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col mb-4">
-            <div class="card h-100">
-                <div class="w-100 card-body"><i class="fas fa-hourglass-half"></i></div>
-                <div class="card-footer text-center">
-                    <a href="#" class="stretched-link" data-target="#{{enterprise_list.5.id}}">
-                        <h5 class="card-title mb-0">其它服务</h5>
-                    </a>
-                </div>
-            </div>
-        </div>
+        {{/ enterprise_list}}
     </div>
 
     {{# enterprise_list}}
@@ -93,7 +44,7 @@
                     <div id="{{id}}" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             {{# logo}}
-                            <div class="carousel-item active company-cover">
+                            <div class="carousel-item company-cover">
                                 <img src="{{logo-link}}" class="card-img-top">
                             </div>
                             {{/ logo}}
@@ -131,6 +82,9 @@
 {{>footer}}  
 
 <script>
+
+    $( ".carousel-inner" ).children('.company-cover:nth-child(1)').addClass( "active" );
+
     $('#category .card').on('click', (e) => {
         let destination = e.target.getAttribute('data-target');
         $("html,body").animate({scrollTop: $(destination).offset().top}, 500);

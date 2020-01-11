@@ -2,6 +2,7 @@
     {
         "category": "房产买卖",
         "id": "real-estate",
+        "icon": "fas fa-home",
         "enterprise": [
             {
                 "id": "August-Jian",
@@ -25,7 +26,7 @@
                         "content": "邮箱: august.jian@gmail.com"
                     },
                     {
-                        "content": "地址: Unit 402, 3100 Steeles Ave East Markham ON L3R 8T3"
+                        "content": "地址: Unit 402, 3100 Steeles Ave East, Markham, ON, L3R 8T3"
                     }
                 ],
                 "website": "https://www.upicanada.com",
@@ -36,12 +37,6 @@
                 "id": "template",
                 "enterprise-name": "XXXX有限公司",
                 "logo": [
-                    {
-                        "logo-link": "/img/sz-logo.png"
-                    },
-                    {
-                        "logo-link": "/img/sz-logo.png"
-                    },
                     {
                         "logo-link": "/img/sz-logo.png"
                     }
@@ -66,6 +61,7 @@
     {
         "category": "法律咨询",
         "id": "law-consult",
+        "icon": "fas fa-balance-scale",
         "enterprise": [
             {
                 "id": "Lydia-Zhou",
@@ -107,17 +103,12 @@
     {
         "category": "保险理财",
         "id": "wealth-management",
+        "icon": "fas fa-hand-holding-usd",
         "enterprise": [
             {
                 "id": "template",
                 "enterprise-name": "XXXX有限公司",
                 "logo": [
-                    {
-                        "logo-link": "/img/sz-logo.png"
-                    },
-                    {
-                        "logo-link": "/img/sz-logo.png"
-                    },
                     {
                         "logo-link": "/img/sz-logo.png"
                     }
@@ -142,17 +133,12 @@
     {
         "category": "家居美容",
         "id": "life-style",
+        "icon": "fas fa-couch",
         "enterprise": [
             {
                 "id": "template",
                 "enterprise-name": "XXXX有限公司",
                 "logo": [
-                    {
-                        "logo-link": "/img/sz-logo.png"
-                    },
-                    {
-                        "logo-link": "/img/sz-logo.png"
-                    },
                     {
                         "logo-link": "/img/sz-logo.png"
                     }
@@ -177,6 +163,7 @@
     {
         "category": "校友互助",
         "id": "community",
+        "icon": "fas fa-handshake",
         "enterprise": [
             {
                 "id": "Gordon-Yu",
@@ -204,12 +191,6 @@
                 "logo": [
                     {
                         "logo-link": "/img/sz-logo.png"
-                    },
-                    {
-                        "logo-link": "/img/sz-logo.png"
-                    },
-                    {
-                        "logo-link": "/img/sz-logo.png"
                     }
                 ],
                 "info": [
@@ -232,17 +213,12 @@
     {
         "category": "其它服务",
         "id": "other-service",
+        "icon": "fas fa-hourglass-half",
         "enterprise": [
             {
                 "id": "template",
                 "enterprise-name": "XXXX有限公司",
                 "logo": [
-                    {
-                        "logo-link": "/img/sz-logo.png"
-                    },
-                    {
-                        "logo-link": "/img/sz-logo.png"
-                    },
                     {
                         "logo-link": "/img/sz-logo.png"
                     }
