@@ -2,67 +2,41 @@
 
 {{!-- carousel slide 图片尺寸比例3:2--}}
 <div class="container-fluid" id="carousel">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carousel-headline-news" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            {{# headline_news}}
+            <li data-target="#carousel-headline-news"></li>
+            {{/ headline_news}}
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="row">
-                    <div class="col-md-4 carousel-words-box">
-                        <div class="carousel-words">
-                            <h3>深大安省校友会成立了！</h3>
-                            <p>在深圳大学建校36周年之际，为弘扬母校精神，培育校友文化，满足校友“常回家看看”的美好愿望，时差12小时的地球那一边，我们深大安省校友会2019年7月6日在加拿大多伦多正式成立。</p>
-                            <blockquote class="blockquote text-right">
-                            </blockquote> 
-                        </div>
-                    </div>
-                    <div class="col-md-8 carousel-img">
-                        <img class="w-100" src="img\carousel\Toronto.png">
-                    </div>
-                </div>
-            </div>
+            {{# headline_news}}
             <div class="carousel-item">
                 <div class="row">
                     <div class="col-md-4 carousel-words-box">
                         <div class="carousel-words">
-                            <h3>深大安省校友会2019圣诞暨新年聚会</h3>
-                            <p>同学是一种很奇妙的关系，因为共同的学校，把不同家庭背景的个体联系在一起，共享了成长的快乐；海外校友会又进一步地演绎了“殊途同归”这一成语，把不同专业或年级曾经擦身而过的一缕缘分又重新拧在一处。无法推测至尊宝和紫霞500年穿越相会的缘由，但我们的骄傲，来自于一个共同的名字：深圳大学。</p>
+                            <h3>{{heandline}}</h3>
+                            {{# subtitle}}
+                            <p>{{content}}</p>
+                            {{/ subtitle}}
+                            {{#if footer}}
                             <blockquote class="blockquote text-right">
-                                <footer class="blockquote-footer">机电91级 August Jian</footer>
+                                <footer class="blockquote-footer">{{footer}}</footer>
                             </blockquote> 
+                            {{/if}}
                         </div>
                     </div>
                     <div class="col-md-8 carousel-img">
-                        <img class="w-100" src="img/carousel/xmas-event.png">
+                        <img class="w-100" src="{{image}}">
                     </div>
                 </div>
             </div>
-            <div class="carousel-item">
-                <div class="row" >
-                    <div class="col-md-4 carousel-words-box">
-                        <div class="carousel-words">
-                            <h3>2019思源杯高校羽毛球赛</h3>
-                            <p>深圳大学&amp;成都理工大学&amp;北京联合大学联队，成功晋级8强！</p>
-                            <p>身在多城心系国，<br>飘蓬江海谩嗟跎。<br>他日若遂凌云志，<br>敢笑黄巢不丈夫！</p>
-                            <blockquote class="blockquote text-right">
-                                <footer class="blockquote-footer">机电91级 August Jian</footer>
-                            </blockquote> 
-                        </div>
-                    </div>
-                    <div class="col-md-8 carousel-img">
-                        <img class="w-100" src="img/carousel/badminton2019.png">
-                    </div>
-                </div>
-            </div>
+            {{/ headline_news}}
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carousel-headline-news" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#carousel-headline-news" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
@@ -99,7 +73,10 @@
     </div>
 </div>
 
-
+<script>
+    $('.carousel-indicators').children('li:nth-child(1)').addClass( "active" );
+    $('.carousel-inner').children('.carousel-item:nth-child(1)').addClass( "active" );
+</script>
 
 {{>footer}}
 

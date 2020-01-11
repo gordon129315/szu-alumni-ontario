@@ -53,7 +53,13 @@ app.use("/admin", admin);
 app.use("/events", events);
 
 app.get("", (req, res) => {
-    res.render("index");
+    const headline_news = JSON.parse(
+        fs.readFileSync(
+            path.join(__dirname, "../data/headline-news.json"),
+            "utf8"
+        )
+    );
+    res.render("index", {headline_news});
 });
 
 app.get("/about-us", (req, res) => {
@@ -71,7 +77,7 @@ app.get("/enterprise", (req, res) => {
     const enterprise_list = JSON.parse(
         fs.readFileSync(path.join(__dirname, "../data/enterprise.json"), "utf8")
     );
-    res.render("enterprise", {enterprise_list});
+    res.render("enterprise", { enterprise_list });
 });
 
 app.get("/sport-teams", (req, res) => {
