@@ -5,6 +5,7 @@ const fileService = require("../util/fileService");
 const { auth, hasToken } = require("../middleware/auth");
 const multer = require("multer");
 const path = require("path");
+const fs = require("fs");
 
 // 获取所有文章
 router.get("/", auth, async (req, res) => {
@@ -31,9 +32,17 @@ router.get("/", auth, async (req, res) => {
 const storage = multer.diskStorage({
     destination: function(req, file, callback) {
         if (file.fieldname === "pdf") {
-            callback(null, path.join(__dirname, "../../public/files/events"));
+            const pdf_dir = path.join(__dirname, "../../public/files/events");
+            if (!fs.existsSync(pdf_dir)) {
+                fs.mkdirSync(pdf_dir);
+            }
+            callback(null, pdf_dir);
         } else if (file.fieldname === "photo") {
-            callback(null, "../../public/img/events");
+            const img_dir = path.join(__dirname, "../../public/img/events");
+            if (!fs.existsSync(img_dir)) {
+                fs.mkdirSync(img_dir);
+            }
+            callback(null, img_dir);
         } else {
             return callback(new Error("no this field name"));
         }
@@ -125,7 +134,7 @@ router.delete("/:id", auth, hasToken, async (req, res) => {
         const event = await Event.findById(event_id);
         if (event.pdf) {
             const pdf_path = path.join(__dirname, "../../public", event.pdf);
-            if (fileService.isExist(pdf_path)) {
+            if (fs.existsSync(pdf_path)) {
                 fileService.deleteFile(pdf_path);
             }
         }

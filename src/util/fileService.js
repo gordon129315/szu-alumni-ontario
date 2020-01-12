@@ -1,10 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 
-const isExist = (file_path) => {
-    return fs.existsSync(file_path);
-};
-
 const getEmptyEvent = () => {
     return {
         _id: "000000000000000000000000",
@@ -37,7 +33,6 @@ const deleteFile = (file_path) => {
 };
 
 module.exports = {
-    isExist,
     getEmptyEvent,
     walkDir,
     deleteFile

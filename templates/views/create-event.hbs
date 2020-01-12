@@ -88,8 +88,13 @@
         form_data.append('content', $('#inputEventContent').val() || '')
         //form_data.append('pdf', $('#uploadPDF')[0].files[0])
         for (const pdfFile of $('#uploadPDF')[0].files) {
+            if (pdfFile.size > 5242880) {
+                return alert('上传PDF不得超过5M')
+            }
             form_data.append('pdf',pdfFile,pdfFile.name)
         }
+
+        $('button[type="submit"]').prop("disabled", true);
 
         fetch('/events', {
             method: 'POST',
