@@ -168,14 +168,13 @@ a:hover {
     justify-content: center;
 }
 
-#enterprise .card .company-cover {
+#enterprise .card .carousel-item {
     position: relative;
     height: 0;
     padding-bottom: 100%;
 }
 
-
-#enterprise .card .company-cover img {
+#enterprise .card .carousel-item img {
     position: absolute;
     top: 0;
     left: 0;
