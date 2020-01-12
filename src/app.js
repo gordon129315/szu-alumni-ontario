@@ -7,6 +7,7 @@ const admin = require("./router/admin");
 const events = require("./router/events");
 const cookieParser = require("cookie-parser");
 require("./db/mongoose");
+require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 3000; //PORT has to be in capital
