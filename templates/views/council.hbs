@@ -11,8 +11,9 @@
     </nav>
 </div>
 
-<div class="container-fluid" id="members">
-    <div class="w-75 mx-auto members table-responsive">
+<div class="container-fluid" id="council">
+
+    <div class="w-75 mx-auto table-responsive">
         <table class="table table-hover table-bordered text-center">
             <caption>深大安省校友会理事会 Update: {{update}}</caption>
             <thead>
@@ -22,14 +23,18 @@
                 </tr>
             </thead>
             <tbody>
-                {{# members}}
+                {{# council}}
                 <tr>
                     <td>{{name}}</td>
                     <td>{{title}}</td>
                 </tr>
-                {{/ members}}
+                {{/ council}}
             </tbody>
         </table>
+    </div>
+
+    <div class="w-75 mx-auto my-5">
+        <img src="/img/council.png" class="w-100" alt="深大安省校友会理事会">
     </div>
 
 </div>

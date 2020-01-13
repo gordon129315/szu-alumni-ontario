@@ -67,11 +67,11 @@ app.get("/about-us", (req, res) => {
     res.render("about-us");
 });
 
-app.get("/members", (req, res) => {
-    const { members, update } = JSON.parse(
-        fs.readFileSync(path.join(__dirname, "../data/members.json"), "utf8")
+app.get("/council", (req, res) => {
+    const { council, update } = JSON.parse(
+        fs.readFileSync(path.join(__dirname, "../data/council.json"), "utf8")
     );
-    res.render("members", { members, update });
+    res.render("council", { council, update });
 });
 
 app.get("/enterprise", (req, res) => {
