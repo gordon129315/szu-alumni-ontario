@@ -4,14 +4,14 @@
         "name": "羽毛球俱乐部",
         "image": "/img/teams/badminton-team.png",
         "leader": "August Jian",
-        "members": "名字、名字、名字、名字、名字"
+        "members": "Gordon, Grace, Bryan, Yolanda, Emily, Vanessa, Yoson, Rick, Michael"
     },
     {
         "tagId": "TableTennis",
         "name": "乒乓球俱乐部",
         "image": "/img/teams/table-tennis-team.jpg",
         "leader": "Grace Z",
-        "members": "名字、名字、名字、名字、名字"
+        "members": "Kevin, Jeff, William, Yoson, Bryan, Yolanda"
     },
     {
         "tagId": "Hiking",
