@@ -77,12 +77,12 @@
         "tagId": "Tennis",
         "name": "网球俱乐部",
         "image": "/img/sz-logo.png",
-        "header": "",
+        "header": "Jeff",
         "leader": "",
         "members": [
             {
-                "team": "一队",
-                "names": "名字、名字、名字、名字、名字"
+                "team": "",
+                "names": "全体感兴趣的校友"
             }
         ]
     },
@@ -94,8 +94,8 @@
         "leader": "",
         "members": [
             {
-                "team": "一队",
-                "names": "名字、名字、名字、名字、名字"
+                "team": "",
+                "names": "全体校友"
             }
         ]
     },
