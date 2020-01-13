@@ -3,56 +3,113 @@
         "tagId": "Badminton",
         "name": "羽毛球俱乐部",
         "image": "/img/teams/badminton-team.png",
-        "leader": "August Jian",
-        "members": "Gordon, Grace, Bryan, Yolanda, Emily, Vanessa, Yoson, Rick, Michael"
+        "header": "August Jian, Yoson Wan(副), Bryan Chen(副)",
+        "leader": "Grace",
+        "members": [
+            {
+                "team": "",
+                "names": "Gordon, Yolanda, Emily, Vanessa, Rick, Michael, 卢建，Wesley, 大王"
+            }
+        ]
     },
     {
         "tagId": "TableTennis",
         "name": "乒乓球俱乐部",
         "image": "/img/teams/table-tennis-team.jpg",
-        "leader": "Grace Z",
-        "members": "Kevin, Jeff, William, Yoson, Bryan, Yolanda"
+        "header": "Daniel(一队), Yoson(二队), Bryan(三队)",
+        "leader": "Grace(一队), Julie(二队), Kim(三队)",
+        "members": [
+            {
+                "team": "一队",
+                "names": "Kevin, Jin, William, Jeff"
+            },
+            {
+                "team": "二队",
+                "names": "August, Richard, Benson, Yiwen"
+            },
+            {
+                "team": "三队",
+                "names": "Jeffrey, Nelson, Lucia, Catherine, Emily"
+            }
+        ],
+        "note": "裁判: George"
     },
     {
         "tagId": "Hiking",
         "name": "远足登山俱乐部",
         "image": "/img/sz-logo.png",
-        "leader": "Jeffrey Ji",
-        "members": "名字、名字、名字、名字、名字"
+        "header": "Jeffrey Ji",
+        "leader": "",
+        "members": [
+            {
+                "team": "一队",
+                "names": "名字、名字、名字、名字、名字"
+            }
+        ]
     },
     {
         "tagId": "Volley",
         "name": "排球俱乐部",
         "image": "/img/sz-logo.png",
-        "leader": "",
-        "members": "名字、名字、名字、名字、名字"
+        "header": "Simon Qin",
+        "leader": "Jeff Ding",
+        "members": [
+            {
+                "team": "",
+                "names": "Jeffrey, Yoson，Bryan，杨亚亚, Lily, Qi XiaoDong, Benson, Richard"
+            }
+        ]
     },
     {
         "tagId": "Dance",
         "name": "舞蹈俱乐部",
         "image": "/img/sz-logo.png",
+        "header": "",
         "leader": "",
-        "members": "名字、名字、名字、名字、名字"
+        "members": [
+            {
+                "team": "一队",
+                "names": "名字、名字、名字、名字、名字"
+            }
+        ]
     },
     {
         "tagId": "Tennis",
         "name": "网球俱乐部",
         "image": "/img/sz-logo.png",
+        "header": "",
         "leader": "",
-        "members": "名字、名字、名字、名字、名字"
+        "members": [
+            {
+                "team": "一队",
+                "names": "名字、名字、名字、名字、名字"
+            }
+        ]
     },
     {
         "tagId": "Drag",
         "name": "拔河俱乐部",
         "image": "/img/sz-logo.png",
-        "leader": "苏涛",
-        "members": "名字、名字、名字、名字、名字"
+        "header": "苏涛",
+        "leader": "",
+        "members": [
+            {
+                "team": "一队",
+                "names": "名字、名字、名字、名字、名字"
+            }
+        ]
     },
     {
         "tagId": "Golf",
         "name": "高尔夫俱乐部",
         "image": "/img/sz-logo.png",
+        "header": "Bryan Chen",
         "leader": "",
-        "members": "名字、名字、名字、名字、名字"
+        "members": [
+            {
+                "team": "一队",
+                "names": "名字、名字、名字、名字、名字"
+            }
+        ]
     }
 ]
