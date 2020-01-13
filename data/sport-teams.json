@@ -50,7 +50,7 @@
     {
         "tagId": "Volley",
         "name": "排球俱乐部",
-        "image": "/img/sz-logo.png",
+        "image": "/img/teams/all-members.png",
         "header": "Simon Qin",
         "leader": "Jeff Ding",
         "members": [
@@ -89,7 +89,7 @@
     {
         "tagId": "Drag",
         "name": "拔河俱乐部",
-        "image": "/img/sz-logo.png",
+        "image": "/img/teams/all-members.png",
         "header": "苏涛",
         "leader": "",
         "members": [

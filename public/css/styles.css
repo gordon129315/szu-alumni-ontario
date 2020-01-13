@@ -61,6 +61,7 @@ a:hover {
     align-items: center;
     justify-content: center;
     padding-left: 3%;
+    text-align: justify;
 }
 
 #carousel .carousel-item .carousel-words-box .carousel-words {
