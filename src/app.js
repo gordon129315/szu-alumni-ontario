@@ -27,7 +27,7 @@ hbs.registerHelper("breaklines", function(text) {
         "<p>" +
         text
             .replace(/^(\r\n|\n|\r)/gm, "&nbsp;\n")
-            .replace(/ /g, "&nbsp;&nbsp;")
+            .replace(/ /g, "&nbsp;")
             .replace(/(\r\n|\n|\r).*?/gm, "</p><p>") +
         "</p>";
 

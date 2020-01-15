@@ -1,38 +1,16 @@
 [
     {
-        "tagId": "Badminton",
-        "name": "羽毛球俱乐部",
-        "image": "/img/teams/badminton-team.png",
-        "header": "August Jian, Yoson Wan(副), Bryan Chen(副)",
-        "leader": "Grace",
+        "tagId": "Golf",
+        "name": "高尔夫俱乐部",
+        "image": "/img/sz-logo.png",
+        "header": "Bryan Chen",
+        "leader": "",
         "members": [
             {
                 "team": "",
-                "names": "Gordon, Yolanda, Emily, Vanessa, Rick, Michael, 卢建，Wesley, 大王"
+                "names": "Emily Lin, Lucia Liang, Tao Wang, Grace Zeng, 林东"
             }
         ]
-    },
-    {
-        "tagId": "TableTennis",
-        "name": "乒乓球俱乐部",
-        "image": "/img/teams/table-tennis-team.jpg",
-        "header": "Daniel(一队), Yoson(二队), Bryan(三队)",
-        "leader": "Grace(一队), Julie(二队), Kim(三队)",
-        "members": [
-            {
-                "team": "一队",
-                "names": "Kevin, Jin, William, Jeff"
-            },
-            {
-                "team": "二队",
-                "names": "August, Richard, Benson, Yiwen"
-            },
-            {
-                "team": "三队",
-                "names": "Jeffrey, Nelson, Lucia, Catherine, Emily"
-            }
-        ],
-        "note": "裁判: George"
     },
     {
         "tagId": "Hiking",
@@ -87,6 +65,42 @@
         ]
     },
     {
+        "tagId": "Badminton",
+        "name": "羽毛球俱乐部",
+        "image": "/img/teams/badminton-team.png",
+        "header": "August Jian, Yoson Wan(副), Bryan Chen(副)",
+        "leader": "Grace",
+        "members": [
+            {
+                "team": "",
+                "names": "Gordon, Yolanda, Emily, Vanessa, Rick, Michael, 卢建，Wesley, 大王, Julie"
+            }
+        ],
+        "note": "裁判: George"
+    },
+    {
+        "tagId": "TableTennis",
+        "name": "乒乓球俱乐部",
+        "image": "/img/teams/table-tennis-team.jpg",
+        "header": "Daniel(一队), Yoson(二队), Bryan(三队)",
+        "leader": "Grace(一队), Julie(二队), Kim(三队)",
+        "members": [
+            {
+                "team": "一队",
+                "names": "Kevin, Jin, William, Jeff"
+            },
+            {
+                "team": "二队",
+                "names": "August, Richard, Benson, Yiwen"
+            },
+            {
+                "team": "三队",
+                "names": "Jeffrey, Nelson, Lucia, Catherine, Emily"
+            }
+        ]
+    },
+
+    {
         "tagId": "Drag",
         "name": "拔河俱乐部",
         "image": "/img/teams/all-members.png",
@@ -96,19 +110,6 @@
             {
                 "team": "",
                 "names": "全体校友"
-            }
-        ]
-    },
-    {
-        "tagId": "Golf",
-        "name": "高尔夫俱乐部",
-        "image": "/img/sz-logo.png",
-        "header": "Bryan Chen",
-        "leader": "",
-        "members": [
-            {
-                "team": "",
-                "names": "Emily Lin, Lucia Liang, Tao Wang, Grace Zeng, 林东"
             }
         ]
     }
