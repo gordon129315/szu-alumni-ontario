@@ -28,7 +28,9 @@
             <small class="text-danger font-weight-bold">活动日期：{{event_date}}</small><small>作者：{{author}}</small><small>发表日期：{{create_date}}</small>
         </div>
 
-        {{breaklines content}}
+        <div class="text-justify">
+            {{breaklines content}}
+        </div>
 
         {{#if pdf}}
         <div class="w-100 pdf-body mt-3">
