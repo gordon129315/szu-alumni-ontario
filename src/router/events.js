@@ -96,6 +96,8 @@ router.post(
                     ""
                 );
             }
+            event.create_date = new Date(event.create_date.replace('-','/'));
+            event.event_date = new Date(event.event_date.replace('-','/'));
             event = new Event(event);
             await event.save();
             res.status(201).send(event);

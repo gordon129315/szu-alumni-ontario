@@ -83,8 +83,8 @@
         const form_data = new FormData()
         form_data.append('title', $('#inputTitle').val())
         form_data.append('author', $('#inputAuthor').val() || '')
-        form_data.append('create_date', new Date(create_date.replace('-','/')))
-        form_data.append('event_date', new Date(event_date.replace('-','/')))
+        form_data.append('create_date', create_date)
+        form_data.append('event_date', event_date)
         form_data.append('content', $('#inputEventContent').val() || '')
         //form_data.append('pdf', $('#uploadPDF')[0].files[0])
         for (const pdfFile of $('#uploadPDF')[0].files) {
