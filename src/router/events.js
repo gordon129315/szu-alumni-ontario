@@ -48,13 +48,11 @@ const storage = multer.diskStorage({
         }
     },
     filename: function(req, file, callback) {
-        const ext = file.originalname.split(".").pop();
-        const filename =
-            req.body.title +
-            file.originalname.substr(0, file.originalname.lastIndexOf(".")) +
-            Date.now() +
-            "." +
-            ext;
+        const filename = [
+            Date.now(),
+            req.body.title.replace(/ /g, "+"),
+            file.originalname.trim().replace(/ /g, "+")
+        ].join("_");
         callback(null, filename);
     }
 });
@@ -91,18 +89,15 @@ router.post(
 
         try {
             if (req.files.pdf) {
-                event.pdf = req.files.pdf[0].path.replace(
-                    path.join(__dirname, "../../public"),
-                    ""
-                );
+                event.pdf = "/files/events/" + req.files.pdf[0].filename;
             }
-            event.create_date = new Date(event.create_date.replace('-','/'));
-            event.event_date = new Date(event.event_date.replace('-','/'));
+            event.create_date = new Date(event.create_date.replace(/\-/g, "/"));
+            event.event_date = new Date(event.event_date.replace(/\-/g, "/"));
             event = new Event(event);
             await event.save();
             res.status(201).send(event);
         } catch (e) {
-            res.status(400).send({ err: e });
+            res.status(400).send({ err: e.message });
         }
     }
 );

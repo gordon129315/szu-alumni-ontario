@@ -73,16 +73,31 @@
     $('#create-event-form').on('submit',(e)=>{
         e.preventDefault();
 
+        const title = $('#inputTitle').val().trim();
         const create_date = $('#inputCreateDate').val();
         const event_date = $('#inputEventDate').val();
 
-        if (!checkDateFormat(create_date) || !checkDateFormat(event_date)) {
-            return alert('请修改输入的日期格式为YYYY-MM-DD');
+        if (!title) {
+            alert('请输入活动标题');
+            $('#inputTitle').focus();
+            return;
+        }
+
+        if (!checkDateFormat(create_date)) {
+            alert('请修改日期格式为YYYY-MM-DD')
+            $('#inputCreateDate').focus()
+            return;
+        }
+
+        if (!checkDateFormat(event_date)) {
+            alert('请修改日期格式为YYYY-MM-DD')
+            $('#inputEventDate').focus()
+            return;
         }
 
         const form_data = new FormData()
-        form_data.append('title', $('#inputTitle').val())
-        form_data.append('author', $('#inputAuthor').val() || '')
+        form_data.append('title', title)
+        form_data.append('author', $('#inputAuthor').val().trim() || '佚名')
         form_data.append('create_date', create_date)
         form_data.append('event_date', event_date)
         form_data.append('content', $('#inputEventContent').val() || '')

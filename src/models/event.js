@@ -25,7 +25,7 @@ const eventSchema = new mongoose.Schema(
             type: String
         },
         pdf: {
-            type: String
+            type: String //relative path of pdf
         }
     },
     {
