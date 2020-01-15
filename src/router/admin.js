@@ -1,8 +1,7 @@
 const express = require("express");
 const Admin = require("../models/admin");
 const router = express.Router();
-const { auth,hasToken } = require('../middleware/auth')
-
+const { auth, hasToken } = require("../middleware/auth");
 
 router.get("/", (req, res) => {
     res.render("sign-in");
@@ -39,26 +38,21 @@ router.post("/login", async (req, res) => {
     }
 });
 
-router.get('/get/all/admin', auth, async (req, res) => {
-    if (!req.token) {
-        return res.status(400).redirect('/');
-    }
-
-    try{
+router.get("/get/all/admin", auth, hasToken, async (req, res) => {
+    try {
         const all = await Admin.find();
         res.send(all);
-    }
-    catch(e) {
+    } catch (e) {
         res.status(500).send(e);
     }
-})
+});
 
-router.get('/get/token', auth, hasToken, async (req, res) => {
-    res.send({token: req.token})
-})
+router.get("/get/token", auth, hasToken, async (req, res) => {
+    res.send({ token: req.token });
+});
 
-router.get('/logout', auth, hasToken, async (req, res) => {
+router.get("/logout", auth, hasToken, async (req, res) => {
     res.clearCookie("x-auth-token");
     res.redirect("/");
-})
+});
 module.exports = router;
