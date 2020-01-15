@@ -35,17 +35,17 @@
         {{#if pdf}}
         <div class="w-100 pdf-body mt-3">
             <p>若不能正常显示，<a href="{{pdf}}" target="_blank">请点这里</a></p>
-            <a id="pdf" href="{{pdf}}"></a>
+            <embed class="w-100" height="600" src="{{pdf}}" type="application/pdf">
         </div>
+
+        
+
         {{/if}}
 
     </div>
 </div>
 
 <script>
-
-    $('#pdf').media({width: '100%',height: '600px',autoplay: true});
-
     $('#edit').on('click', () => {
         alert('待开发....但您可以删除文章再重发')
     });
