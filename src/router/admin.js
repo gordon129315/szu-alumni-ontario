@@ -1,7 +1,7 @@
 const express = require("express");
 const Admin = require("../models/admin");
 const router = express.Router();
-const { auth } = require('../middleware/auth')
+const { auth,hasToken } = require('../middleware/auth')
 
 
 router.get("/", (req, res) => {
@@ -53,5 +53,12 @@ router.get('/get/all/admin', auth, async (req, res) => {
     }
 })
 
+router.get('/get/token', auth, hasToken, async (req, res) => {
+    res.send({token: req.token})
+})
 
+router.get('/logout', auth, hasToken, async (req, res) => {
+    res.clearCookie("x-auth-token");
+    res.redirect("/");
+})
 module.exports = router;
