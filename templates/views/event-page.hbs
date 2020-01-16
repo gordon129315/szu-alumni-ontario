@@ -36,11 +36,12 @@
         <div class="w-100 pdf-body mt-3">
             <p class="my-3">若<b>PDF</b>不能正常显示，<a href="{{pdf}}" target="_blank">请点这里</a></p>
             {{!-- <embed class="w-100" height="600" src="{{pdf}}" type="application/pdf"> --}}
-            {{!-- <embed class="w-100" height="600" src="{{pdf}}" type="application/pdf"> --}}
-            <iframe src="https://docs.google.com/gview?url=https://szualumni.org{{pdf}}&embedded=true" style="height: 640px;" frameborder="0"></iframe>
+            <iframe id="pdf-frame" src="#" style="height: 640px;" frameborder="0"></iframe>
         </div>
 
-        
+        <script>
+            $('#pdf-frame').attr('src', 'https://docs.google.com/gview?url=http://'+ document.domain + {{pdf}} + '&embedded=true')
+        </script>
 
         {{/if}}
 
