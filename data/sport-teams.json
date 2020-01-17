@@ -2,7 +2,7 @@
     {
         "tagId": "Golf",
         "name": "高尔夫俱乐部",
-        "image": "/img/sz-logo.png",
+        "image": "/img/teams/golf-team.jpg",
         "header": "Bryan Chen",
         "leader": "",
         "members": [
@@ -12,58 +12,7 @@
             }
         ]
     },
-    {
-        "tagId": "Hiking",
-        "name": "远足登山俱乐部",
-        "image": "/img/sz-logo.png",
-        "header": "Jeffrey Ji",
-        "leader": "",
-        "members": [
-            {
-                "team": "",
-                "names": "Gordon, Lesley, Catherine, Yolanda, Helen, Julie, Kim, Yiwen"
-            }
-        ]
-    },
-    {
-        "tagId": "Volley",
-        "name": "排球俱乐部",
-        "image": "/img/teams/all-members.png",
-        "header": "Simon Qin",
-        "leader": "Jeff Ding",
-        "members": [
-            {
-                "team": "",
-                "names": "Jeffrey, Yoson，Bryan，杨亚亚, Lily, Qi XiaoDong, Benson, Richard"
-            }
-        ]
-    },
-    {
-        "tagId": "Dance",
-        "name": "舞蹈俱乐部",
-        "image": "/img/sz-logo.png",
-        "header": "",
-        "leader": "",
-        "members": [
-            {
-                "team": "一队",
-                "names": "名字、名字、名字、名字、名字"
-            }
-        ]
-    },
-    {
-        "tagId": "Tennis",
-        "name": "网球俱乐部",
-        "image": "/img/sz-logo.png",
-        "header": "Jeff",
-        "leader": "",
-        "members": [
-            {
-                "team": "",
-                "names": "全体感兴趣的校友"
-            }
-        ]
-    },
+
     {
         "tagId": "Badminton",
         "name": "羽毛球俱乐部",
@@ -78,6 +27,7 @@
         ],
         "note": "裁判: George"
     },
+
     {
         "tagId": "TableTennis",
         "name": "乒乓球俱乐部",
@@ -96,6 +46,66 @@
             {
                 "team": "三队",
                 "names": "Jeffrey, Nelson, Lucia, Catherine, Emily"
+            }
+        ]
+    },
+
+    {
+        "tagId": "Volley",
+        "name": "排球俱乐部",
+        "image": "/img/teams/all-members.png",
+        "header": "Simon Qin",
+        "leader": "Jeff Ding",
+        "members": [
+            {
+                "team": "男队",
+                "names": "Ryan, 漆晓东, Martyn 魏, 殷冠东, 麦剑毅, 赵昭杰, 宁武, 万若旋, 陈国兴, 苏涛, Jeffrey, 卢健"
+            },
+            {
+                "team": "女队",
+                "names": "Lily, 杨亚亚, Jessie Wang, Christina"
+            }
+        ]
+    },
+
+    {
+        "tagId": "Tennis",
+        "name": "网球俱乐部",
+        "image": "/img/sz-logo.png",
+        "header": "Jeff",
+        "leader": "",
+        "members": [
+            {
+                "team": "",
+                "names": "全体感兴趣的校友"
+            }
+        ]
+    },
+
+    {
+        "tagId": "Hiking",
+        "name": "远足登山俱乐部",
+        "image": "/img/sz-logo.png",
+        "header": "Jeffrey Ji",
+        "leader": "",
+        "members": [
+            {
+                "team": "",
+                "names": "Gordon, Lesley, Catherine, Yolanda, Helen, Julie, Kim, Yiwen"
+            }
+        ]
+    },
+
+    {
+        "tagId": "Dance",
+        "name": "舞蹈俱乐部",
+        "image": "/img/sz-logo.png",
+        "header": "",
+        "leader": "",
+        "members": [
+            {
+                "team": "一队",
+                "names": "名字、名字、名字、名字、名字"
             }
         ]
     },
