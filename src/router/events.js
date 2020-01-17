@@ -3,7 +3,7 @@ const router = express.Router();
 const Event = require("../models/event");
 const fileService = require("../util/fileService");
 const { auth, hasToken } = require("../middleware/auth");
-const multer = require("multer");
+const { upload } = require("../util/multer");
 const path = require("path");
 const fs = require("fs");
 
@@ -29,50 +29,47 @@ router.get("/", auth, async (req, res) => {
     }
 });
 
-const storage = multer.diskStorage({
-    destination: function(req, file, callback) {
-        if (file.fieldname === "pdf") {
-            const pdf_dir = path.join(__dirname, "../../public/files/events");
-            if (!fs.existsSync(pdf_dir)) {
-                fs.mkdirSync(pdf_dir);
-            }
-            callback(null, pdf_dir);
-        } else if (file.fieldname === "photos") {
-            const img_dir = path.join(__dirname, "../../public/img/events");
-            if (!fs.existsSync(img_dir)) {
-                fs.mkdirSync(img_dir);
-            }
-            callback(null, img_dir);
-        } else {
-            return callback(new Error("no this field name"));
-        }
-    },
-    filename: function(req, file, callback) {
-        const filename = [
-            Date.now(),
-            file.originalname.trim().replace(/ /g, "+")
-        ].join("_");
-        callback(null, filename);
+// 打开“发布活动”页面
+router.get("/create", auth, hasToken, (req, res) => {
+    res.render("create-event");
+});
+
+// 获取某篇文章
+router.get("/:id", auth, async (req, res) => {
+    const event_id = req.params.id.trim();
+    let event;
+    try {
+        event = await Event.findById(event_id);
+        event = event.toJSON();
+
+        event.login = req.token ? true : false;
+        res.render("event-page", event);
+    } catch (e) {
+        event = fileService.getEmptyEvent();
+        res.status(404).render("event-page", event);
     }
 });
 
-const upload = multer({
-    storage: storage,
-    fileFilter: (req, file, callback) => {
-        if (file.fieldname === "pdf") {
-            if (!file.originalname.match(/\.pdf$/)) {
-                return callback(new Error("Please upload a legal file"));
+// 上传图片
+router.post(
+    "/uploadImg",
+    auth,
+    hasToken,
+    upload.array("photos", 50),
+    async (req, res) => {
+        let photos;
+        try {
+            if (req.files) {
+                photos = req.files.map((photo) => {
+                    return "/img/events/" + photo.filename;
+                });
             }
-        } else if (file.fieldname === "photos") {
-            if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
-                return callback(new Error("Please upload a legal file"));
-            }
-        } else {
-            return callback(new Error("no this field name"));
+            res.status(201).send({ photos });
+        } catch (e) {
+            res.status(500).send({ err: e.message });
         }
-        callback(undefined, true);
     }
-});
+);
 
 // 新建活动
 router.post("/", auth, hasToken, upload.single("pdf"), async (req, res) => {
@@ -95,26 +92,7 @@ router.post("/", auth, hasToken, upload.single("pdf"), async (req, res) => {
     }
 });
 
-router.get("/create", auth, hasToken, (req, res) => {
-    res.render("create-event");
-});
-
-// 获取某篇文章
-router.get("/:id", auth, async (req, res) => {
-    const event_id = req.params.id.trim();
-    let event;
-    try {
-        event = await Event.findById(event_id);
-        event = event.toJSON();
-
-        event.login = req.token ? true : false;
-        res.render("event-page", event);
-    } catch (e) {
-        event = fileService.getEmptyEvent();
-        res.status(404).render("event-page", event);
-    }
-});
-
+// 删除文章
 router.delete("/:id", auth, hasToken, async (req, res) => {
     try {
         const event_id = req.params.id.trim();
@@ -146,25 +124,5 @@ router.delete("/:id", auth, hasToken, async (req, res) => {
         res.status(500).send({ err: e.message });
     }
 });
-
-router.post(
-    "/uploadImg",
-    auth,
-    hasToken,
-    upload.array("photos", 50),
-    async (req, res) => {
-        let photos;
-        try {
-            if (req.files) {
-                photos = req.files.map((photo) => {
-                    return "/img/events/" + photo.filename;
-                });
-            }
-            res.status(201).send({ photos });
-        } catch (e) {
-            res.status(500).send({ err: e.message });
-        }
-    }
-);
 
 module.exports = router;
