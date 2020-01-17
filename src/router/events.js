@@ -119,6 +119,9 @@ router.delete("/:id", auth, hasToken, async (req, res) => {
     try {
         const event_id = req.params.id.trim();
         const event = await Event.findById(event_id);
+        if (!event) {
+            throw new Error("找不此文章或此文章已被删除!");
+        }
         if (event.pdf) {
             const pdf_path = path.join(__dirname, "../../public", event.pdf);
             if (fs.existsSync(pdf_path)) {
