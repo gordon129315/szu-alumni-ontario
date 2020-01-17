@@ -20,13 +20,13 @@
                 ],
                 "info": [
                     {
-                        "content": "电话: 905.305.9099"
+                        "content": "电话: 905-305-9099"
                     },
                     {
-                        "content": "邮箱: august.jian@gmail.com"
+                        "content": "邮箱: august.jian@gmail.com"
                     },
                     {
-                        "content": "地址: Unit 402, 3100 Steeles Ave East, Markham, ON, L3R 8T3"
+                        "content": "地址: Unit 402, 3100 Steeles Ave East, Markham, ON, L3R 8T3"
                     }
                 ],
                 "website": "https://www.upicanada.com",
@@ -34,27 +34,30 @@
                 "title": "Executive VP Real Estate"
             },
             {
-                "id": "template",
-                "enterprise-name": "XXXX有限公司",
+                "id": "Michael-Chiu",
+                "enterprise-name": "廿一世纪黄埔实业",
                 "logo": [
                     {
-                        "logo-link": "/img/sz-logo.png"
+                        "logo-link": "https://www.michaelchiu.ca/eadf26jst/1020/c21_kingsquay.png"
+                    },
+                    {
+                        "logo-link": "/img/enterprise/logo/Michael-Chiu/business-card.jpg"
                     }
                 ],
                 "info": [
                     {
-                        "content": "电话:"
+                        "content": "电话: 416-318-9028"
                     },
                     {
-                        "content": "邮箱:"
+                        "content": "邮箱: micchiu@trebnet.com"
                     },
                     {
-                        "content": "公司简介:"
+                        "content": "地址: Unit 401, 7300 Warden Ave, Markham, ON, L3R 9Z6"
                     }
                 ],
-                "website": "JavaScript:Void(0);",
-                "name": "校友姓名",
-                "title": "职位"
+                "website": "https://www.michaelchiu.ca",
+                "name": "Michael Chiu",
+                "title": "Broker"
             }
         ]
     },
@@ -82,20 +85,20 @@
                         "content": "立足华社，助君凯旋"
                     },
                     {
-                        "content": "电话：416-490-8555"
+                        "content": "电话: 416-490-8555"
                     },
                     {
-                        "content": "传真：416-490-9555"
+                        "content": "传真: 416-490-9555"
                     },
                     {
-                        "content": "邮箱：xunmei@lklawfirm.ca"
+                        "content": "邮箱: xunmei@lklawfirm.ca"
                     },
                     {
-                        "content": "地址：250 Consumers Road, Suite 909, North York, M2J 4V6"
+                        "content": "地址: 250 Consumers Road, Suite 909, North York, M2J 4V6"
                     }
                 ],
                 "website": "https://www.lklawfirm.ca",
-                "name": "Lydia-Zhou",
+                "name": "周迅梅 Lydia",
                 "title": "律师、公证人"
             }
         ]
@@ -124,7 +127,7 @@
                         "content": "公司简介:"
                     }
                 ],
-                "website": "JavaScript:Void(0);",
+                "website": "",
                 "name": "校友姓名",
                 "title": "职位"
             }
@@ -154,7 +157,7 @@
                         "content": "公司简介:"
                     }
                 ],
-                "website": "JavaScript:Void(0);",
+                "website": "",
                 "name": "校友姓名",
                 "title": "职位"
             }
@@ -178,10 +181,10 @@
                         "content": "给个人工作室、中小型企业提供技术支持，制作公司网站。"
                     },
                     {
-                        "content": "邮箱:gordonyuzr@gmail.com"
+                        "content": "邮箱: gordonyuzr@gmail.com"
                     }
                 ],
-                "website": "JavaScript:Void(0);",
+                "website": "",
                 "name": "Gordon Yu",
                 "title": "网页工程师"
             },
@@ -204,7 +207,7 @@
                         "content": "公司简介:"
                     }
                 ],
-                "website": "JavaScript:Void(0);",
+                "website": "",
                 "name": "校友姓名",
                 "title": "职位"
             }
@@ -234,7 +237,7 @@
                         "content": "公司简介:"
                     }
                 ],
-                "website": "JavaScript:Void(0);",
+                "website": "",
                 "name": "校友姓名",
                 "title": "职位"
             }
