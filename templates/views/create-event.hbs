@@ -175,8 +175,15 @@
         form_data.append('create_date', create_date)
         form_data.append('event_date', event_date)
         form_data.append('content', $('#inputEventContent').val() || '')
-        form_data.append('photos',JSON.stringify(photos))
-        form_data.append('pdf', $pdf, $pdf.name)
+
+        if (photos) {
+            form_data.append('photos',JSON.stringify(photos))
+        }
+        
+        if ($pdf) {
+            form_data.append('pdf', $pdf)
+        }
+        
 
         $('button[type="submit"]').prop("disabled", true);
 
