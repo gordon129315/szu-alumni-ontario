@@ -33,7 +33,7 @@
         </div>
 
         {{#if pdf}}
-        <div class="w-100 pdf-body mt-3">
+        <div class="w-100 pdf-body my-3">
             <p class="my-3">若<b>PDF</b>不能正常显示，<a href="{{pdf}}" target="_blank">请点这里</a></p>
             {{!-- <embed class="w-100" height="600" src="{{pdf}}" type="application/pdf"> --}}
             <object data="{{pdf}}" type="application/pdf" width="100%" height="600">
@@ -45,6 +45,16 @@
             </object>
         </div>
         {{/if}}
+
+        {{#if photos}}
+        <div class="w-100 photos-body my-3">
+            {{# photos}}
+            <div class="d-none d-md-block w-75 mx-auto my-3"><img src="{{url}}" class="w-100"></div>
+            <div class="d-block d-md-none w-100 mx-auto my-3"><img src="{{url}}" class="w-100"></div>
+            {{/ photos}}
+        </div>
+        {{/if}}
+        
 
     </div>
 </div>

@@ -24,6 +24,13 @@ const eventSchema = new mongoose.Schema(
         content: {
             type: String
         },
+        photos: [
+            {
+                url: {
+                    type: String,
+                }
+            }
+        ],
         pdf: {
             type: String //relative path of pdf
         }

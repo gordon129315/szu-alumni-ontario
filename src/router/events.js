@@ -37,7 +37,7 @@ const storage = multer.diskStorage({
                 fs.mkdirSync(pdf_dir);
             }
             callback(null, pdf_dir);
-        } else if (file.fieldname === "photo") {
+        } else if (file.fieldname === "photos") {
             const img_dir = path.join(__dirname, "../../public/img/events");
             if (!fs.existsSync(img_dir)) {
                 fs.mkdirSync(img_dir);
@@ -50,7 +50,6 @@ const storage = multer.diskStorage({
     filename: function(req, file, callback) {
         const filename = [
             Date.now(),
-            req.body.title.replace(/ /g, "+"),
             file.originalname.trim().replace(/ /g, "+")
         ].join("_");
         callback(null, filename);
@@ -64,7 +63,7 @@ const upload = multer({
             if (!file.originalname.match(/\.pdf$/)) {
                 return callback(new Error("Please upload a legal file"));
             }
-        } else if (file.fieldname === "photo") {
+        } else if (file.fieldname === "photos") {
             if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
                 return callback(new Error("Please upload a legal file"));
             }
@@ -76,36 +75,27 @@ const upload = multer({
 });
 
 // 新建活动
-router.post(
-    "/",
-    auth,
-    hasToken,
-    upload.fields([
-        { name: "photo", maxCount: 20 },
-        { name: "pdf", maxCount: 1 }
-    ]),
-    async (req, res) => {
-        let event = req.body;
+router.post("/", auth, hasToken, upload.single("pdf"), async (req, res) => {
+    let event = req.body;
 
-        try {
-            if (req.files.pdf) {
-                event.pdf = "/files/events/" + req.files.pdf[0].filename;
-            }
-            event.create_date = new Date(event.create_date.replace(/\-/g, "/"));
-            event.event_date = new Date(event.event_date.replace(/\-/g, "/"));
-            event = new Event(event);
-            await event.save();
-            res.status(201).send(event);
-        } catch (e) {
-            res.status(400).send({ err: e.message });
+    try {
+        if (req.file) {
+            event.pdf = "/files/events/" + req.file.filename;
         }
-    }
-);
+        event.create_date = new Date(event.create_date.replace(/\-/g, "/"));
+        event.event_date = new Date(event.event_date.replace(/\-/g, "/"));
+        event.photos = JSON.parse(event.photos);
 
-router.get("/create", auth, (req, res) => {
-    if (!req.token) {
-        return res.status(401).redirect("/events");
+        event = new Event(event);
+        await event.save();
+        // console.log(event);
+        res.status(201).send(event);
+    } catch (e) {
+        res.status(500).send({ err: e.message });
     }
+});
+
+router.get("/create", auth, hasToken, (req, res) => {
     res.render("create-event");
 });
 
@@ -135,11 +125,43 @@ router.delete("/:id", auth, hasToken, async (req, res) => {
                 fileService.deleteFile(pdf_path);
             }
         }
+        if (event.photos) {
+            event.photos.forEach((photo) => {
+                const photo_path = path.join(
+                    __dirname,
+                    "../../public",
+                    photo.url
+                );
+                if (fs.existsSync(photo_path)) {
+                    fileService.deleteFile(photo_path);
+                }
+            });
+        }
         await event.remove();
         res.send({});
     } catch (e) {
         res.status(500).send({ err: e.message });
     }
 });
+
+router.post(
+    "/uploadImg",
+    auth,
+    hasToken,
+    upload.array("photos", 50),
+    async (req, res) => {
+        let photos;
+        try {
+            if (req.files) {
+                photos = req.files.map((photo) => {
+                    return "/img/events/" + photo.filename;
+                });
+            }
+            res.status(201).send({ photos });
+        } catch (e) {
+            res.status(500).send({ err: e.message });
+        }
+    }
+);
 
 module.exports = router;

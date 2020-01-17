@@ -42,13 +42,18 @@
             </div>
 
             <div class="form-group">
-                <label for="uploadPhoto">上传图片(每张不得超过2M) 待开发...</label>
-                <input type="file" name="photo" class="form-control-file" id="uploadPhoto" accept=".jpg,.jpeg,.png" disabled>
+                <label for="uploadPhoto" class="btn btn-outline-primary">添加图片<small>(每张小于2M)</small></label>
+                <input type="file" name="photos" class="form-control-file" id="uploadPhoto" accept=".jpg,.jpeg,.png" hidden multiple>
             </div>
 
+            <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6" id="gallery">
+            </div>
+
+
             <div class="form-group">
-                <label for="uploadPDF">上传PDF (不得超过5M)</label>
-                <input type="file" name="pdf" class="form-control-file" id="uploadPDF" accept=".pdf">
+                <label for="uploadPDF" class="btn btn-outline-primary">上传PDF<small>(小于5M)</small></label> 
+                <input type="file" name="pdf" class="form-control-file" id="uploadPDF" accept=".pdf" hidden>
+                <span id="PDFlable" class="ml-3"></span>
             </div>
 
             <button type="submit" class="btn btn-primary">发布活动</button>
@@ -69,6 +74,68 @@
     const checkDateFormat = (date) => {
         return date.match(/^\d{4}\-\d{2}\-\d{2}$/);
     }
+
+    const showImg = (data) => {
+        data.forEach((url)=>{
+            let $div = $('<div>',{
+                            class: 'col mb-2'
+                        })
+            let $img = $('<img>',{
+                            src: url,
+                            class: 'w-100'
+                        })
+            $div.append($img).appendTo($('#gallery'))
+        })
+    }
+
+    $('#uploadPhoto').on('change', () => {
+        let $imgs = $('#uploadPhoto')[0].files
+        for (const imgFile of $imgs) {
+            if (imgFile.size > 2097152) {
+                return alert('上传图片每张不得超过2M')
+            }
+        }
+
+        if ($('#uploadPhoto').val()) {
+            $('input[name="photos"]').prop("disabled", true);
+            const form_data = new FormData()
+            for (const imgFile of $imgs) {
+                form_data.append('photos',imgFile,imgFile.name)
+            }
+
+            fetch('/events/uploadImg', {
+                method: 'POST',
+                body: form_data
+            }).then((res) => res.json())
+            .then((data) => {
+                if (data.err) {
+                    return alert(data.err);
+                }
+                showImg(data.photos);
+                $('#uploadPhoto').val(null);
+                $('input[name="photos"]').prop("disabled", false);
+            })
+            .catch((err) => console.log(err) );
+        }
+    })
+
+    $('#uploadPDF').on('change', () => {
+        if (!$('#uploadPDF').val()) {
+            return $('#PDFlable').html('未选择').removeClass('text-success').addClass('text-danger');
+        }
+        else {
+            let $pdf = $('#uploadPDF')[0].files[0]
+            if ($pdf.size > 5242880) {
+                alert('上传PDF不得超过5M');
+                $('#uploadPDF').val(null);
+                $('#PDFlable').html('未选择').removeClass('text-success').addClass('text-danger');
+                return;
+            }
+            $('#PDFlable').html('已选择: ' + $pdf.name + " - " + ($pdf.size/1048576).toFixed(2) + "M")
+                            .addClass('text-success')
+                            .removeClass('text-danger')
+        }
+    })
 
     $('#create-event-form').on('submit',(e)=>{
         e.preventDefault();
@@ -95,19 +162,21 @@
             return;
         }
 
+        let photos = []
+        $('#gallery img').each(function() {
+            photos.push({url: $(this).attr('src')})
+        })
+
+        let $pdf = $('#uploadPDF')[0].files[0]
+
         const form_data = new FormData()
         form_data.append('title', title)
         form_data.append('author', $('#inputAuthor').val().trim() || '佚名')
         form_data.append('create_date', create_date)
         form_data.append('event_date', event_date)
         form_data.append('content', $('#inputEventContent').val() || '')
-        //form_data.append('pdf', $('#uploadPDF')[0].files[0])
-        for (const pdfFile of $('#uploadPDF')[0].files) {
-            if (pdfFile.size > 5242880) {
-                return alert('上传PDF不得超过5M')
-            }
-            form_data.append('pdf',pdfFile,pdfFile.name)
-        }
+        form_data.append('photos',JSON.stringify(photos))
+        form_data.append('pdf', $pdf, $pdf.name)
 
         $('button[type="submit"]').prop("disabled", true);
 
@@ -119,7 +188,7 @@
             if (data.err) {
                 return alert(data.err);
             }
-            console.log(data);
+            //console.log(data);
             window.location.href = `/events/${data._id}`;
           })
           .catch((err) => console.log(err) );

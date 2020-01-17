@@ -27,17 +27,14 @@ hbs.registerHelper("breaklines", function(text) {
         "<p>" +
         text
             .replace(/^(\r\n|\n|\r)/gm, "&nbsp;\n")
-            // .replace(/  /g, "&nbsp;&nbsp;")
             .replace(/(\r\n|\n|\r).*?/gm, "</p><p>") +
         "</p>";
 
     // 匹配 <p><img src="url"></p> 中的 "url"
-    text = text.replace(
-        /(\<p\>)(?:(?!\1).)*?\<img\ssrc\=(\".+?\")\>.*?\<\/p\>/g,
-        '<p class="text-center"><img src=$2 class="my-3 w-75"></p>'
-    );
-
-    // text.match(/(\<p\>)(?:(?!\1).)*?\<img\ssrc\=(\".+?\")\>.*?\<\/p\>/g)
+    // text = text.replace(
+    //     /(\<p\>)(?:(?!\1).)*?\<img\ssrc\=(\".+?\")\>.*?\<\/p\>/g,
+    //     '<p class="text-center"><img src=$2 class="my-3 w-75"></p>'
+    // );
 
     return new hbs.SafeString(text);
 });
