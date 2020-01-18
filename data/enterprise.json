@@ -139,27 +139,30 @@
         "icon": "fas fa-couch",
         "enterprise": [
             {
-                "id": "template",
-                "enterprise-name": "XXXX有限公司",
+                "id": "Carol-Huang",
+                "enterprise-name": "Amazon MorShine US",
                 "logo": [
                     {
-                        "logo-link": "/img/sz-logo.png"
+                        "logo-link": "https://img.icons8.com/color/800/000000/amazon.png"
+                    },
+                    {
+                        "logo-link": "https://images-na.ssl-images-amazon.com/images/I/31bDPp6D18L.jpg"
                     }
                 ],
                 "info": [
                     {
-                        "content": "电话:"
+                        "content": "MorShine Kitchen is always dedicated to providing you with better and more convenient kitchen life solutions.The main products include air fryers, sous vide cookers, vacuum blenders, juicers, slow juicers, electric pressure cookers, induction cookers, food processors, rice cookers."
                     },
                     {
-                        "content": "邮箱:"
+                        "content": " "
                     },
                     {
-                        "content": "公司简介:"
+                        "content": "Seller Link: https://www.amazon.com/sp?seller=A3VJYDLSA4VML3"
                     }
                 ],
-                "website": "",
-                "name": "校友姓名",
-                "title": "职位"
+                "website": "https://www.amazon.com/s?i=merchant-items&me=A3VJYDLSA4VML3",
+                "name": "Carol",
+                "title": "亚马逊零售商"
             }
         ]
     },
