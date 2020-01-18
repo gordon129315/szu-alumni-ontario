@@ -91,7 +91,7 @@ app.get("/sport-teams", (req, res) => {
 app.get("/downloads", (req, res) => {
     let files = [];
     const dir = path.join(__dirname, "../public/files/downloads");
-    fileService.walkDir(dir, dir, files);
+    fileService.walkDir(dir, files);
     files = files
         .filter((f) => f.file_name.endsWith(".pdf"))
         .sort((f1, f2) => f1.create_time < f2.create_time);

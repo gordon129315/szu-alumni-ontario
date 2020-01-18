@@ -125,4 +125,46 @@ router.delete("/:id", auth, hasToken, async (req, res) => {
     }
 });
 
+router.delete("/cache/photos", auth, hasToken, async (req, res) => {
+    const event_photo_dir = path.join(__dirname, "../../public", "img/events");
+    if (!fs.existsSync(event_photo_dir)) {
+        return res.send({ msg: "dir not exist" });
+    }
+    const all_photos = [];
+    fileService.walkDir(event_photo_dir, all_photos);
+
+    if (all_photos.length == 0) {
+        return res.send({ msg: "dir is empty" });
+    }
+
+    const all_photos_path = all_photos.map((photo) =>
+        path.join("/img/events", photo.file_path)
+    );
+
+    try {
+        const events = await Event.find();
+        const exist_photos_path = [];
+        events.forEach((event) => {
+            event.photos.forEach((photo) => {
+                exist_photos_path.push(path.join(photo.url));
+            });
+        });
+
+        const redundant_photos_path = all_photos_path.filter(
+            (path) => !exist_photos_path.includes(path)
+        );
+
+        redundant_photos_path.forEach((photo_path) => {
+            const full_path = path.join(__dirname, "../../public", photo_path);
+            if (fs.existsSync(full_path)) {
+                fileService.deleteFile(full_path);
+            }
+        });
+
+        res.send({ delete: redundant_photos_path });
+    } catch (e) {
+        res.status(500).send(e);
+    }
+});
+
 module.exports = router;
