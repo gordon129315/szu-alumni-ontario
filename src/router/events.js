@@ -92,39 +92,24 @@ router.post("/", auth, hasToken, upload.single("pdf"), async (req, res) => {
     }
 });
 
-// 删除文章
-router.delete("/:id", auth, hasToken, async (req, res) => {
+// 发文章时删除选中的图片
+router.delete("/uploadImg", auth, hasToken, async (req, res) => {
     try {
-        const event_id = req.params.id.trim();
-        const event = await Event.findById(event_id);
-        if (!event) {
-            throw new Error("找不此文章或此文章已被删除!");
+        const url = req.body.url;
+        if (!url || typeof(url) !== 'string') {
+            throw new Error('无效的url')
         }
-        if (event.pdf) {
-            const pdf_path = path.join(__dirname, "../../public", event.pdf);
-            if (fs.existsSync(pdf_path)) {
-                fileService.deleteFile(pdf_path);
-            }
+        const photo_path = path.join(__dirname, "../../public", url);
+        if (fs.existsSync(photo_path)) {
+            fileService.deleteFile(photo_path);
         }
-        if (event.photos) {
-            event.photos.forEach((photo) => {
-                const photo_path = path.join(
-                    __dirname,
-                    "../../public",
-                    photo.url
-                );
-                if (fs.existsSync(photo_path)) {
-                    fileService.deleteFile(photo_path);
-                }
-            });
-        }
-        await event.remove();
-        res.send({});
+        res.send({ msg: "Deleted" });
     } catch (e) {
         res.status(500).send({ err: e.message });
     }
 });
 
+// 删除多余的图片
 router.delete("/cache/photos", auth, hasToken, async (req, res) => {
     const event_photo_dir = path.join(__dirname, "../../public", "img/events");
     if (!fs.existsSync(event_photo_dir)) {
@@ -164,6 +149,39 @@ router.delete("/cache/photos", auth, hasToken, async (req, res) => {
         res.send({ delete: redundant_photos_path });
     } catch (e) {
         res.status(500).send(e);
+    }
+});
+
+// 删除文章
+router.delete("/:id", auth, hasToken, async (req, res) => {
+    try {
+        const event_id = req.params.id.trim();
+        const event = await Event.findById(event_id);
+        if (!event) {
+            throw new Error("找不此文章或此文章已被删除!");
+        }
+        if (event.pdf) {
+            const pdf_path = path.join(__dirname, "../../public", event.pdf);
+            if (fs.existsSync(pdf_path)) {
+                fileService.deleteFile(pdf_path);
+            }
+        }
+        if (event.photos) {
+            event.photos.forEach((photo) => {
+                const photo_path = path.join(
+                    __dirname,
+                    "../../public",
+                    photo.url
+                );
+                if (fs.existsSync(photo_path)) {
+                    fileService.deleteFile(photo_path);
+                }
+            });
+        }
+        await event.remove();
+        res.send({});
+    } catch (e) {
+        res.status(500).send({ err: e.message });
     }
 });
 

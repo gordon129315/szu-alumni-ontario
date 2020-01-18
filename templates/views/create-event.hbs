@@ -47,6 +47,10 @@
             </div>
 
             <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6" id="gallery">
+                {{!-- <div class="col mb-2">
+                    <a href="#" class="close-icon"><i class="fas fa-times-circle fa-sm close"></i></a>
+                    <img src="/img/events/1579368218072_badminton-team.png" class="w-100">
+                </div> --}}
             </div>
 
 
@@ -80,11 +84,17 @@
             let $div = $('<div>',{
                             class: 'col mb-2'
                         })
+            let $close = $('<a>', {
+                            href: "#",
+                            class: 'close-icon'
+                        }).append($('<i>',{
+                                class: 'fas fa-times-circle fa-sm close'
+                            }))
             let $img = $('<img>',{
                             src: url,
                             class: 'w-100'
                         })
-            $div.append($img).appendTo($('#gallery'))
+            $div.append($close).append($img).appendTo($('#gallery'))
         })
     }
 
@@ -202,7 +212,26 @@
 
     });
 
+    $('#gallery').on('click', '.close-icon', (e) =>{
+        e.preventDefault();
+        $(e.target).bind('click',(e) => { return false;})
+        let $a = $(e.target).closest('a')
+        let url = $a.siblings('img').attr('src')
 
+        fetch('/events/uploadImg', {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({url})
+        }).then((res) => res.json())
+          .then((data) => {
+            if (data.err) {
+                $(e.target).unbind('click')
+                return alert(data.err);
+            }
+            $a.parent('div').remove()
+          })
+          .catch((err) => console.log(err) );
+    })
 
 </script>
 
