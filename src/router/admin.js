@@ -22,10 +22,7 @@ router.post("/", async (req, res) => {
 //login
 router.post("/login", async (req, res) => {
     try {
-        const admin = await Admin.findByCredentials(
-            req.body.account,
-            req.body.password
-        );
+        const admin = await Admin.findByCredentials(req.body.account, req.body.password);
 
         const token = admin.generateAuthToken();
         res.cookie("x-auth-token", token, {

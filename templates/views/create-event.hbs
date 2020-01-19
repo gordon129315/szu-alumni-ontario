@@ -42,7 +42,7 @@
             </div>
 
             <div class="form-group">
-                <label for="uploadPhoto" class="btn btn-outline-primary">添加图片<small>(每张小于2M)</small></label>
+                <label for="uploadPhoto" class="btn btn-outline-primary">添加图片<small>(每张小于2M，最多选择20张)</small></label>
                 <input type="file" name="photos" class="form-control-file" id="uploadPhoto" accept=".jpg,.jpeg,.png" hidden multiple>
             </div>
 
@@ -67,6 +67,9 @@
 
 <script>
 
+    let imgs_list = [];
+    let index = 0;
+
     $('.datepicker').datepicker({
         format: 'yyyy-mm-dd',
         todayHighlight:true,
@@ -79,23 +82,30 @@
         return date.match(/^\d{4}\-\d{2}\-\d{2}$/);
     }
 
-    const showImg = (data) => {
-        data.forEach((url)=>{
-            let $div = $('<div>',{
-                            class: 'col mb-2'
-                        })
-            let $close = $('<a>', {
-                            href: "#",
-                            class: 'close-icon'
-                        }).append($('<i>',{
-                                class: 'fas fa-times-circle fa-sm close'
-                            }))
-            let $img = $('<img>',{
-                            src: url,
-                            class: 'w-100'
-                        })
-            $div.append($close).append($img).appendTo($('#gallery'))
-        })
+    const showImg = (url, index) => {
+        let $div = $('<div>',{
+                        class: 'col mb-2'
+                    })
+        let $close = $('<a>', {
+                        href: "#",
+                        class: 'close-icon'
+                    }).append($('<i>',{
+                            class: 'fas fa-times-circle fa-sm close'
+                        }))
+        let $img = $('<img>',{
+                        id: 'img-'+index,
+                        src: url,
+                        class: 'w-100'
+                    })
+        $div.append($close).append($img).appendTo($('#gallery'))
+    }
+
+    const readURL = (img, index) => {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                showImg(e.target.result, index)
+            }
+            reader.readAsDataURL(img);
     }
 
     $('#uploadPhoto').on('change', () => {
@@ -108,24 +118,14 @@
 
         if ($('#uploadPhoto').val()) {
             $('input[name="photos"]').prop("disabled", true);
-            const form_data = new FormData()
             for (const imgFile of $imgs) {
-                form_data.append('photos',imgFile,imgFile.name)
+                index ++;
+                imgs_list.push([imgFile, index]);
+                readURL(imgFile, index)
             }
 
-            fetch('/events/uploadImg', {
-                method: 'POST',
-                body: form_data
-            }).then((res) => res.json())
-            .then((data) => {
-                if (data.err) {
-                    return alert(data.err);
-                }
-                showImg(data.photos);
-                $('#uploadPhoto').val(null);
-                $('input[name="photos"]').prop("disabled", false);
-            })
-            .catch((err) => console.log(err) );
+            $('#uploadPhoto').val(null);
+            $('input[name="photos"]').prop("disabled", false);
         }
     })
 
@@ -172,10 +172,14 @@
             return;
         }
 
-        let photos = []
-        $('#gallery img').each(function() {
-            photos.push({url: $(this).attr('src')})
-        })
+        if (imgs_list.length > 20) {
+            return alert('最多只可选择20张图片')
+        }
+
+        //let photos = []
+        //$('#gallery img').each(function() {
+        //    photos.push({url: $(this).attr('src')})
+        //})
 
         let $pdf = $('#uploadPDF')[0].files[0]
 
@@ -186,8 +190,11 @@
         form_data.append('event_date', event_date)
         form_data.append('content', $('#inputEventContent').val() || '')
 
-        if (photos) {
-            form_data.append('photos',JSON.stringify(photos))
+        if (imgs_list.length > 0) {
+            imgs_list.forEach(([imgFile, index]) => {
+                form_data.append('photos',imgFile)
+            })
+            
         }
         
         if ($pdf) {
@@ -216,21 +223,14 @@
         e.preventDefault();
         $(e.target).bind('click',(e) => { return false;})
         let $a = $(e.target).closest('a')
-        let url = $a.siblings('img').attr('src')
+        let img_id = $a.siblings('img').attr('id')
 
-        fetch('/events/uploadImg', {
-            method: 'DELETE',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({url})
-        }).then((res) => res.json())
-          .then((data) => {
-            if (data.err) {
-                $(e.target).unbind('click')
-                return alert(data.err);
-            }
-            $a.parent('div').remove()
-          })
-          .catch((err) => console.log(err) );
+        $a.parent('div').remove()
+
+        imgs_list = imgs_list.filter(([imgFile,index]) => {
+            return !(('img-' + index) == img_id)
+        })
+
     })
 
 </script>

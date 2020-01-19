@@ -50,6 +50,7 @@ router.get("/:id", auth, async (req, res) => {
     }
 });
 
+/*
 // 上传图片
 router.post(
     "/uploadImg",
@@ -70,44 +71,41 @@ router.post(
         }
     }
 );
+*/
 
 // 新建活动
-router.post("/", auth, hasToken, upload.single("pdf"), async (req, res) => {
-    let event = req.body;
+router.post(
+    "/",
+    auth,
+    hasToken,
+    upload.fields([
+        { name: "pdf", maxCount: 1 },
+        { name: "photos", maxCount: 20 }
+    ]),
+    async (req, res) => {
+        let event = req.body;
 
-    try {
-        if (req.file) {
-            event.pdf = "/files/events/" + req.file.filename;
+        try {
+            if (req.files.pdf && req.files.pdf.length > 0) {
+                event.pdf = "/files/events/" + req.files.pdf[0].filename;
+            }
+            if (req.files.photos && req.files.photos.length > 0) {
+                event.photos = req.files.photos.map((photo) => {
+                    return { url: "/img/events/" + photo.filename };
+                });
+            }
+            event.create_date = new Date(event.create_date.replace(/\-/g, "/"));
+            event.event_date = new Date(event.event_date.replace(/\-/g, "/"));
+
+            event = new Event(event);
+            await event.save();
+            // console.log(event);
+            res.status(201).send(event);
+        } catch (e) {
+            res.status(500).send({ err: e.message });
         }
-        event.create_date = new Date(event.create_date.replace(/\-/g, "/"));
-        event.event_date = new Date(event.event_date.replace(/\-/g, "/"));
-        event.photos = JSON.parse(event.photos);
-
-        event = new Event(event);
-        await event.save();
-        // console.log(event);
-        res.status(201).send(event);
-    } catch (e) {
-        res.status(500).send({ err: e.message });
     }
-});
-
-// 发文章时删除选中的图片
-router.delete("/uploadImg", auth, hasToken, async (req, res) => {
-    try {
-        const url = req.body.url;
-        if (!url || typeof(url) !== 'string') {
-            throw new Error('无效的url')
-        }
-        const photo_path = path.join(__dirname, "../../public", url);
-        if (fs.existsSync(photo_path)) {
-            fileService.deleteFile(photo_path);
-        }
-        res.send({ msg: "Deleted" });
-    } catch (e) {
-        res.status(500).send({ err: e.message });
-    }
-});
+);
 
 // 删除多余的图片
 router.delete("/cache/photos", auth, hasToken, async (req, res) => {
@@ -122,9 +120,7 @@ router.delete("/cache/photos", auth, hasToken, async (req, res) => {
         return res.send({ msg: "dir is empty" });
     }
 
-    const all_photos_path = all_photos.map((photo) =>
-        path.join("/img/events", photo.file_path)
-    );
+    const all_photos_path = all_photos.map((photo) => path.join("/img/events", photo.file_path));
 
     try {
         const events = await Event.find();
@@ -166,13 +162,9 @@ router.delete("/:id", auth, hasToken, async (req, res) => {
                 fileService.deleteFile(pdf_path);
             }
         }
-        if (event.photos) {
+        if (event.photos && event.photos.length > 0) {
             event.photos.forEach((photo) => {
-                const photo_path = path.join(
-                    __dirname,
-                    "../../public",
-                    photo.url
-                );
+                const photo_path = path.join(__dirname, "../../public", photo.url);
                 if (fs.existsSync(photo_path)) {
                     fileService.deleteFile(photo_path);
                 }

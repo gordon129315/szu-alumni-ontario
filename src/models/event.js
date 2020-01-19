@@ -27,7 +27,7 @@ const eventSchema = new mongoose.Schema(
         photos: [
             {
                 url: {
-                    type: String,
+                    type: String
                 }
             }
         ],
@@ -44,9 +44,7 @@ eventSchema.methods.toJSON = function() {
     const event = this;
     const eventObject = event.toObject(); //deep copy the event to eventObject
 
-    eventObject.create_date = eventObject.create_date
-        .toISOString()
-        .substr(0, 10);
+    eventObject.create_date = eventObject.create_date.toISOString().substr(0, 10);
     eventObject.event_date = eventObject.event_date.toISOString().substr(0, 10);
 
     return eventObject;

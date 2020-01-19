@@ -25,9 +25,7 @@ hbs.registerHelper("breaklines", function(text) {
     // text = hbs.Utils.escapeExpression(text);
     text =
         "<p>" +
-        text
-            .replace(/^(\r\n|\n|\r)/gm, "&nbsp;\n")
-            .replace(/(\r\n|\n|\r).*?/gm, "</p><p>") +
+        text.replace(/^(\r\n|\n|\r)/gm, "&nbsp;\n").replace(/(\r\n|\n|\r).*?/gm, "</p><p>") +
         "</p>";
 
     // 匹配 <p><img src="url"></p> 中的 "url"
@@ -52,10 +50,7 @@ app.use("/events", events);
 
 app.get("", (req, res) => {
     const headline_news = JSON.parse(
-        fs.readFileSync(
-            path.join(__dirname, "../data/headline-news.json"),
-            "utf8"
-        )
+        fs.readFileSync(path.join(__dirname, "../data/headline-news.json"), "utf8")
     );
     res.render("index", { headline_news });
 });
@@ -80,10 +75,7 @@ app.get("/enterprise", (req, res) => {
 
 app.get("/sport-teams", (req, res) => {
     const sport_teams = JSON.parse(
-        fs.readFileSync(
-            path.join(__dirname, "../data/sport-teams.json"),
-            "utf8"
-        )
+        fs.readFileSync(path.join(__dirname, "../data/sport-teams.json"), "utf8")
     );
     res.render("sport-teams", { sport_teams });
 });
