@@ -212,3 +212,8 @@ a:hover {
 #event-page p {
     margin: 0;
 }
+
+#create-event #gallery .ghost {
+    opacity: 0.4;
+    border: 1px dashed #333;
+}

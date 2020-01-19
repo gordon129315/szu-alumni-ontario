@@ -49,7 +49,7 @@
             <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-6" id="gallery">
                 {{!-- <div class="col mb-2">
                     <a href="#" class="close-icon"><i class="fas fa-times-circle fa-sm close"></i></a>
-                    <img src="/img/events/1579368218072_badminton-team.png" class="w-100">
+                    <img id="img-0" src="/img/events/1579368218072_badminton-team.png" class="w-100">
                 </div> --}}
             </div>
 
@@ -176,12 +176,7 @@
             return alert('最多只可选择20张图片')
         }
 
-        //let photos = []
-        //$('#gallery img').each(function() {
-        //    photos.push({url: $(this).attr('src')})
-        //})
-
-        let $pdf = $('#uploadPDF')[0].files[0]
+        $('button[type="submit"]').prop("disabled", true);
 
         const form_data = new FormData()
         form_data.append('title', title)
@@ -191,18 +186,23 @@
         form_data.append('content', $('#inputEventContent').val() || '')
 
         if (imgs_list.length > 0) {
+            // sort and filter imgs_list
+            const sorted_imgs_list = [];
+            $('#gallery div img').each(function() {
+                let img_id = $(this).attr('id')
+                sorted_imgs_list.push(imgs_list.find(([imgFile, index]) => index == img_id.replace('img-','')))
+            })
+            imgs_list = sorted_imgs_list;
+            
             imgs_list.forEach(([imgFile, index]) => {
                 form_data.append('photos',imgFile)
             })
-            
         }
-        
+
+        let $pdf = $('#uploadPDF')[0].files[0]
         if ($pdf) {
             form_data.append('pdf', $pdf)
         }
-        
-
-        $('button[type="submit"]').prop("disabled", true);
 
         fetch('/events', {
             method: 'POST',
@@ -219,6 +219,7 @@
 
     });
 
+    // delete chosen photo
     $('#gallery').on('click', '.close-icon', (e) =>{
         e.preventDefault();
         $(e.target).bind('click',(e) => { return false;})
@@ -232,6 +233,11 @@
         })
 
     })
+
+    new Sortable(gallery, {
+        animation: 400,
+        ghostClass: 'ghost'
+    });
 
 </script>
 
