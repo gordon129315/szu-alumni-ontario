@@ -32,7 +32,10 @@
                             <img src="{{image}}" class="w-100">
                         </div>
                         <div class="p-3">
-                            <p><b>队长: {{header}}</b></p>
+                            {{#if team-name}}
+                            <h4 class="font-weight-bold theme-color">{{team-name}}</h4>
+                            {{/if}}
+                            <p class="font-weight-bold">队长: {{header}}</p>
                             {{#if leader}}
                             <p>领队: {{leader}}</p>
                             {{/if}}

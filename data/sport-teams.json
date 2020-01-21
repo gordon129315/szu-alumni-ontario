@@ -3,8 +3,9 @@
         "tagId": "Golf",
         "name": "高尔夫俱乐部",
         "image": "/img/teams/golf-team.jpg",
-        "header": "Bryan Chen",
-        "leader": "",
+        "team-name": "深大安省校友会高球队",
+        "header": "Lucia",
+        "leader": "Bryan",
         "members": [
             {
                 "team": "",
@@ -33,19 +34,19 @@
         "name": "乒乓球俱乐部",
         "image": "/img/teams/table-tennis-team.jpg",
         "header": "Daniel(一队), Yoson(二队), Bryan(三队)",
-        "leader": "Grace(一队), Julie(二队), Kim(三队)",
+        "leader": "Grace(一队), Julie(二队), Jeffrey(三队)",
         "members": [
             {
                 "team": "一队",
-                "names": "Kevin, Jin, William, Jeff"
+                "names": "Kevin, Jin, William, Jeff, Kim"
             },
             {
                 "team": "二队",
-                "names": "August, Richard, Benson, Yiwen"
+                "names": "August, Richard, Benson, Yiwen, Lesley"
             },
             {
                 "team": "三队",
-                "names": "Jeffrey, Nelson, Lucia, Catherine, Emily"
+                "names": "Nelson, Lucia, Catherine, Emily, Gordon"
             }
         ]
     },
@@ -100,7 +101,7 @@
         "tagId": "Dance",
         "name": "舞蹈俱乐部",
         "image": "/img/sz-logo.png",
-        "header": "",
+        "header": "Kim",
         "leader": "",
         "members": [
             {

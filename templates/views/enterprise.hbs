@@ -18,12 +18,12 @@
     </div>
 
     {{!-- 分类 --}}
-    <h2 class="text-center mb-3 mt-5" style="color: #bc1e58"><b>企业分类</b></h2>
+    <h2 class="text-center mb-3 mt-5 theme-color"><b>企业分类</b></h2>
     <div id="category" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 w-75 mx-auto my-3">
         {{# enterprise_list}}
         <div class="col mb-4">
             <div class="card h-100">
-                <div class="w-100 card-body"><i class="{{icon}}"></i></div>
+                <div class="w-100 card-body"><i class="{{icon}} theme-color"></i></div>
                 <div class="card-footer text-center">
                     <a href="#" class="stretched-link" data-target="#{{id}}">
                         <h5 class="card-title mb-0">{{category}}</h5>
@@ -35,7 +35,7 @@
     </div>
 
     {{# enterprise_list}}
-    <h2 id="{{id}}" class="text-center mb-3 mt-5" style="color: #bc1e58"><b>{{category}}</b></h2>
+    <h2 id="{{id}}" class="text-center mb-3 mt-5 theme-color"><b>{{category}}</b></h2>
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 w-75 mx-auto my-3">
         {{# enterprise}}
         <div class="col mb-4">

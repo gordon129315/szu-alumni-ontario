@@ -37,6 +37,10 @@ a:hover {
     font-weight: bold;
 }
 
+.theme-color{
+    color: var(--main-color);
+}
+
 /* navbar */
 #navbar .navbar-brand span {
     font-size: 3rem;
@@ -169,7 +173,6 @@ a:hover {
 
 /* enterprise */
 #category .card div:nth-child(1) i {
-    color: var(--main-color);
     font-size: 6rem;
     display: flex;
     justify-content: center;
@@ -204,11 +207,6 @@ a:hover {
 }
 
 /* events */
-#events h3 {
-    color: var(--main-color);
-    font-weight: bold;
-}
-
 #event-page p {
     margin: 0;
 }
