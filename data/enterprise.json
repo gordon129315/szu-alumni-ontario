@@ -6,39 +6,38 @@
         "enterprise": [
             {
                 "id": "August-Jian",
-                "enterprise-name": "联众国际咨询有限公司",
+                "enterprise-name": "Peaceland August Jian Realty Brokerage",
                 "logo": [
                     {
-                        "logo-link": "https://www.upicanada.com/images/blogo.png"
+                        "logo-link": "https://www.rlpmax.ca/wp-content/uploads/homes-houses-for-sale-L.png"
                     },
                     {
                         "logo-link": "/img/enterprise/logo/August-Jian/business-card.jpg"
-                    },
-                    {
-                        "logo-link": "/img/enterprise/logo/August-Jian/wechat-qrcode.jpg"
                     }
                 ],
                 "info": [
                     {
-                        "content": "电话: 905-305-9099"
+                        "content": "电话: 647-239-8978"
+                    },{
+                        "content": "微信: august_jian"
                     },
                     {
                         "content": "邮箱: august.jian@gmail.com"
                     },
                     {
-                        "content": "地址: Unit 402, 3100 Steeles Ave East, Markham, ON, L3R 8T3"
+                        "content": "地址: 160 West Beaver Creek, Unit 2 Richmond Hill, ON L4B 1B4"
                     }
                 ],
-                "website": "https://www.upicanada.com",
+                "website": "https://www.royallepage.ca/en/agent/ontario/richmond-hill/august-jian/49384/",
                 "name": "August Jian",
-                "title": "Executive VP Real Estate"
+                "title": "Broker of Record"
             },
             {
                 "id": "Michael-Chiu",
                 "enterprise-name": "廿一世纪黄埔实业",
                 "logo": [
                     {
-                        "logo-link": "https://www.michaelchiu.ca/eadf26jst/1020/c21_kingsquay.png"
+                        "logo-link": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf8U6jMh2xjiYSUNbBDRwBhVc77d43wdZtXkj5JAFCvLXl49KhEw&s"
                     },
                     {
                         "logo-link": "/img/enterprise/logo/Michael-Chiu/business-card.jpg"

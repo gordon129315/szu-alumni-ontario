@@ -34,7 +34,7 @@
         "name": "乒乓球俱乐部",
         "image": "/img/teams/table-tennis-team.jpg",
         "header": "Daniel(一队), Yoson(二队), Bryan(三队)",
-        "leader": "Grace(一队), Julie(二队), Jeffrey(三队)",
+        "leader": "Grace(一队), Julie(二队), Catherine(三队)",
         "members": [
             {
                 "team": "一队",
@@ -46,7 +46,7 @@
             },
             {
                 "team": "三队",
-                "names": "Nelson, Lucia, Catherine, Emily, Gordon"
+                "names": "Nelson, Lucia, Jeffrey, Emily, Gordon"
             }
         ]
     },
