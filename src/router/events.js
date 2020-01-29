@@ -50,6 +50,20 @@ router.get("/:id", auth, async (req, res) => {
     }
 });
 
+// 获取编辑文章的页面
+router.get("/edit/:id", auth, hasToken, async (req, res) => {
+    const event_id = req.params.id.trim();
+    let event;
+    try {
+        event = await Event.findById(event_id);
+        event = event.toJSON();
+        // console.log(event);
+        res.render("edit-event", event);
+    } catch (e) {
+        res.status(500).send({ err: e.message });
+    }
+});
+
 /*
 // 上传图片
 router.post(
@@ -100,6 +114,46 @@ router.post(
             event = new Event(event);
             await event.save();
             // console.log(event);
+            res.status(201).send(event);
+        } catch (e) {
+            res.status(500).send({ err: e.message });
+        }
+    }
+);
+
+// 编辑文章
+router.patch(
+    "/edit/:id",
+    auth,
+    hasToken,
+    upload.fields([
+        { name: "pdf", maxCount: 1 },
+        { name: "photos", maxCount: 20 }
+    ]),
+    async (req, res) => {
+        let event = req.body;
+        // console.log(event);
+        try {
+            let original_event = await Event.findById(req.params.id.trim());
+            if (!original_event) {
+                throw new Error("找不此文章或此文章已被删除!");
+            }
+
+            if (req.files.pdf && req.files.pdf.length > 0) {
+                event.pdf = "/files/events/" + req.files.pdf[0].filename;
+            }
+            if (req.files.photos && req.files.photos.length > 0) {
+                event.photos = event.photos.concat(
+                    req.files.photos.map((photo) => "/img/events/" + photo.filename)
+                );
+            }
+            event.create_date = new Date(event.create_date.replace(/\-/g, "/"));
+            event.event_date = new Date(event.event_date.replace(/\-/g, "/"));
+
+            //await event.save();
+            console.log(event);
+            console.log(original_event.toJSON());
+
             res.status(201).send(event);
         } catch (e) {
             res.status(500).send({ err: e.message });

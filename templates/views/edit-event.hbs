@@ -17,6 +17,7 @@
     <div class="w-75 mx-auto py-3">
         <form id="create-event-form">
             <div class="form-group">
+                <p id="event_id" class="sr-only"></p>
                 <label for="inputTitle">活动标题</label>
                 <input type="text" class="form-control" name="title" id="inputTitle" placeholder="活动标题" autocomplete="off" required>
             </div>
@@ -58,9 +59,9 @@
                 <label for="uploadPDF" class="btn btn-outline-primary">上传PDF<small>(小于5M)</small></label> 
                 <input type="file" name="pdf" class="form-control-file" id="uploadPDF" accept=".pdf" hidden>
                 <div class="d-none" id="PDFlable">
-                    <div class="d-flex w-100 bg-light rounded p-2">
+                    <div class="d-flex w-100 bg-light rounded p-1">
                         <span id="pdf_name" class="flex-grow-1 mr-3 text-break"></span>
-                        <span id="delete_pdf" class="flex-shrink-0"><a href="#"><u>移除</u></a></span>
+                        <span id="delete_pdf" class="flex-shrink-0"><a href="#" class="btn btn-danger btn-sm">移除</a></span>
                     </div>
                 </div>
             </div>
@@ -87,7 +88,7 @@
         return date.match(/^\d{4}\-\d{2}\-\d{2}$/);
     }
 
-    const showImg = (url, index) => {
+    const showImg = (url, index, img_name) => {
         let $div = $('<div>',{
                         class: 'col mb-2'
                     })
@@ -100,24 +101,47 @@
         let $img = $('<img>',{
                         id: 'img-'+index,
                         src: url,
-                        class: 'w-100'
+                        class: 'w-100',
+                        alt: img_name
                     })
         $div.append($close).append($img).appendTo($('#gallery'))
     }
 
-    const readURL = (img, index) => {
+    const readURL = (img, index, img_name) => {
             var reader = new FileReader();
             reader.onload = function (e) {
-                showImg(e.target.result, index)
+                showImg(e.target.result, index, img_name)
             }
             reader.readAsDataURL(img);
     }
+
+    $(window).on('load',function (e) {
+        $('#event_id').html('{{_id}}')
+        $('#inputTitle').val('{{title}}')
+        $('#inputAuthor').val('{{author}}')
+        $('#inputCreateDate').val('{{create_date}}')
+        $('#inputEventDate').val('{{event_date}}')
+        $('#inputEventContent').val('{{textarea content}}')
+
+        {{# photos}}
+            imgs_list.push(['{{url}}', index]);
+            showImg('{{url}}', index, '{{url}}'.replace(/^\/img\/events\/\d*\_/, ''));
+            index ++;
+        {{/ photos}}
+        
+        {{#if pdf}}
+            $('#PDFlable').addClass('d-block')
+            $('#pdf_name').html('{{pdf}}'.replace(/^\/files\/events\/\d*\_/, ''))
+            pdf_file = '{{pdf}}';
+        {{/if}}
+    })
+
 
     $('#uploadPhoto').on('change', () => {
         let $imgs = $('#uploadPhoto')[0].files
         for (const imgFile of $imgs) {
             if (imgFile.size > 5242880) {
-                return alert('上传图片每张不得超过5M')
+                return alert('上传图片每张不得超过2M')
             }
         }
 
@@ -125,7 +149,7 @@
             $('input[name="photos"]').prop("disabled", true);
             for (const imgFile of $imgs) {
                 imgs_list.push([imgFile, index]);
-                readURL(imgFile, index);
+                readURL(imgFile, index, imgFile.name);
                 index ++;
             }
 
@@ -144,7 +168,7 @@
         }
 
         $('#PDFlable').addClass('d-block')
-        $('#pdf_name').html($pdf.name + " - " + ($pdf.size/1048576).toFixed(2) + "M")
+        $('#pdf_name').html('已选择: ' + $pdf.name + " - " + ($pdf.size/1048576).toFixed(2) + "M")
         pdf_file = $pdf;
         $('input[name="pdf"]').prop("disabled", false);
     })
@@ -205,8 +229,8 @@
             form_data.append('pdf', pdf_file)
         }
 
-        fetch('/events', {
-            method: 'POST',
+        fetch('/events/edit/{{_id}}', {
+            method: 'PATCH',
             body: form_data
         }).then((res) => res.json())
           .then((data) => {
@@ -214,9 +238,11 @@
                 return alert(data.err);
             }
             //console.log(data);
-            window.location.href = `/events/${data._id}`;
+            //window.location.href = `/events/${data._id}`;
           })
           .catch((err) => console.log(err) );
+
+        $('button[type="submit"]').prop("disabled", false);
 
     });
 

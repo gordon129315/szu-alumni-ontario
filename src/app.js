@@ -36,6 +36,10 @@ hbs.registerHelper("breaklines", function(text) {
 
     return new hbs.SafeString(text);
 });
+hbs.registerHelper("textarea", function(text) {
+    text = text.replace(/\n/gm,"\\n");
+    return new hbs.SafeString(text);
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

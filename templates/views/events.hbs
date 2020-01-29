@@ -94,8 +94,8 @@
 <script>
 $("#events .events-list a").on("click", (e) => {
     e.preventDefault();
-    const id = $(e.target).attr("id");
-    window.location.href = "/events/" + id;
+    const event_id = $(e.target).attr("id");
+    window.location.href = "/events/" + event_id;
 });
 </script>
 

@@ -61,7 +61,8 @@
 
 <script>
     $('#edit').on('click', () => {
-        alert('待开发....但您可以删除文章再重发')
+        const event_id = $('#event_id').html();
+        window.location.href = "/events/edit/" + event_id;
     });
 
     $('#delete').on('click', () => {
