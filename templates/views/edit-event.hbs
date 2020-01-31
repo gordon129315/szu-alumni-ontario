@@ -72,7 +72,7 @@
 </div>
 
 <script>
-    let pdf_file = null;
+    let pdf_file = undefined;
     let imgs_list = [];
     let index = 0;
 
@@ -141,7 +141,7 @@
         let $imgs = $('#uploadPhoto')[0].files
         for (const imgFile of $imgs) {
             if (imgFile.size > 5242880) {
-                return alert('上传图片每张不得超过2M')
+                return alert('上传图片每张不得超过5M')
             }
         }
 
@@ -214,7 +214,9 @@
         if (imgs_list.length > 0) {
             // sort and filter imgs_list
             const sorted_imgs_list = [];
+            const sorted_imgs_name_list = [];
             $('#gallery div img').each(function() {
+                sorted_imgs_name_list.push($(this).attr('alt'))
                 let img_id = $(this).attr('id')
                 sorted_imgs_list.push(imgs_list.find(([imgFile, index]) => index == img_id.replace('img-','')))
             })
@@ -222,6 +224,10 @@
             
             imgs_list.forEach(([imgFile, index]) => {
                 form_data.append('photos',imgFile)
+            })
+
+            sorted_imgs_name_list.forEach((img_name) => {
+                form_data.append('img_name',img_name)
             })
         }
 
@@ -238,11 +244,11 @@
                 return alert(data.err);
             }
             //console.log(data);
-            //window.location.href = `/events/${data._id}`;
+            window.location.href = `/events/${data._id}`;
           })
           .catch((err) => console.log(err) );
 
-        $('button[type="submit"]').prop("disabled", false);
+        //$('button[type="submit"]').prop("disabled", false);
 
     });
 
@@ -264,7 +270,7 @@
     $('#delete_pdf').on('click', (e) =>{
         e.preventDefault();
         $('#PDFlable').removeClass('d-block').addClass('d-none')
-        pdf_file = null;
+        pdf_file = undefined;
     })
 
     new Sortable(gallery, {

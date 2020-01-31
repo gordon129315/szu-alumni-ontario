@@ -98,6 +98,8 @@ router.post(
     ]),
     async (req, res) => {
         let event = req.body;
+        event.create_date = new Date(event.create_date.replace(/\-/g, "/"));
+        event.event_date = new Date(event.event_date.replace(/\-/g, "/"));
 
         try {
             if (req.files.pdf && req.files.pdf.length > 0) {
@@ -108,8 +110,6 @@ router.post(
                     return { url: "/img/events/" + photo.filename };
                 });
             }
-            event.create_date = new Date(event.create_date.replace(/\-/g, "/"));
-            event.event_date = new Date(event.event_date.replace(/\-/g, "/"));
 
             event = new Event(event);
             await event.save();
@@ -132,29 +132,93 @@ router.patch(
     ]),
     async (req, res) => {
         let event = req.body;
-        // console.log(event);
+        event.create_date = new Date(event.create_date.replace(/\-/g, "/"));
+        event.event_date = new Date(event.event_date.replace(/\-/g, "/"));
+
         try {
             let original_event = await Event.findById(req.params.id.trim());
             if (!original_event) {
-                throw new Error("找不此文章或此文章已被删除!");
+                original_event = fileService.getEmptyEvent();
+                return res.status(404).send(original_event);
             }
 
+            const update_fields = ["title", "author", "create_date", "event_date", "content"];
+            update_fields.forEach((field) => {
+                original_event[field] = event[field];
+            });
+
+            /***********  修改PDF  ************/
             if (req.files.pdf && req.files.pdf.length > 0) {
                 event.pdf = "/files/events/" + req.files.pdf[0].filename;
             }
+
+            if (original_event.pdf !== event.pdf) {
+                if (original_event.pdf) {
+                    const pdf_path = path.join(__dirname, "../../public", original_event.pdf);
+                    if (fs.existsSync(pdf_path)) {
+                        fileService.deleteFile(pdf_path);
+                    }
+                }
+
+                original_event.pdf = event.pdf;
+            }
+
+            /***********  修改Photos  ************/
+            if (!event.img_name) {
+                event.img_name = [];
+            } else {
+                if (typeof event.img_name !== "object") {
+                    event.img_name = [event.img_name];
+                }
+            }
+
+            if (!event.photos) {
+                event.photos = [];
+            } else {
+                if (typeof event.photos !== "object") {
+                    event.photos = [event.photos];
+                }
+            }
+
+            // 如果上传的新图片
             if (req.files.photos && req.files.photos.length > 0) {
                 event.photos = event.photos.concat(
                     req.files.photos.map((photo) => "/img/events/" + photo.filename)
                 );
             }
-            event.create_date = new Date(event.create_date.replace(/\-/g, "/"));
-            event.event_date = new Date(event.event_date.replace(/\-/g, "/"));
 
-            //await event.save();
-            console.log(event);
-            console.log(original_event.toJSON());
+            // sort photos
+            let sorted_photos_list = [];
+            event.img_name.forEach((name) => {
+                let url = event.photos.find(
+                    (url) => url.replace(/^\/img\/events\/\d*\_/, "") == name.replace(/ /g, "+")
+                );
+                if (url) {
+                    sorted_photos_list.push(url);
+                    // 避免重名
+                    event.photos.splice(event.photos.indexOf(url), 1);
+                }
+            });
 
-            res.status(201).send(event);
+            // find being deleted photos url, then delete photos
+            original_event.photos.forEach((photo) => {
+                if (!sorted_photos_list.includes(photo.url)) {
+                    const photo_path = path.join(__dirname, "../../public", photo.url);
+                    if (fs.existsSync(photo_path)) {
+                        fileService.deleteFile(photo_path);
+                    }
+                }
+            });
+
+            // replace event.photos to original_event.photos
+            event.photos = sorted_photos_list.map((url) => {
+                return { url };
+            });
+            original_event.photos = event.photos;
+
+            await original_event.save();
+
+            res.status(201).send(original_event);
         } catch (e) {
             res.status(500).send({ err: e.message });
         }

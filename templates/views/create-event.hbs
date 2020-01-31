@@ -71,7 +71,7 @@
 </div>
 
 <script>
-    let pdf_file = null;
+    let pdf_file = undefined;
     let imgs_list = [];
     let index = 0;
 
@@ -87,7 +87,7 @@
         return date.match(/^\d{4}\-\d{2}\-\d{2}$/);
     }
 
-    const showImg = (url, index) => {
+    const showImg = (url, index, img_name) => {
         let $div = $('<div>',{
                         class: 'col mb-2'
                     })
@@ -100,15 +100,16 @@
         let $img = $('<img>',{
                         id: 'img-'+index,
                         src: url,
-                        class: 'w-100'
+                        class: 'w-100',
+                        alt: img_name
                     })
         $div.append($close).append($img).appendTo($('#gallery'))
     }
 
-    const readURL = (img, index) => {
+    const readURL = (img, index, img_name) => {
             var reader = new FileReader();
             reader.onload = function (e) {
-                showImg(e.target.result, index)
+                showImg(e.target.result, index, img_name)
             }
             reader.readAsDataURL(img);
     }
@@ -125,7 +126,7 @@
             $('input[name="photos"]').prop("disabled", true);
             for (const imgFile of $imgs) {
                 imgs_list.push([imgFile, index]);
-                readURL(imgFile, index);
+                readURL(imgFile, index, imgFile.name);
                 index ++;
             }
 
@@ -238,7 +239,7 @@
     $('#delete_pdf').on('click', (e) =>{
         e.preventDefault();
         $('#PDFlable').removeClass('d-block').addClass('d-none')
-        pdf_file = null;
+        pdf_file = undefined;
     })
 
     new Sortable(gallery, {
