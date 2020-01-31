@@ -33,6 +33,7 @@
         "tagId": "TableTennis",
         "name": "乒乓球俱乐部",
         "image": "/img/teams/table-tennis-team.jpg",
+        "team-name": "深大天安乒乓球队",
         "header": "Daniel(一队), Yoson(二队), Bryan(三队)",
         "leader": "Grace(一队), Julie(二队), Catherine(三队)",
         "members": [
@@ -105,8 +106,8 @@
         "leader": "",
         "members": [
             {
-                "team": "一队",
-                "names": "名字、名字、名字、名字、名字"
+                "team": "",
+                "names": "Lydia, Lesley 及全体校友"
             }
         ]
     },
