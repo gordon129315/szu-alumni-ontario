@@ -37,7 +37,7 @@ hbs.registerHelper("breaklines", function(text) {
     return new hbs.SafeString(text);
 });
 hbs.registerHelper("textarea", function(text) {
-    text = text.replace(/\n/gm,"\\n");
+    text = text.replace(/(\r\n|\n|\r)/gm,"\\n");
     return new hbs.SafeString(text);
 });
 
