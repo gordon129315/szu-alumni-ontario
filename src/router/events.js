@@ -100,8 +100,8 @@ router.post(
         let event = req.body;
         event.create_date = new Date(event.create_date.replace(/\-/g, "/"));
         event.event_date = new Date(event.event_date.replace(/\-/g, "/"));
-        event.content = event.content.replace(/\r/gm, '');
-        
+        event.content = event.content.replace(/\r/gm, "");
+
         try {
             if (req.files.pdf && req.files.pdf.length > 0) {
                 event.pdf = "/files/events/" + req.files.pdf[0].filename;
@@ -135,7 +135,8 @@ router.patch(
         let event = req.body;
         event.create_date = new Date(event.create_date.replace(/\-/g, "/"));
         event.event_date = new Date(event.event_date.replace(/\-/g, "/"));
-
+        event.content = event.content.replace(/\r/gm, "");
+        
         try {
             let original_event = await Event.findById(req.params.id.trim());
             if (!original_event) {
