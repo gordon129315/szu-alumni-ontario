@@ -25,7 +25,7 @@ hbs.registerHelper("breaklines", function(text) {
     // text = hbs.Utils.escapeExpression(text);
     text =
         "<p>" +
-        text.replace(/^(\r\n|\n|\r)/gm, "&nbsp;\n").replace(/(\r\n|\n|\r).*?/gm, "</p><p>") +
+        text.replace(/^(\r\n|\n|\r)/gm, "&nbsp;\n").replace(/(\r\n|\n|\r)/gm, "</p><p>") +
         "</p>";
 
     // 匹配 <p><img src="url"></p> 中的 "url"
