@@ -14,48 +14,55 @@
 
 {{!-- 活动报道 --}}
 <div class="container-fluid" id="event-page">
-    <div class="w-75 mx-auto my-3 pb-5">
-        {{#if login}}
-        <div class="d-flex flex-wrap justify-content-around">
-            <button type="button" id="edit" class="btn btn-outline-primary my-3 d-block">编辑</button>
-            <button type="button" id="delete" class="btn btn-outline-primary my-3 d-block">删除</button>
-        </div>
-        {{/if}}
+    <div class="row justify-content-center">
+        <div class="col col-md-9 my-3">
+            {{#if login}}
+            <div class="d-flex flex-wrap justify-content-around">
+                <button type="button" id="edit" class="btn btn-outline-primary my-3 d-block">编辑</button>
+                <button type="button" id="delete" class="btn btn-outline-primary my-3 d-block">删除</button>
+            </div>
+            {{/if}}
 
-        <p id="event_id" class="sr-only">{{_id}}</p>
-        <h3 class="text-center mb-3">{{title}}</h3>
-        <div class="d-flex flex-wrap my-3 justify-content-around">
-            <small class="text-danger font-weight-bold">活动日期：{{event_date}}</small><small>作者：{{author}}</small><small>发表日期：{{create_date}}</small>
+            <p id="event_id" class="sr-only">{{_id}}</p>
+            <h3 class="text-center mb-3">{{title}}</h3>
+            <div class="d-flex flex-wrap my-3 justify-content-around">
+                <small class="text-danger font-weight-bold">活动日期：{{event_date}}</small><small>作者：{{author}}</small><small>发表日期：{{create_date}}</small>
+            </div>
+
+            <div class="text-justify">
+                {{breaklines content}}
+            </div>
         </div>
 
-        <div class="text-justify">
-            {{breaklines content}}
+        <div class="w-100"></div>
+
+        <div class="col col-md-9 my-3">
+            {{#if pdf}}
+            <div class="w-100 pdf-body my-3">
+                <p class="my-3">若<b>PDF</b>不能正常显示，<a href="{{pdf}}" target="_blank">请点这里</a></p>
+                {{!-- <embed class="w-100" height="600" src="{{pdf}}" type="application/pdf"> --}}
+                <object data="{{pdf}}" type="application/pdf" width="100%" height="600">
+                    <p>
+                        Your web browser doesn't have a PDF plugin. Instead you can 
+                        <a href="{{pdf}}" target="_blank">click here</a> 
+                        to open the PDF file.
+                    </p>
+                </object>
+            </div>
+            {{/if}}
         </div>
 
-        {{#if pdf}}
-        <div class="w-100 pdf-body my-3">
-            <p class="my-3">若<b>PDF</b>不能正常显示，<a href="{{pdf}}" target="_blank">请点这里</a></p>
-            {{!-- <embed class="w-100" height="600" src="{{pdf}}" type="application/pdf"> --}}
-            <object data="{{pdf}}" type="application/pdf" width="100%" height="600">
-                <p>
-                    Your web browser doesn't have a PDF plugin. Instead you can 
-                    <a href="{{pdf}}" target="_blank">click here</a> 
-                    to open the PDF file.
-                </p>
-            </object>
-        </div>
-        {{/if}}
+        <div class="w-100"></div>
 
-        {{#if photos}}
-        <div class="w-100 photos-body my-3">
-            {{# photos}}
-            <div class="d-none d-md-block w-75 mx-auto my-3"><img src="{{url}}" class="w-100"></div>
-            <div class="d-block d-md-none w-100 mx-auto my-3"><img src="{{url}}" class="w-100"></div>
-            {{/ photos}}
+        <div class="col col-md-9 my-3">
+            {{#if photos}}
+                {{# photos}}
+                <div class="w-100 mx-auto my-3">
+                    <img src="{{url}}" class="w-100">
+                </div>
+                {{/ photos}}
+            {{/if}}
         </div>
-        {{/if}}
-        
-
     </div>
 </div>
 

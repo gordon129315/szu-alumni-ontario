@@ -178,6 +178,16 @@ a:hover {
     justify-content: center;
 }
 
+#enterprise {
+    width: 75%;
+}
+
+@media screen and (max-width: 767.98px) {
+    #enterprise {
+        width: 100%;
+    }
+}
+
 #enterprise .card .carousel-item {
     position: relative;
     height: 0;

@@ -19,7 +19,7 @@
 
     {{!-- 分类 --}}
     <h2 class="text-center mb-3 mt-5 theme-color"><b>企业分类</b></h2>
-    <div id="category" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 w-75 mx-auto my-3">
+    <div id="category" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 justify-content-start mx-auto my-3">
         {{# enterprise_list}}
         <div class="col mb-4">
             <div class="card h-100">
@@ -36,9 +36,9 @@
 
     {{# enterprise_list}}
     <h2 id="{{id}}" class="text-center mb-3 mt-5 theme-color"><b>{{category}}</b></h2>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 w-75 mx-auto my-3">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-start mx-auto my-3">
         {{# enterprise}}
-        <div class="col mb-4">
+        <div class="col px-md-2 mb-4">
             <div class="card h-100">
                 <div class="w-100">
                     <div id="{{id}}" class="carousel slide" data-ride="carousel">
