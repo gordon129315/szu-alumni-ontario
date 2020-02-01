@@ -136,10 +136,30 @@ router.patch(
         event.create_date = new Date(event.create_date.replace(/\-/g, "/"));
         event.event_date = new Date(event.event_date.replace(/\-/g, "/"));
         event.content = event.content.replace(/\r/gm, "");
-        
+
         try {
             let original_event = await Event.findById(req.params.id.trim());
             if (!original_event) {
+                // 如果上传了PDF，也要删掉
+                if (req.files.pdf && req.files.pdf.length > 0) {
+                    pdf_url = "/files/events/" + req.files.pdf[0].filename;
+                    const pdf_path = path.join(__dirname, "../../public", pdf_url);
+                    if (fs.existsSync(pdf_path)) {
+                        fileService.deleteFile(pdf_path);
+                    }
+                }
+
+                // 如果上传了photos，也要删掉
+                if (req.files.photos && req.files.photos.length > 0) {
+                    req.files.photos.forEach((photo) => {
+                        let photo_url = "/img/events/" + photo.filename;
+                        const photo_path = path.join(__dirname, "../../public", photo_url);
+                        if (fs.existsSync(photo_path)) {
+                            fileService.deleteFile(photo_path);
+                        }
+                    });
+                }
+
                 original_event = fileService.getEmptyEvent();
                 return res.status(404).send(original_event);
             }
