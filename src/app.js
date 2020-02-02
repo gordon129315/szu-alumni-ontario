@@ -1,11 +1,11 @@
 const path = require("path");
 const express = require("express");
-const hbs = require("hbs");
 const fs = require("fs");
 const fileService = require("./util/fileService");
 const admin = require("./router/admin");
 const events = require("./router/events");
 const cookieParser = require("cookie-parser");
+const hbs = require('./util/handlebars')
 require("./db/mongoose");
 require("dotenv").config();
 
@@ -21,25 +21,6 @@ const partialsPath = path.join(__dirname, "../templates/partials");
 app.set("view engine", "hbs");
 app.set("views", viewsPath);
 hbs.registerPartials(partialsPath);
-hbs.registerHelper("breaklines", function(text) {
-    // text = hbs.Utils.escapeExpression(text);
-    text =
-        "<p>" +
-        text.replace(/^(\r\n|\n|\r)/gm, "&nbsp;\n").replace(/(\r\n|\n|\r)/gm, "</p><p>") +
-        "</p>";
-
-    // 匹配 <p><img src="url"></p> 中的 "url"
-    // text = text.replace(
-    //     /(\<p\>)(?:(?!\1).)*?\<img\ssrc\=(\".+?\")\>.*?\<\/p\>/g,
-    //     '<p class="text-center"><img src=$2 class="my-3 w-75"></p>'
-    // );
-
-    return new hbs.SafeString(text);
-});
-hbs.registerHelper("textarea", function(text) {
-    text = text.replace(/(\r\n|\n|\r)/gm,"\\n");
-    return new hbs.SafeString(text);
-});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
