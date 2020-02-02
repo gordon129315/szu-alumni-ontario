@@ -2,16 +2,17 @@ const hbs = require("hbs");
 
 hbs.registerHelper("breaklines", function(text) {
     // text = hbs.Utils.escapeExpression(text);
-    text =
-        "<p>" +
-        text.replace(/^(\r\n|\n|\r)/gm, "&nbsp;\n").replace(/(\r\n|\n|\r)/gm, "</p><p>") +
-        "</p>";
 
     const regex = /(?:http:\/\/|https:\/\/)?([a-z0-9]+(?:[\-\.]{1}[a-z0-9]+)*\.(?:top|com|org|net|edu|gov|ca|cn|io|cc|co|hk|uk|tv|info|club|tel|mobi|cd){1}(?::[0-9]{1,5})?(?:\/\S*)?)/gim;
     text = text.replace(
         regex,
         '<a href="http://$1" target="_blank" class="font-weight-normal">$1</a>'
     );
+
+    text =
+        "<p>" +
+        text.replace(/^(\r\n|\n|\r)/gm, "&nbsp;\n").replace(/(\r\n|\n|\r)/gm, "</p><p>") +
+        "</p>";
 
     // 匹配 <p><img src="url"></p> 中的 "url"
     // text = text.replace(
