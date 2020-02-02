@@ -5,7 +5,7 @@ const fileService = require("./util/fileService");
 const admin = require("./router/admin");
 const events = require("./router/events");
 const cookieParser = require("cookie-parser");
-const hbs = require('./util/handlebars')
+const hbs = require("./util/handlebars");
 require("./db/mongoose");
 require("dotenv").config();
 
