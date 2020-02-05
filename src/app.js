@@ -37,6 +37,7 @@ app.get("", (req, res) => {
     const headline_news = JSON.parse(
         fs.readFileSync(path.join(__dirname, "../data/headline-news.json"), "utf8")
     );
+    headline_news.shift();
     res.render("index", { headline_news });
 });
 
