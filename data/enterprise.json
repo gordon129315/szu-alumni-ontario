@@ -223,10 +223,10 @@
         "enterprise": [
             {
                 "id": "kai-kai",
-                "enterprise-name": "椰林四季",
+                "enterprise-name": "椰林四季Coconutseasons",
                 "logo": [
                     {
-                        "logo-link": "/img/enterprise/logo/Kai-Kai/qrcode.png"
+                        "logo-link": "/img/enterprise/logo/Kai-Kai/qrcode.jpg"
                     },
                     {
                         "logo-link": "/img/enterprise/logo/Kai-Kai/cover.jpg"
@@ -247,9 +247,12 @@
                     },
                     {
                         "content": "地址: #203, 668 Silver Star Blvd, Scarborough, ON"
+                    },
+                    {
+                        "content": "点击下方链接或者扫描二维码就可以下单了！非常方便！"
                     }
                 ],
-                "website": "",
+                "website": "http://gosnappy.io/owa/snappy/detail/G6289/6289/",
                 "name": "凯凯",
                 "title": "老板"
             }
