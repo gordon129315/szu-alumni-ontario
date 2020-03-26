@@ -184,6 +184,9 @@
                         "content": "给个人工作室、中小型企业提供技术支持，制作公司网站。"
                     },
                     {
+                        "content": "费用: 面议"
+                    },
+                    {
                         "content": "邮箱: gordonyuzr@gmail.com"
                     }
                 ],
@@ -192,27 +195,27 @@
                 "title": "网页工程师"
             },
             {
-                "id": "template",
-                "enterprise-name": "XXXX有限公司",
+                "id": "Gordon-Yu-2",
+                "enterprise-name": "摄影跟拍",
                 "logo": [
                     {
-                        "logo-link": "/img/sz-logo.png"
+                        "logo-link": "/img/enterprise/logo/Gordon-Yu/wechat-qrcode.png"
                     }
                 ],
                 "info": [
                     {
-                        "content": "电话:"
+                        "content": "专业摄影设备，佳能，索尼。跟拍生日Party，朋友聚会，郊游活动等。"
                     },
                     {
-                        "content": "邮箱:"
+                        "content": "费用: 校友免费，包车接送，包吃就行"
                     },
                     {
-                        "content": "公司简介:"
+                        "content": "邮箱: gordonyuzr@gmail.com"
                     }
                 ],
                 "website": "",
-                "name": "校友姓名",
-                "title": "职位"
+                "name": "Gordon Yu",
+                "title": "业余摄影师"
             }
         ]
     },
