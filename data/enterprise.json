@@ -58,6 +58,32 @@
                 "website": "https://www.michaelchiu.ca",
                 "name": "Michael Chiu",
                 "title": "Broker"
+            },
+            {
+                "id": "Nelson-Yu",
+                "enterprise-name": "RE/MAX PARTNERS REALTY INC",
+                "logo": [
+                    {
+                        "logo-link": "https://dtzulyujzhqiu.cloudfront.net/remaxpartnersrealtyinc1579/profiles/1565975283.png"
+                    },
+                    {
+                        "logo-link": "/img/enterprise/logo/Nelson-Yu/business-card.png"
+                    }
+                ],
+                "info": [
+                    {
+                        "content": "电话: 647-923-4288"
+                    },
+                    {
+                        "content": "邮箱: lryu_ca@hotmail.com"
+                    },
+                    {
+                        "content": "地址: 550 Highway 7E, Unit 103, Richmond Hill, L4B 3Z4"
+                    }
+                ],
+                "website": "",
+                "name": "Nelson Yu",
+                "title": "Sales Representative"
             }
         ]
     },
