@@ -67,6 +67,8 @@
 </div>
 
 <script>
+    $('title').html('深圳大学安省校友会-'+'{{title}}');
+
     $('#edit').on('click', () => {
         const event_id = $('#event_id').html();
         window.location.href = "/events/edit/" + event_id;

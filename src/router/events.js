@@ -142,7 +142,7 @@ router.patch(
             if (!original_event) {
                 // 如果上传了PDF，也要删掉
                 if (req.files.pdf && req.files.pdf.length > 0) {
-                    pdf_url = "/files/events/" + req.files.pdf[0].filename;
+                    let pdf_url = "/files/events/" + req.files.pdf[0].filename;
                     const pdf_path = path.join(__dirname, "../../public", pdf_url);
                     if (fs.existsSync(pdf_path)) {
                         fileService.deleteFile(pdf_path);

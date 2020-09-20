@@ -92,11 +92,13 @@
 
 
 <script>
-$("#events .events-list a").on("click", (e) => {
-    e.preventDefault();
-    const event_id = $(e.target).attr("id");
-    window.location.href = "/events/" + event_id;
-});
+    $('title').html('深圳大学安省校友会-活动动态');
+
+    $("#events .events-list a").on("click", (e) => {
+        e.preventDefault();
+        const event_id = $(e.target).attr("id");
+        window.location.href = "/events/" + event_id;
+    });
 </script>
 
 {{>footer}} 
