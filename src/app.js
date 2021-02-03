@@ -111,6 +111,28 @@ app.get("/covid", async (req, res) => {
   }
 });
 
+app.get("/stock", async (req, res) => {
+  const apikey = process.env.STOCK_APIKEY;
+  const mode = req.query.mode || "actives";
+  const url =
+    "https://financialmodelingprep.com/api/v3/" + mode + "?apikey=" + apikey;
+
+  try {
+    const result = await axios.get(encodeURI(url));
+
+    if (result.status == 200 && !result.data["Error Message"]) {
+      res.render("stock", {
+        records: result.data,
+        mode: mode.charAt(0).toUpperCase() + mode.slice(1),
+      });
+    } else {
+      res.status(400).send(result.data["Error Message"]);
+    }
+  } catch (e) {
+    res.status(500).send(e.message);
+  }
+});
+
 app.get("/downloads", (req, res) => {
   let files = [];
   const dir = path.join(__dirname, "../public/files/downloads");

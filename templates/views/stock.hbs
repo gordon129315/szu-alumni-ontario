@@ -1,0 +1,76 @@
+{{>header}}
+
+{{!-- 导航栏 --}}
+<div class="container-fluid" id="breadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">首页</a></li>
+            <li class="breadcrumb-item active" aria-current="page">北美股市</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container-fluid" id="stock">
+
+    <div class="row justify-content-around">
+        <div class="col-xs-12 col-sm-4 text-center">
+            <a class="btn btn-outline-primary btn-sm w-75 my-1" href="/stock?mode=actives" role="button">Most Actives</a>
+        </div>
+        <div class="col-xs-12 col-sm-4 text-center">
+            <a class="btn btn-outline-success btn-sm w-75 my-1" href="/stock?mode=gainers" role="button">Most Gainers</a>
+        </div>
+        <div class="col-xs-12 col-sm-4 text-center">
+            <a class="btn btn-outline-danger btn-sm w-75 my-1" href="/stock?mode=losers" role="button">Most Losers</a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col col-md-9 py-3 table-responsive">
+            <h1 class="text-center">Top 30 Most {{mode}}</h1>
+            <table class="table table-hover table-bordered text-center">
+                <caption></caption>
+                <thead>
+                    <tr>
+                        <th scope="col">ticker</th>
+                        <th scope="col">changes</th>
+                        <th scope="col">price</th>
+                        <th scope="col">changesPercentage</th>
+                        <th scope="col">companyName</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{# records}}
+                    <tr>
+                        <td>{{ticker}}</td>
+                        <td class="change">{{changes}}</td>
+                        <td>{{price}}</td>
+                        <td class="change">{{changesPercentage}}</td>
+                        <td>{{companyName}}</td>
+                    </tr>
+                    {{/ records}}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="w-100"></div>
+
+        <!-- <div class="col col-md-9 mb-5">
+            <img src="/img/council.png" class="w-100" alt="深大安省校友会理事会">
+        </div> -->
+
+    </div>
+
+</div>
+
+<script>
+    $('title').html('深圳大学安省校友会-北美股市');
+    changeColor();
+
+    function changeColor() {
+        $('.change').each(function () {
+            let number = parseFloat($(this).html().replace('(', ''));
+            $(this).css('color', number > 0 ? 'green' : 'red')
+        })
+    }
+</script>
+{{>footer}}
