@@ -46,6 +46,10 @@ app.get("/about-us", (req, res) => {
   res.render("about-us");
 });
 
+app.get("/holidays", (req, res) => {
+  res.render("holidays");
+});
+
 app.get("/council", (req, res) => {
   const { council, update } = JSON.parse(
     fs.readFileSync(path.join(__dirname, "../data/council.json"), "utf8")
@@ -121,10 +125,7 @@ app.get("/stock", async (req, res) => {
     const result = await axios.get(encodeURI(url));
 
     if (result.status == 200 && !result.data["Error Message"]) {
-      res.render("stock", {
-        records: result.data,
-        mode: mode.charAt(0).toUpperCase() + mode.slice(1),
-      });
+      res.render("stock", { records: result.data, mode });
     } else {
       res.status(400).send(result.data["Error Message"]);
     }

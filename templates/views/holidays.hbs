@@ -1,0 +1,140 @@
+{{>header}}
+
+{{!-- 导航栏 --}}
+<div class="container-fluid" id="breadcrumb">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">首页</a></li>
+            <li class="breadcrumb-item active" aria-current="page">加国节假日</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container-fluid" id="holidays">
+
+    <form>
+        <div class="form-row justify-content-center w-75 mx-auto">
+            <div class="col-4 col-md-4 my-1">
+                <label class="sr-only" for="province">Province</label>
+                <select class="custom-select custom-select-sm" id="province">
+                    <option value="ON" selected>ON</option>
+                    <option value="AB">AB</option>
+                    <option value="BC">BC</option>
+                    <option value="MB">MB</option>
+                    <option value="NB">NB</option>
+                    <option value="NL">NL</option>
+                    <option value="NS">NS</option>
+                    <option value="NT">NT</option>
+                    <option value="NU">NU</option>
+                    <option value="PE">PE</option>
+                    <option value="QC">QC</option>
+                    <option value="SK">SK</option>
+                    <option value="YT">YT</option>
+                </select>
+            </div>
+            <div class="col-4 col-md-4 my-1">
+                <label class="sr-only" for="year">Year</label>
+                <!-- <input type="text" class="form-control form-control-sm" id="year" placeholder="Year" autocomplete="off"> -->
+                <select class="custom-select custom-select-sm" id="year">
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                </select>
+            </div>
+            <div class="col-8 col-md-2 my-1">
+                <input class="btn btn-outline-primary btn-sm form-control form-control-sm" type="submit" id="submit"
+                    value="Submit">
+            </div>
+        </div>
+    </form>
+
+    <div class="row justify-content-center">
+        <div class="col col-md-9 py-3 table-responsive">
+            <h1 class="text-center text-capitalize" id="tableTitle"></h1>
+            <table id="holidayTable" class="table table-hover text-center">
+                <caption></caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Holiday</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td></td>
+                        <td></td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="w-100"></div>
+
+    </div>
+
+</div>
+
+<script>
+    $('title').html('深圳大学安省校友会-加国节假日查询');
+
+    /*$("#year").datepicker({
+        format: " yyyy", // Notice the Extra space at the beginning
+        viewMode: "years",
+        minViewMode: "years",
+        maxViewMode: "years",
+        autoclose: true,
+        startDate: '2018',
+        endDate: '2023'
+    });*/
+
+
+    $(function () {
+        $("#year").val(moment().year());
+        generateTable();
+    });
+
+
+    $('#submit').on('click', function (e) {
+        e.preventDefault();
+        generateTable();
+    })
+
+    async function generateTable() {
+        const province = $('#province').val();
+        const year = $('#year').val();
+        const data = await requestHolidays(province, year);
+        //console.log(data);
+
+        $('#tableTitle').html(`${year} ${data.nameEn} Holidays`);
+        let $tbody = $('#holidayTable tbody');
+        $tbody.empty();
+
+        data.holidays.forEach(holiday => {
+            let next = false;
+            if (data.hasOwnProperty('nextHoliday')) {
+                next = data.nextHoliday.id == holiday.id;
+            }
+            
+            const $tr = $('<tr>', { id: holiday.id, class: next ? 'font-weight-bold table-success' : '' });
+            const $td_nameEn = $('<td>', { text: holiday.nameEn + (next ? ' (coming)' : '') });
+            const date = moment(holiday.date, "YYYY-MM-DD").format("MMM D, dddd");
+            const $td_date = $('<td>', { text: date });
+            $tr.append($td_nameEn, $td_date);
+            $tbody.append($tr);
+        })
+    }
+
+    async function requestHolidays(province, year) {
+        const response = await fetch('https://canada-holidays.ca/api/v1/provinces/' + province + '?year=' + year);
+        if (!response.ok) {
+            //console.log(response)
+            throw new Error(`An error has occured: ${response.status}`);
+        }
+        const data = await response.json();
+        return data.province;
+    }
+</script>
+{{>footer}}
