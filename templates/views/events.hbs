@@ -24,7 +24,7 @@
                 <div class="card w-100 mb-3 border-primary">
                     <ul class="list-group list-group-flush events-list">
                         {{# history_events}}
-                            <a id="{{_id}}" href="#" class="list-group-item list-group-item-action px-2 border-primary list-group-item-primary font-weight-normal stretched-link">
+                            <a id="{{_id}}" href="/events/{{_id}}" class="list-group-item list-group-item-action px-2 border-primary list-group-item-primary font-weight-normal">
                                 <div class="d-flex">
                                     <span class="flex-grow-1 mr-3 text-truncate">{{title}}</span>
                                     <span class="flex-shrink-0">{{event_date}}</span>
@@ -58,7 +58,7 @@
                 <div class="card w-100 mb-3 border-success">
                     <ul class="list-group list-group-flush events-list">
                         {{# future_events}}
-                        <a id="{{_id}}" href="#" class="list-group-item list-group-item-action px-2 border-success list-group-item-success font-weight-normal stretched-link">
+                        <a id="{{_id}}" href="/events/{{_id}}" class="list-group-item list-group-item-action px-2 border-success list-group-item-success font-weight-normal">
                             <div class="d-flex">
                                 <span class="flex-grow-1 mr-3 text-truncate">{{title}}</span>
                                 <span class="flex-shrink-0">{{event_date}}</span>
@@ -93,12 +93,6 @@
 
 <script>
     $('title').html('深圳大学安省校友会-活动动态');
-
-    $("#events .events-list a").on("click", (e) => {
-        e.preventDefault();
-        const event_id = $(e.target).attr("id");
-        window.location.href = "/events/" + event_id;
-    });
 </script>
 
 {{>footer}} 

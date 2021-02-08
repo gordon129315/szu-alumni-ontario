@@ -26,12 +26,19 @@
             <p id="event_id" class="sr-only">{{_id}}</p>
             <h3 class="text-center mb-3">{{title}}</h3>
             <div class="d-flex flex-wrap my-3 justify-content-around">
-                <small class="text-danger font-weight-bold">活动日期：{{event_date}}</small><small>作者：{{author}}</small><small>发表日期：{{create_date}}</small>
+                <small>活动日期：{{event_date}}</small><small>作者：{{author}}</small><small>发表日期：{{create_date}}</small>
             </div>
 
             <div class="text-justify">
                 {{breaklines content}}
             </div>
+
+            {{#if article_url}}
+            <div class="text-justify my-4">
+                <p><a href="{{article_url}}" target="_blank">点击这里</a>，阅读原文</p>
+            </div>
+            {{/if}}
+
         </div>
 
         <div class="w-100"></div>

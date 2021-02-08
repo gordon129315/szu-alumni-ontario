@@ -164,7 +164,7 @@ router.patch(
                 return res.status(404).send(original_event);
             }
 
-            const update_fields = ["title", "author", "create_date", "event_date", "content"];
+            const update_fields = ["title", "author", "create_date", "event_date", "content", "article_url"];
             update_fields.forEach((field) => {
                 original_event[field] = event[field];
             });

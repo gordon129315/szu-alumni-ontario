@@ -8,7 +8,8 @@ const getEmptyEvent = () => {
         author: "",
         create_date: "",
         event_date: "",
-        content: ""
+        content: "",
+        article_url: ""
     };
 };
 

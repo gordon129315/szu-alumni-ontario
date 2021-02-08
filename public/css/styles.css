@@ -224,3 +224,8 @@ a:hover {
     opacity: 0.4;
     border: 1px dashed #333;
 }
+
+.form-group.required label::after {
+    content:"*";
+    color:red;
+}

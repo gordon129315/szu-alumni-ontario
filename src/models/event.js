@@ -33,6 +33,10 @@ const eventSchema = new mongoose.Schema(
         ],
         pdf: {
             type: String //relative path of pdf
+        },
+        article_url: {
+            type: String,
+            trim: true
         }
     },
     {
