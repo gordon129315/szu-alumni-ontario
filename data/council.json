@@ -6,40 +6,48 @@
             "name": "姜勇"
         },
         {
-            "title": "会长",
-            "name": "丁杰 Jeff"
-        },
-        {
             "title": "创会会长",
             "name": "孙晋 William"
         },
         {
-            "title": "财务总监",
-            "name": "陈国兴 Bryan"
+            "title": "会长",
+            "name": "丁杰 Jeff"
         },
         {
-            "title": "常务副会长兼执行会长",
+            "title": "副会长",
+            "name": "纪汉京 Jeffrey"
+        },
+        {
+            "title": "执行会长",
             "name": "曾小萍 Grace"
+        },
+        {
+            "title": "财务长",
+            "name": "陈国兴 Bryan"
         },
         {
             "title": "秘书长",
             "name": "阮海丽 Kim"
         },
         {
-            "title": "法务部长",
+            "title": "法务长",
             "name": "周迅梅 Lydia"
         },
         {
-            "title": "市场总监",
-            "name": "纪汉京 Jeffrey"
-        },
-        {
-            "title": "技术总监",
-            "name": "林昕 Kevin"
-        },
-        {
-            "title": "文体总监及深圳联络办事处主任",
+            "title": "驻深办主任",
             "name": "辛亚飞"
+        },
+        {
+            "title": "理事",
+            "name": "沈悦 Jeniffer"
+        },
+        {
+            "title": "理事",
+            "name": "陈文钦 Larry"
+        },
+        {
+            "title": "理事",
+            "name": "朱莉 Julie"
         }
     ]
 }
